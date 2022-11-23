@@ -12,7 +12,7 @@ import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
 public class JDBCClienteDAO implements ClienteDAO{
-    private static final String INSERT = "INSERT INTO TF_Cliente(codigo_endereco,codigo_tipo,codigo_caracteristica,nome,telefone,cpf,email,ativo) VALUES (?,?,?,?,?,?,?,?)";
+    private static final String INSERT = "INSERT INTO TF_Cliente(codigo_endereco,codigo_tipo,codigo_caracteristica,nome,telefone,cpf,email,ativo) VALUES (?,?,?,?,?,?,?,1)";
     private static final String UPDATE = "UPDATE TF_Cliente set nome=?, telefone=?, cpf=? WHERE id=?";
     private static final String DELETE = "UPDATE TF_Cliente set ativo=0 WHERE id=?";
     private static final String SELECT_ALL = "SELECT * FROM TF_Cliente";
@@ -40,7 +40,6 @@ public class JDBCClienteDAO implements ClienteDAO{
             pstm.setString(5, cliente.getTelefone());
             pstm.setString(6, cliente.getCpf());
             pstm.setString(7, cliente.getEmail());
-            pstm.setBoolean(8, cliente.isAtivo());
 
             pstm.execute();
 
