@@ -12,7 +12,7 @@ import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
 public class JDBCClienteDAO implements ClienteDAO{
-    private static final String INSERT = "INSERT INTO TF_Cliente(codigo_endereco,nome,telefone,cpf,email,ativo) VALUES (?,?,?,?,?,?)";
+    private static final String INSERT = "INSERT INTO TF_Cliente(codigo_endereco,codigo_tipo,codigo_caracteristica,nome,telefone,cpf,email,ativo) VALUES (?,?,?,?,?,?,?,?)";
     private static final String UPDATE = "UPDATE TF_Cliente set nome=?, telefone=?, cpf=? WHERE id=?";
     private static final String DELETE = "UPDATE TF_Cliente set ativo=0 WHERE id=?";
     private static final String SELECT_ALL = "SELECT * FROM TF_Cliente";
@@ -34,11 +34,13 @@ public class JDBCClienteDAO implements ClienteDAO{
             PreparedStatement pstm = con.prepareStatement(INSERT);
 
             pstm.setInt(1, cliente.getIdEndereco());
-            pstm.setString(2, cliente.getNome());
-            pstm.setString(3, cliente.getTelefone());
-            pstm.setString(4, cliente.getCpf());
-            pstm.setString(5, cliente.getEmail());
-            pstm.setBoolean(6, cliente.isAtivo());
+            pstm.setInt(2, cliente.getIdTipo());
+            pstm.setInt(3, cliente.getIdCaracteristica());
+            pstm.setString(4, cliente.getNome());
+            pstm.setString(5, cliente.getTelefone());
+            pstm.setString(6, cliente.getCpf());
+            pstm.setString(7, cliente.getEmail());
+            pstm.setBoolean(8, cliente.isAtivo());
 
             pstm.execute();
 

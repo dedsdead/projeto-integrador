@@ -22,8 +22,10 @@ public class Cliente {
 
     }
 
-    public Cliente(int idEndereco, String nome, String telefone, String cpf, String email, boolean ativo) {
+    public Cliente(int idEndereco, int idTipo, int idCaracteristica, String nome, String telefone, String cpf, String email, boolean ativo) {
         this.idEndereco = idEndereco;
+        this.idTipo = idTipo;
+        this.idCaracteristica = idCaracteristica;
         this.nome = nome;
         this.telefone = telefone;
         this.cpf = cpf;

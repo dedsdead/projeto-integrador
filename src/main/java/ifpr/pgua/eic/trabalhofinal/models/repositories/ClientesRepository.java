@@ -17,14 +17,14 @@ public class ClientesRepository {
 
     }
 
-    public Result adicionarCliente(int idEndereco, String nome, String telefone, String cpf, String email, boolean ativo){
+    public Result adicionarCliente(int idEndereco, int idTipo, int idCaracteristica, String nome, String telefone, String cpf, String email, boolean ativo){
         Optional<Cliente> busca = clientes.stream().filter((cli)->cli.getEmail().equals(email)).findFirst();
         
         if(busca.isPresent()){
             return Result.fail("Cliente já cadastrado!");
         }
 
-        Cliente cliente = new Cliente(idEndereco, nome, telefone, cpf, email, ativo);
+        Cliente cliente = new Cliente(idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email, ativo);
         
         return dao.create(cliente);
 
