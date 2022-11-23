@@ -11,9 +11,11 @@ public class Cliente {
     private String email;
     private boolean ativo;
 
-    public Cliente(int id, int idEndereco, String nome, String telefone, String cpf, String email, boolean ativo) {
+    public Cliente(int id, int idEndereco, int idTipo, int idCaracteristica, String nome, String telefone, String cpf, String email, boolean ativo) {
         this.id = id;
         this.idEndereco = idEndereco;
+        this.idTipo = idTipo;
+        this.idCaracteristica = idCaracteristica;
         this.nome = nome;
         this.telefone = telefone;
         this.cpf = cpf;
@@ -108,8 +110,15 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return this.nome;
-        
+        return "Cliente [ id = " + id +
+                        "\n idEndereco = " + idEndereco +
+                        "\n idTipo = " + idTipo +
+                        "\n idCaracteristica = "+ idCaracteristica +
+                        "\n nome = " + nome +
+                        "\n telefone = " + telefone +
+                        "\n cpf = " + cpf +
+                        "\n email = " + email +
+                        "\n ativo = " + ativo + " ]";
     }
-
+   
 }

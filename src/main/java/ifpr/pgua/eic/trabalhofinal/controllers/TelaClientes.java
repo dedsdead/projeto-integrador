@@ -10,6 +10,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -17,6 +18,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 public class TelaClientes extends BaseController implements Initializable{
+    @FXML
+    private ComboBox<String> cbTipos;
+
+    @FXML
+    private ComboBox<String> cbCaracteristicas;
+
     @FXML
     private TableColumn<ClienteRow, String> tbcNome;
 
@@ -77,6 +84,12 @@ public class TelaClientes extends BaseController implements Initializable{
 
         });
 
+        viewModel.tipoProperty().bindBidirectional(cbTipos.selectionModelProperty());
+        cbTipos.setItems(viewModel.getTipos());
+
+        viewModel.tipoProperty().bindBidirectional(cbCaracteristicas.selectionModelProperty());
+        cbCaracteristicas.setItems(viewModel.getCaracteristicas());
+
         tfNome.textProperty().bindBidirectional(viewModel.nomeProperty());
         tfNome.editableProperty().bind(viewModel.podeEditarProperty());
 
@@ -89,11 +102,14 @@ public class TelaClientes extends BaseController implements Initializable{
         tfEmail.textProperty().bindBidirectional(viewModel.emailProperty());
 
         btCadastrar.textProperty().bind(viewModel.operacaoProperty());
+
+        viewModel.updateList();
     }
 
     @FXML
     private void cadastrar(){
-        viewModel.cadastrar();
+        Result result = viewModel.cadastrar();
+        showMessage(result);
     }
 
     @FXML

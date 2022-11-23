@@ -33,13 +33,32 @@ public class JDBCClienteDAO implements ClienteDAO{
 
             PreparedStatement pstm = con.prepareStatement(INSERT);
 
-            pstm.setInt(1, cliente.getIdEndereco());
-            pstm.setInt(2, cliente.getIdTipo());
-            pstm.setInt(3, cliente.getIdCaracteristica());
+            int endereco = cliente.getIdEndereco();
+
+            if(endereco == 0){
+                endereco=1;
+            }
+
+            pstm.setInt(1, endereco);
+
+            if(cliente.getIdTipo() == 0){
+                pstm.setNull(2, 1);
+            } else {
+                pstm.setInt(2, cliente.getIdTipo());
+            }
+
+            if(cliente.getIdCaracteristica() == 0){
+                pstm.setNull(3, 1);
+            } else {
+                pstm.setInt(3, cliente.getIdCaracteristica());
+            }
+            
             pstm.setString(4, cliente.getNome());
             pstm.setString(5, cliente.getTelefone());
             pstm.setString(6, cliente.getCpf());
             pstm.setString(7, cliente.getEmail());
+
+            System.out.println(cliente);
 
             pstm.execute();
 
@@ -116,13 +135,15 @@ public class JDBCClienteDAO implements ClienteDAO{
             rsc.next();
 
             int idEndereco = rsc.getInt("codigo_endereco");
+            int idTipo = rsc.getInt("codigo_tipo");
+            int idCaracteristica = rsc.getInt("codigo_caracteristica");
             String nome = rsc.getString("nome");
             String telefone = rsc.getString("telefone");
             String cpf = rsc.getString("cpf");
             String email = rsc.getString("email");
             boolean ativo = rsc.getBoolean("ativo");
 
-            Cliente c = new Cliente(id, idEndereco, nome, telefone, cpf, email, ativo);
+            Cliente c = new Cliente(id, idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email, ativo);
 
             rsc.close();
             pstm.close();
@@ -150,13 +171,15 @@ public class JDBCClienteDAO implements ClienteDAO{
             while(rs.next()){
                 int id = rs.getInt("codigo");
                 int idEndereco = rs.getInt("codigo_endereco");
+                int idTipo = rs.getInt("codigo_tipo");
+                int idCaracteristica = rs.getInt("codigo_caracteristica");
                 String nome = rs.getString("nome");
                 String telefone = rs.getString("telefone");
                 String cpf = rs.getString("cpf");
                 String email = rs.getString("email");
                 boolean ativo = rs.getBoolean("ativo");
 
-                Cliente c = new Cliente(id, idEndereco, nome, telefone, cpf, email, ativo);
+                Cliente c = new Cliente(id, idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email, ativo);
                 clientes.add(c);
                 
             }

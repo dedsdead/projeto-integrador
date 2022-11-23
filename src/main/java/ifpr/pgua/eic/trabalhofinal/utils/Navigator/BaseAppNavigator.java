@@ -178,6 +178,4 @@ public abstract class BaseAppNavigator extends Application{
 
     public abstract void registrarTelas();
 
-
-
 }

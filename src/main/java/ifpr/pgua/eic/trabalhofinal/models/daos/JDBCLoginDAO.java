@@ -4,12 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes;
-import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
-import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
 public class JDBCLoginDAO implements LoginDAO{
     private static final String SELECT_EMAIL = "SELECT * FROM TF_Corretor WHERE email=?";
