@@ -20,4 +20,8 @@ Sexta semana **13/11:** ```Elaboração do DER e MR.```
 
 Sétima semana **21/11:** ```Elaboração do diagrama de casos de uso, especificação dos casos de uso, finalização dos diagramas de sequência.```
 
-Sétima semana **23/11:** ```Elaboração do diagrama de classes, início da implementação.```
+Sétima semana **23/11:** ```Elaboração do diagrama de classes, início da implementação, criação do banco de dados.```
+
+## Sétima semana **23/11:** ```começo da implementação em java, criado o projeto, definido o ambiente, criadas as entidades de Cliente, Tipo e Característica e seus daos e repositories, criados os controllers da tela principal e tela clientes.```
+
+Sétima semana **26/11:** ```Criação das duas funções (regex de email e verificação de cpf) e as duas triggers (atualização de disponibilidade de imóvel na inserção e update de venda).```
