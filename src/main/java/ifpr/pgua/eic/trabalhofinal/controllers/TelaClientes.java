@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.ClienteRow;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaClientesViewModel;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -62,6 +63,9 @@ public class TelaClientes extends BaseController implements Initializable{
 
     private TelaClientesViewModel viewModel;
 
+    int temTipo = 0;
+
+    int temCaracteristica = 0;
 
     public TelaClientes(TelaClientesViewModel viewModel){
         this.viewModel = viewModel;
@@ -85,10 +89,10 @@ public class TelaClientes extends BaseController implements Initializable{
         });
 
         viewModel.tipoProperty().bindBidirectional(cbTipos.selectionModelProperty());
-        cbTipos.setItems(viewModel.getTipos());
+        cbTipos.setItems(viewModel.getNomes());
 
-        viewModel.tipoProperty().bindBidirectional(cbCaracteristicas.selectionModelProperty());
-        cbCaracteristicas.setItems(viewModel.getCaracteristicas());
+        viewModel.caracteristicaProperty().bindBidirectional(cbCaracteristicas.selectionModelProperty());
+        cbCaracteristicas.setItems(viewModel.getDescricoes());
 
         tfNome.textProperty().bindBidirectional(viewModel.nomeProperty());
         tfNome.editableProperty().bind(viewModel.podeEditarProperty());
@@ -104,17 +108,27 @@ public class TelaClientes extends BaseController implements Initializable{
         btCadastrar.textProperty().bind(viewModel.operacaoProperty());
 
         viewModel.updateList();
+
+        cbTipos.setOnAction((evt)->{
+            temTipo = 1;
+
+        });
+
+        cbCaracteristicas.setOnAction((evt)->{
+            temCaracteristica = 1;
+        });
+
     }
 
     @FXML
     private void cadastrar(){
-        Result result = viewModel.cadastrar();
+        Result result = viewModel.cadastrar(temTipo, temCaracteristica);
         showMessage(result);
     }
 
     @FXML
     private void limpar(){
-        viewModel.limpar();
+        viewModel.limpar(temTipo, temCaracteristica);
     }
 
     @FXML

@@ -33,8 +33,7 @@ public class Caracteristica {
 
     @Override
     public String toString() {
-        return "Tipo [ id = " + id +
-                    "\n nome = " + descricao + " ]";
+        return this.descricao;
     }
 
 }

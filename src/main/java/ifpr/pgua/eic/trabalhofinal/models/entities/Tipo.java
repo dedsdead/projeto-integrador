@@ -33,8 +33,7 @@ public class Tipo {
 
     @Override
     public String toString() {
-        return "Tipo [ id = " + id +
-                    "\n nome = " + nome + " ]";
+        return this.nome;
     }
     
 }

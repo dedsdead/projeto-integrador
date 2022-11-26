@@ -57,29 +57,28 @@ public class TelaClientesViewModel {
         this.caracteristicasRepository = caracteristicasRepository;
 
         updateList();
-
+        carregaTiposCaracteristicas();
     }
 
-    public void updateList(){
-        obsClientes.clear();
-        tipos.clear();
-        caracteristicas.clear();
-        nomes.clear();
-        descricoes.clear();
-
-        for(Cliente c : clientesRepository.getClientes()){
-            obsClientes.add(new ClienteRow(c));
-
-        }
-
+    public void carregaTiposCaracteristicas(){
         for(Tipo t : tiposRepository.getTipos()){
             tipos.add(t);
             nomes.add(t.getNome());
+
         }
 
         for(Caracteristica c : caracteristicasRepository.getCaracteristicas()){
             caracteristicas.add(c);
             descricoes.add(c.getDescricao());
+
+        }
+    }
+
+    public void updateList(){
+        obsClientes.clear();
+
+        for(Cliente c : clientesRepository.getClientes()){
+            obsClientes.add(new ClienteRow(c));
 
         }
 
@@ -90,13 +89,24 @@ public class TelaClientesViewModel {
 
     }
 
-    public ObservableList<String> getTipos(){
-        return nomes;
+    public ObservableList<Tipo> getTipos(){
+        return this.tipos;
 
     }
 
-    public ObservableList<String> getCaracteristicas(){
-        return descricoes;
+    public ObservableList<String> getNomes(){
+        return this.nomes;
+
+    }
+
+    public ObservableList<Caracteristica> getCaracteristicas(){
+        return this.caracteristicas;
+
+    }
+
+    public ObservableList<String> getDescricoes(){
+        return this.descricoes;
+
     }
 
     public ObjectProperty<ClienteRow> selecionadoProperty(){
@@ -154,21 +164,43 @@ public class TelaClientesViewModel {
 
     }
 
-    public Result cadastrar() {
+    public Result cadastrar(int temTipo, int temCaracteristica) {
         int idEndereco = spEndereco.getValue();
+        int idTipo;
+        int idCaracteristica;
 
-        String nomeTipo = spTipo.getValue().getSelectedItem();
-        //VER UMA SOLUÇÃO MELHOR
-        Optional<Tipo> escolha = tipos.stream().filter((cli)->cli.getNome().equals(nomeTipo)).findFirst();
-        Tipo tipo = escolha.get();
-        int idTipo = tipo.getId();
+        if(temTipo == 1){
+            Optional<Tipo> busca = tipos.stream().filter((cli)->cli.getNome().equals(spTipo.getValue().getSelectedItem())).findFirst();
+            if(busca.isPresent()){
+                Tipo t = busca.get();
+                idTipo = t.getId();
 
-        String descCaracteristica = spCaracteristica.getValue().getSelectedItem();
-        //VER UMA SOLUÇÃO MELHOR2
-        Optional<Caracteristica> escolha2 = caracteristicas.stream().filter((cli)->cli.getDescricao().equals(descCaracteristica)).findFirst();
-        Caracteristica caracteristica = escolha2.get();
-        int idCaracteristica = caracteristica.getId();
+            } else {
+                idTipo = 0;
 
+            }
+            
+        } else {
+            idTipo = 0;
+
+        }
+
+        if(temCaracteristica == 1){
+            Optional<Caracteristica> busca = caracteristicas.stream().filter((cli)->cli.getDescricao().equals(spCaracteristica.getValue().getSelectedItem())).findFirst();
+            if(busca.isPresent()){
+                Caracteristica c = busca.get();
+                idCaracteristica = c.getId();
+
+            } else {
+                idCaracteristica = 0;
+
+            }
+            
+        } else {
+            idCaracteristica = 0;
+
+        }
+       
         String nome = spNome.getValue();
         String cpf = spCpf.getValue();
         String telefone = spTelefone.getValue();
@@ -184,7 +216,7 @@ public class TelaClientesViewModel {
 
         if(result instanceof SuccessResult){
             updateList();
-            limpar();
+            limpar(temTipo, temCaracteristica);
         }
 
         return result;
@@ -202,10 +234,8 @@ public class TelaClientesViewModel {
 
     }
 
-    public void limpar() {
+    public void limpar(int temTipo, int temCaracteristica) {
         spEndereco.setValue(0);
-        spTipo.getValue().clearSelection();
-        spCaracteristica.getValue().clearSelection();
         spNome.setValue("");
         spTelefone.setValue("");
         spCpf.setValue("");

@@ -1,9 +1,11 @@
 package ifpr.pgua.eic.trabalhofinal.models.daos;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,8 @@ public class JDBCClienteDAO implements ClienteDAO{
     private static final String DELETE = "UPDATE TF_Cliente set ativo=0 WHERE id=?";
     private static final String SELECT_ALL = "SELECT * FROM TF_Cliente";
     private static final String SELECT_ID = "SELECT * FROM TF_Cliente WHERE id=?";
+    private static final String CALL_CPF = "{? = call TF_Validar_cpf(?)}";
+    private static final String CALL_REGEX = "{? = call TF_Regex_email(?)}";
 
     private FabricaConexoes fabricaConexoes;
 
@@ -29,6 +33,9 @@ public class JDBCClienteDAO implements ClienteDAO{
     @Override
     public Result create(Cliente cliente) {
         try {
+            if(mysqlValidaCpf(cliente.getCpf()) == false) return Result.fail("Insira um cpf válido!");
+            if(mysqlRegexEmail(cliente.getEmail()) == false) return Result.fail("Insira um email válido!");
+
             Connection con = fabricaConexoes.getConnection();
 
             PreparedStatement pstm = con.prepareStatement(INSERT);
@@ -196,5 +203,47 @@ public class JDBCClienteDAO implements ClienteDAO{
 
         }
     }
+
+    public boolean mysqlRegexEmail(String email){
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            CallableStatement cstm = con.prepareCall(CALL_REGEX);
+            cstm.registerOutParameter(1, Types.SMALLINT);
+            cstm.setString(2, email);
+            cstm.execute();
+
+            boolean result = cstm.getBoolean(1);
+
+            cstm.close();
+            con.close();
+
+            return result;
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao chamar a função mysql");
+            return false;
+        }
+    }
+
+    public boolean mysqlValidaCpf(String cpf){
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            CallableStatement cstm = con.prepareCall(CALL_CPF);
+            cstm.registerOutParameter(1, Types.SMALLINT);
+            cstm.setString(2, cpf);
+            cstm.execute();
+
+            boolean result = cstm.getBoolean(1);
+
+            cstm.close();
+            con.close();
+
+            return result;
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao chamar a função mysql");
+            return false;
+        }
+    } 
     
 }
