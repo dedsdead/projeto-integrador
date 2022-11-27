@@ -30,12 +30,16 @@ public class ClientesRepository {
 
     }
 
-    public Result atualizarCliente(String nome, String telefone, String cpf, String email){
+    public Result atualizarCliente(int idEndereco, int idTipo, int idCaracteristica, String nome, String telefone, String cpf, String email){
         Optional<Cliente> busca = clientes.stream().filter((cli)->cli.getEmail().equals(email)).findFirst();
         
         if(busca.isPresent()){
             Cliente cliente = busca.get();
             int id = cliente.getId();
+
+            if(idEndereco != 0) cliente.setIdEndereco(idEndereco);
+            if(idTipo != 0) cliente.setIdTipo(idTipo);
+            if(idCaracteristica != 0) cliente.setIdCaracteristica(idCaracteristica);
             if(nome != "")cliente.setNome(nome);
             if(telefone != "")cliente.setTelefone(telefone);
             if(cpf != "")cliente.setCpf(cpf);

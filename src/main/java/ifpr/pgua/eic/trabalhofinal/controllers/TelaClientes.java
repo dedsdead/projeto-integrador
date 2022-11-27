@@ -95,15 +95,13 @@ public class TelaClientes extends BaseController implements Initializable{
         cbCaracteristicas.setItems(viewModel.getDescricoes());
 
         tfNome.textProperty().bindBidirectional(viewModel.nomeProperty());
-        tfNome.editableProperty().bind(viewModel.podeEditarProperty());
 
         tfTelefone.textProperty().bindBidirectional(viewModel.telefoneProperty());
-        tfTelefone.editableProperty().bind(viewModel.podeEditarProperty());
 
         tfCpf.textProperty().bindBidirectional(viewModel.cpfProperty());
-        tfCpf.editableProperty().bind(viewModel.podeEditarProperty());
 
         tfEmail.textProperty().bindBidirectional(viewModel.emailProperty());
+        tfEmail.editableProperty().bind(viewModel.podeEditarProperty());
 
         btCadastrar.textProperty().bind(viewModel.operacaoProperty());
 
@@ -116,6 +114,7 @@ public class TelaClientes extends BaseController implements Initializable{
 
         cbCaracteristicas.setOnAction((evt)->{
             temCaracteristica = 1;
+
         });
 
     }
@@ -135,6 +134,7 @@ public class TelaClientes extends BaseController implements Initializable{
     private void atualizar(MouseEvent event){
         if(event.getClickCount() == 2){
             viewModel.atualizar();
+
         }
         
     }

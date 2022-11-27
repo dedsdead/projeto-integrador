@@ -15,10 +15,10 @@ import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
 public class JDBCClienteDAO implements ClienteDAO{
     private static final String INSERT = "INSERT INTO TF_Cliente(codigo_endereco,codigo_tipo,codigo_caracteristica,nome,telefone,cpf,email,ativo) VALUES (?,?,?,?,?,?,?,1)";
-    private static final String UPDATE = "UPDATE TF_Cliente set nome=?, telefone=?, cpf=? WHERE id=?";
-    private static final String DELETE = "UPDATE TF_Cliente set ativo=0 WHERE id=?";
+    private static final String UPDATE = "UPDATE TF_Cliente set codigo_endereco=?, codigo_tipo=?, codigo_caracteristica=?, nome=?, telefone=?, cpf=? WHERE codigo=?";
+    private static final String DELETE = "UPDATE TF_Cliente set ativo=0 WHERE codigo=?";
     private static final String SELECT_ALL = "SELECT * FROM TF_Cliente";
-    private static final String SELECT_ID = "SELECT * FROM TF_Cliente WHERE id=?";
+    private static final String SELECT_ID = "SELECT * FROM TF_Cliente WHERE codigo=?";
     private static final String CALL_CPF = "{? = call TF_Validar_cpf(?)}";
     private static final String CALL_REGEX = "{? = call TF_Regex_email(?)}";
 
@@ -40,8 +40,11 @@ public class JDBCClienteDAO implements ClienteDAO{
 
             PreparedStatement pstm = con.prepareStatement(INSERT);
 
+            // ALTERAR QUANDO FOR ADICIONAR ENDEREÇO !!!!!!!!!!!!!!!!!!!!!!!!
+            // ALTERAR QUANDO FOR ADICIONAR ENDEREÇO !!!!!!!!!!!!!!!!!!!!!!!!
+            // ALTERAR QUANDO FOR ADICIONAR ENDEREÇO !!!!!!!!!!!!!!!!!!!!!!!!
             int endereco = cliente.getIdEndereco();
-
+            
             if(endereco == 0){
                 endereco=1;
             }
@@ -65,8 +68,6 @@ public class JDBCClienteDAO implements ClienteDAO{
             pstm.setString(6, cliente.getCpf());
             pstm.setString(7, cliente.getEmail());
 
-            System.out.println(cliente);
-
             pstm.execute();
 
             pstm.close();
@@ -86,11 +87,34 @@ public class JDBCClienteDAO implements ClienteDAO{
             Connection con = fabricaConexoes.getConnection(); 
             
             PreparedStatement pstm = con.prepareStatement(UPDATE);
+
+            // ALTERAR QUANDO FOR ADICIONAR ENDEREÇO !!!!!!!!!!!!!!!!!!!!!!!!
+            // ALTERAR QUANDO FOR ADICIONAR ENDEREÇO !!!!!!!!!!!!!!!!!!!!!!!!
+            // ALTERAR QUANDO FOR ADICIONAR ENDEREÇO !!!!!!!!!!!!!!!!!!!!!!!!
+            int endereco = cliente.getIdEndereco();
             
-            pstm.setString(1, cliente.getNome());
-            pstm.setString(2, cliente.getTelefone());
-            pstm.setString(3, cliente.getCpf());
-            pstm.setInt(4, id);
+            if(endereco == 0){
+                endereco=1;
+            }
+
+            pstm.setInt(1, endereco);
+
+            if(cliente.getIdTipo() == 0){
+                pstm.setNull(2, 1);
+            } else {
+                pstm.setInt(2, cliente.getIdTipo());
+            }
+
+            if(cliente.getIdCaracteristica() == 0){
+                pstm.setNull(3, 1);
+            } else {
+                pstm.setInt(3, cliente.getIdCaracteristica());
+            }
+
+            pstm.setString(4, cliente.getNome());
+            pstm.setString(5, cliente.getTelefone());
+            pstm.setString(6, cliente.getCpf());
+            pstm.setInt(7, id);
 
             pstm.execute();
 
@@ -222,6 +246,7 @@ public class JDBCClienteDAO implements ClienteDAO{
         } catch (SQLException e) {
             System.out.println("Erro ao chamar a função mysql");
             return false;
+
         }
     }
 
@@ -243,6 +268,7 @@ public class JDBCClienteDAO implements ClienteDAO{
         } catch (SQLException e) {
             System.out.println("Erro ao chamar a função mysql");
             return false;
+
         }
     } 
     

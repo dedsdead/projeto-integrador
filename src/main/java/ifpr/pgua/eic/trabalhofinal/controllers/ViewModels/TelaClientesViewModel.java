@@ -164,38 +164,92 @@ public class TelaClientesViewModel {
 
     }
 
+    public Tipo buscaTipo(){
+        Optional<Tipo> busca = tipos.stream().filter((cli)->cli.getNome().equals(spTipo.getValue().getSelectedItem())).findFirst();
+        if(busca.isPresent()){
+            Tipo t = busca.get();
+            return t;
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public Tipo buscaTipoId(Cliente cliente){
+        Optional<Tipo> busca = tipos.stream().filter((cli)->cli.getId() == cliente.getIdTipo()).findFirst();
+        
+        if(busca.isPresent()){
+            Tipo t = busca.get();
+            return t;
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public Caracteristica buscaCaracteristica(){
+        Optional<Caracteristica> busca = caracteristicas.stream().filter((cli)->cli.getDescricao().equals(spCaracteristica.getValue().getSelectedItem())).findFirst();
+        if(busca.isPresent()){
+            Caracteristica c = busca.get();
+            return c;
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public Caracteristica buscaCaracteristicaId(Cliente cliente){
+        Optional<Caracteristica> busca = caracteristicas.stream().filter((cli)->cli.getId() == cliente.getIdCaracteristica()).findFirst();
+        
+        if(busca.isPresent()){
+            Caracteristica c = busca.get();
+            return c;
+
+        } else {
+            return null;
+
+        }
+
+    }
+
     public Result cadastrar(int temTipo, int temCaracteristica) {
         int idEndereco = spEndereco.getValue();
         int idTipo;
         int idCaracteristica;
 
-        if(temTipo == 1){
-            Optional<Tipo> busca = tipos.stream().filter((cli)->cli.getNome().equals(spTipo.getValue().getSelectedItem())).findFirst();
-            if(busca.isPresent()){
-                Tipo t = busca.get();
+        if (temTipo == 1){
+            Tipo t = buscaTipo();
+
+            if(t != null){
                 idTipo = t.getId();
 
             } else {
                 idTipo = 0;
 
             }
-            
+
         } else {
             idTipo = 0;
 
         }
 
-        if(temCaracteristica == 1){
-            Optional<Caracteristica> busca = caracteristicas.stream().filter((cli)->cli.getDescricao().equals(spCaracteristica.getValue().getSelectedItem())).findFirst();
-            if(busca.isPresent()){
-                Caracteristica c = busca.get();
+        if (temCaracteristica == 1){
+            Caracteristica c = buscaCaracteristica();
+
+            if(c != null){
                 idCaracteristica = c.getId();
 
             } else {
                 idCaracteristica = 0;
 
             }
-            
+
         } else {
             idCaracteristica = 0;
 
@@ -209,7 +263,7 @@ public class TelaClientesViewModel {
         Result result;
 
         if (atualizar) {
-            result = clientesRepository.atualizarCliente(nome, telefone, cpf, email);
+            result = clientesRepository.atualizarCliente(idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email);
         } else {
             result = clientesRepository.adicionarCliente(idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email);
         }
@@ -217,6 +271,7 @@ public class TelaClientesViewModel {
         if(result instanceof SuccessResult){
             updateList();
             limpar(temTipo, temCaracteristica);
+
         }
 
         return result;
@@ -227,14 +282,39 @@ public class TelaClientesViewModel {
         operacao.setValue("Atualizar");
         podeEditar.setValue(false);
         atualizar = true;
+        
         Cliente cliente = selecionado.get().getCliente();
+        
+        if(cliente.getIdEndereco() != 0) spEndereco.setValue(cliente.getIdEndereco());
+        
+        Tipo t = buscaTipoId(cliente);
+        if(cliente.getIdTipo() != 0){
+            spTipo.get().select(t.getNome());
+
+        } else {
+            spTipo.get().clearSelection();
+
+        }
+        
+        Caracteristica c = buscaCaracteristicaId(cliente);
+        if(cliente.getIdCaracteristica() != 0){
+            spCaracteristica.get().select(c.getDescricao());
+
+        } else {
+            spCaracteristica.get().clearSelection();
+
+        }
+        
         spNome.setValue(cliente.getNome());
         spTelefone.setValue(cliente.getTelefone());
         spCpf.setValue(cliente.getCpf());
+        spEmail.setValue(cliente.getEmail());
 
     }
 
     public void limpar(int temTipo, int temCaracteristica) {
+        if(temTipo == 1) spTipo.get().clearSelection();
+        if(temCaracteristica == 1) spCaracteristica.get().clearSelection();
         spEndereco.setValue(0);
         spNome.setValue("");
         spTelefone.setValue("");
