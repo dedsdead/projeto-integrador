@@ -25,3 +25,7 @@ Sétima semana **23/11:** ```Elaboração do diagrama de classes, início da imp
 ## Sétima semana **23/11:** ```começo da implementação em java, criado o projeto, definido o ambiente, criadas as entidades de Cliente, Tipo e Característica e seus daos e repositories, criados os controllers da tela principal e tela clientes.```
 
 Sétima semana **26/11:** ```Criação das duas funções (regex de email e verificação de cpf) e as duas triggers (atualização de disponibilidade de imóvel na inserção e update de venda).```
+
+Oitava semana **28/11:** ```Revisão da documentação.```
+
+Oitava semana **1/12:** ```Correções dos diagramas e modelos, correção do banco de dados.```
