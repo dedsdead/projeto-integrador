@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.ClienteRow;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaClientesViewModel;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -64,11 +63,12 @@ public class TelaClientes extends BaseController implements Initializable{
     private TelaClientesViewModel viewModel;
 
     int temTipo = 0;
-
     int temCaracteristica = 0;
+    int limpar = 0;
 
     public TelaClientes(TelaClientesViewModel viewModel){
         this.viewModel = viewModel;
+
     }
 
     @Override
@@ -108,12 +108,34 @@ public class TelaClientes extends BaseController implements Initializable{
         viewModel.updateList();
 
         cbTipos.setOnAction((evt)->{
-            temTipo = 1;
+            if(limpar == 0){
+                temTipo = 1;
+
+                if(temCaracteristica == 1 && viewModel.podeEditarProperty().getValue()){
+                    cbCaracteristicas.setItems(null);
+                    temCaracteristica = 0;
+    
+                } else {
+                    if(cbTipos.getValue().equals("APARTAMENTO")
+                     || cbTipos.getValue().equals("COMERCIAL")
+                     || cbTipos.getValue().equals("CASA")
+                     || cbTipos.getValue().equals("SOBRADO")
+                     ){
+                        cbCaracteristicas.setItems(viewModel.getDescricoes());
+
+                    } else {
+                        cbCaracteristicas.setItems(null);
+                        temCaracteristica = 0;
+    
+                    }
+                }
+
+            }
 
         });
 
         cbCaracteristicas.setOnAction((evt)->{
-            temCaracteristica = 1;
+            if(limpar == 0) temCaracteristica = 1;
 
         });
 
@@ -123,11 +145,22 @@ public class TelaClientes extends BaseController implements Initializable{
     private void cadastrar(){
         Result result = viewModel.cadastrar(temTipo, temCaracteristica);
         showMessage(result);
+        limpar();
+
     }
 
     @FXML
     private void limpar(){
+        limpar = 1;
         viewModel.limpar(temTipo, temCaracteristica);
+        temCaracteristica = 0;
+        temTipo = 0;
+        cbTipos.setItems(null);
+        cbTipos.setItems(viewModel.getNomes());
+        cbCaracteristicas.setItems(null);
+        cbCaracteristicas.setItems(viewModel.getDescricoes());
+        limpar = 0;
+
     }
 
     @FXML

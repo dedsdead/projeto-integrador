@@ -57,19 +57,28 @@ public class TelaClientesViewModel {
         this.caracteristicasRepository = caracteristicasRepository;
 
         updateList();
-        carregaTiposCaracteristicas();
+        carregaTipos();
+        carregaCaracteristicas();
     }
 
-    public void carregaTiposCaracteristicas(){
+    public void carregaTipos(){
+        tipos.clear();
+        nomes.clear();
+        
         for(Tipo t : tiposRepository.getTipos()){
             tipos.add(t);
             nomes.add(t.getNome());
 
         }
+    }
 
+    public void carregaCaracteristicas(){
+        caracteristicas.clear();
+        descricoes.clear();
+        
         for(Caracteristica c : caracteristicasRepository.getCaracteristicas()){
             caracteristicas.add(c);
-            descricoes.add(c.getDescricao());
+            descricoes.add(c.getQuantidade()+" "+c.getDescricao());
 
         }
     }
@@ -192,7 +201,7 @@ public class TelaClientesViewModel {
     }
 
     public Caracteristica buscaCaracteristica(){
-        Optional<Caracteristica> busca = caracteristicas.stream().filter((cli)->cli.getDescricao().equals(spCaracteristica.getValue().getSelectedItem())).findFirst();
+        Optional<Caracteristica> busca = caracteristicas.stream().filter((cli)->(cli.getQuantidade()+" "+cli.getDescricao()).equals(spCaracteristica.getValue().getSelectedItem())).findFirst();
         if(busca.isPresent()){
             Caracteristica c = busca.get();
             return c;
@@ -297,13 +306,15 @@ public class TelaClientesViewModel {
         }
         
         Caracteristica c = buscaCaracteristicaId(cliente);
+
         if(cliente.getIdCaracteristica() != 0){
-            spCaracteristica.get().select(c.getDescricao());
+            spCaracteristica.get().select(c.getQuantidade()+" "+c.getDescricao());
 
         } else {
             spCaracteristica.get().clearSelection();
 
         }
+        
         
         spNome.setValue(cliente.getNome());
         spTelefone.setValue(cliente.getTelefone());
@@ -313,8 +324,6 @@ public class TelaClientesViewModel {
     }
 
     public void limpar(int temTipo, int temCaracteristica) {
-        if(temTipo == 1) spTipo.get().clearSelection();
-        if(temCaracteristica == 1) spCaracteristica.get().clearSelection();
         spEndereco.setValue(0);
         spNome.setValue("");
         spTelefone.setValue("");

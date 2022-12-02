@@ -2,16 +2,19 @@ package ifpr.pgua.eic.trabalhofinal.models.entities;
 
 public class Caracteristica {
     private int id;
+    private int quantidade;
     private String descricao;
 
-    public Caracteristica(int id, String descricao){
+    public Caracteristica(int id, String descricao, int quantidade){
         this.id = id;
+        this.quantidade = quantidade;
         this.descricao = descricao;
 
     }
 
-    public Caracteristica(String descricao){
+    public Caracteristica(String descricao, int quantidade){
         this.descricao = descricao;
+        this.quantidade = quantidade;
 
     }
 
@@ -21,6 +24,14 @@ public class Caracteristica {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     public String getDescricao() {

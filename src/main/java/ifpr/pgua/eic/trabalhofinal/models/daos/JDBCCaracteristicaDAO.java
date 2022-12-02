@@ -33,9 +33,10 @@ public class JDBCCaracteristicaDAO implements CaracteristicaDAO{
             
             while(rs.next()){
                 int id = rs.getInt("codigo");
+                int quantidade = rs.getInt("quantidade");
                 String descricao = rs.getString("descricao");
 
-                Caracteristica c = new Caracteristica(id, descricao);
+                Caracteristica c = new Caracteristica(id, descricao, quantidade);
                 caracteristicas.add(c);
                 
             }
