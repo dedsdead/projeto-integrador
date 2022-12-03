@@ -6,10 +6,10 @@ import ifpr.pgua.eic.trabalhofinal.models.daos.LoginDAO;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 import ifpr.pgua.eic.trabalhofinal.utils.HashPassword;
 
-public class LoginRepository {
+public class LoginsRepository {
     private LoginDAO dao;
 
-    public LoginRepository(LoginDAO dao){
+    public LoginsRepository(LoginDAO dao){
         this.dao = dao;
 
     }

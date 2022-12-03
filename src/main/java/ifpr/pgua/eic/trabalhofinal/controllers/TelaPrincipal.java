@@ -1,13 +1,89 @@
 package ifpr.pgua.eic.trabalhofinal.controllers;
 
-import ifpr.pgua.eic.trabalhofinal.App;
-import ifpr.pgua.eic.trabalhofinal.utils.Navigator.BorderPaneRegion;
-import javafx.fxml.FXML;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class TelaPrincipal extends BaseController{
+import ifpr.pgua.eic.trabalhofinal.App;
+import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaPrincipalViewModel;
+import ifpr.pgua.eic.trabalhofinal.models.results.Result;
+import ifpr.pgua.eic.trabalhofinal.utils.Navigator.BorderPaneRegion;
+import javafx.beans.value.ChangeListener;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+
+public class TelaPrincipal extends BaseController implements Initializable{
+    @FXML
+    private TextField tfEmail;
+
+    @FXML
+    private TextField tfSenha;
+
+    @FXML
+    private PasswordField pfSenha;
+
+    @FXML
+    private Button btLogar;
+    
+    @FXML
+    private Button btLimpar;
+
+    @FXML
+    private CheckBox ckMostrar;
+
+    public TelaPrincipalViewModel viewModel;
+
+    public TelaPrincipal(TelaPrincipalViewModel viewModel){
+        this.viewModel = viewModel;
+
+    }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        tfEmail.textProperty().bindBidirectional(viewModel.emailProperty());
+        
+        pfSenha.textProperty().bindBidirectional(viewModel.senhaProperty());
+        tfSenha.textProperty().bindBidirectional(viewModel.senhaProperty());
+
+        tfSenha.managedProperty().bind(ckMostrar.selectedProperty());
+        tfSenha.visibleProperty().bind(ckMostrar.selectedProperty());
+
+        pfSenha.managedProperty().bind(ckMostrar.selectedProperty().not());
+        pfSenha.visibleProperty().bind(ckMostrar.selectedProperty().not());
+
+        viewModel.alertProperty().addListener((ChangeListener<Result>) (observable, oldVal, newVal) -> {
+            showMessage(newVal);
+
+        });
+
+    }
+
+    @FXML
+    private void logar(){
+        Result result = viewModel.logar();
+        showMessage(result);
+        limpar();
+        
+    }
+
+    @FXML
+    private void limpar(){
+        viewModel.limpar();
+        
+    }
+
     @FXML
     private void carregarClientes(){
-        App.changeScreenRegion("CLIENTES", BorderPaneRegion.CENTER);
+        if(viewModel.logadoProperty().getValue()){
+            App.changeScreenRegion("CLIENTES", BorderPaneRegion.CENTER);
+
+        } else {
+            showMessage(Result.fail("Faça login primeiro!"));
+        }
+
     }
     
 }

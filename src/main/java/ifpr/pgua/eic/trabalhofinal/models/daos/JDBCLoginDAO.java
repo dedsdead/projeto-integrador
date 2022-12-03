@@ -30,7 +30,7 @@ public class JDBCLoginDAO implements LoginDAO{
 
             rsc.next();
 
-            String hash = rsc.getString("hash");
+            String hash = rsc.getString("senha");
 
             rsc.close();
             pstm.close();
