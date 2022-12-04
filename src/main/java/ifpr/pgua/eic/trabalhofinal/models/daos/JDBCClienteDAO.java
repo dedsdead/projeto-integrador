@@ -25,7 +25,6 @@ public class JDBCClienteDAO implements ClienteDAO{
 
     private FabricaConexoes fabricaConexoes;
 
-
     public JDBCClienteDAO(FabricaConexoes fabricaConexoes){
         this.fabricaConexoes = fabricaConexoes;
 
@@ -53,13 +52,13 @@ public class JDBCClienteDAO implements ClienteDAO{
             pstm.setInt(1, endereco);
 
             if(cliente.getIdTipo() == 0){
-                pstm.setNull(2, 1);
+                pstm.setNull(2, Types.INTEGER);
             } else {
                 pstm.setInt(2, cliente.getIdTipo());
             }
 
             if(cliente.getIdCaracteristica() == 0){
-                pstm.setNull(3, 1);
+                pstm.setNull(3, Types.INTEGER);
             } else {
                 pstm.setInt(3, cliente.getIdCaracteristica());
             }
@@ -101,13 +100,13 @@ public class JDBCClienteDAO implements ClienteDAO{
             pstm.setInt(1, endereco);
 
             if(cliente.getIdTipo() == 0){
-                pstm.setNull(2, 1);
+                pstm.setNull(2, Types.INTEGER);
             } else {
                 pstm.setInt(2, cliente.getIdTipo());
             }
 
             if(cliente.getIdCaracteristica() == 0){
-                pstm.setNull(3, 1);
+                pstm.setNull(3, Types.INTEGER);
             } else {
                 pstm.setInt(3, cliente.getIdCaracteristica());
             }

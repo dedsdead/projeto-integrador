@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 
 public class TelaPrincipal extends BaseController implements Initializable{
     @FXML
@@ -54,9 +55,19 @@ public class TelaPrincipal extends BaseController implements Initializable{
         pfSenha.managedProperty().bind(ckMostrar.selectedProperty().not());
         pfSenha.visibleProperty().bind(ckMostrar.selectedProperty().not());
 
+        btLogar.setDefaultButton(true);
+
         viewModel.alertProperty().addListener((ChangeListener<Result>) (observable, oldVal, newVal) -> {
             showMessage(newVal);
 
+        });
+
+        btLogar.setOnKeyPressed((evt) -> {
+            if(evt.getCode().equals(KeyCode.ENTER)){
+                btLogar.fire();
+                evt.consume();
+
+            }
         });
 
     }

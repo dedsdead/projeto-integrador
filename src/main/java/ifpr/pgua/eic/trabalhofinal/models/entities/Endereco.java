@@ -3,27 +3,27 @@ package ifpr.pgua.eic.trabalhofinal.models.entities;
 public class Endereco {
     private int id;
     private String cep;
-    private String estado;
-    private String cidade;
+    private String uf;
+    private String localidade;
     private String logradouro;
     private int numero;
     private String complemento;
 
-    public Endereco(int id, String cep, String estado, String cidade, String logradouro, int numero, String complemento){
+    public Endereco(int id, String cep, String uf, String localidade, String logradouro, int numero, String complemento){
         this.id = id;
         this.cep = cep;
-        this.estado = estado;
-        this.cidade = cidade;
+        this.uf = uf;
+        this.localidade = localidade;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
 
     }
 
-    public Endereco(String cep, String estado, String cidade, String logradouro, int numero, String complemento){
+    public Endereco(String cep, String uf, String localidade, String logradouro, int numero, String complemento){
         this.cep = cep;
-        this.estado = estado;
-        this.cidade = cidade;
+        this.uf = uf;
+        this.localidade = localidade;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
@@ -47,19 +47,19 @@ public class Endereco {
     }
 
     public String getEstado() {
-        return estado;
+        return uf;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setEstado(String uf) {
+        this.uf = uf;
     }
 
     public String getCidade() {
-        return cidade;
+        return localidade;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setCidade(String localidade) {
+        this.localidade = localidade;
     }
 
     public String getLogradouro() {
@@ -88,8 +88,13 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return this.cep;
-
+        return "Endereco [ id = " + id +
+                        "\n cep = " + cep +
+                        "\n estado = " + uf +
+                        "\n cidade = "+ localidade +
+                        "\n logradouro = " + logradouro +
+                        "\n numero = " + numero +
+                        "\n complemento = " + complemento + " ]";
     }
 
 }

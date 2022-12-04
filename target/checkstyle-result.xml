@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.45.1">
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\App.java">
+<error line="23" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="23" column="48" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="40" column="40" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="58" column="40" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="72" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="77" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 163)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="77" column="96" severity="error" message="&apos;-&gt;&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="77" column="96" severity="error" message="&apos;-&gt;&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="77" column="96" severity="error" message="Parênteses desnecessários em torno do valor lambda." source="com.puppycrawl.tools.checkstyle.checks.coding.UnnecessaryParenthesesCheck"/>
+<error line="78" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 205)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="78" column="94" severity="error" message="&apos;-&gt;&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="78" column="94" severity="error" message="&apos;-&gt;&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="78" column="94" severity="error" message="Parênteses desnecessários em torno do valor lambda." source="com.puppycrawl.tools.checkstyle.checks.coding.UnnecessaryParenthesesCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\controllers\BaseController.java">
+<error line="8" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="9" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="9" column="40" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="10" column="54" severity="error" message="&apos;?&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="10" column="77" severity="error" message="&apos;:&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="10" column="77" severity="error" message="&apos;:&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="11" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="14" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\controllers\TelaClientes.java">
+<error line="6" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.App&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="6" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.App&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="6" column="8" severity="error" message="Importação não utilizada - ifpr.pgua.eic.trabalhofinal.App." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="10" column="8" severity="error" message="Importação não utilizada - ifpr.pgua.eic.trabalhofinal.utils.Navigator.BorderPaneRegion." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="22" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="22" column="74" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="36" column="35" severity="error" message="&apos;,&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="67" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="73" column="5" severity="error" message="Definição de acesso a variável em ordem errada." source="com.puppycrawl.tools.checkstyle.checks.coding.DeclarationOrderCheck"/>
+<error line="73" column="9" severity="error" message="A variável &apos;temTipo&apos; deveria ser privada e ter métodos acessores." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="73" column="9" severity="error" message="A variável &apos;temTipo&apos; foi inicializada explicitamente com &apos;0&apos; (valor padrão para o seu tipo)." source="com.puppycrawl.tools.checkstyle.checks.coding.ExplicitInitializationCheck"/>
+<error line="74" column="5" severity="error" message="Definição de acesso a variável em ordem errada." source="com.puppycrawl.tools.checkstyle.checks.coding.DeclarationOrderCheck"/>
+<error line="74" column="9" severity="error" message="A variável &apos;temCaracteristica&apos; deveria ser privada e ter métodos acessores." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="74" column="9" severity="error" message="A variável &apos;temCaracteristica&apos; foi inicializada explicitamente com &apos;0&apos; (valor padrão para o seu tipo)." source="com.puppycrawl.tools.checkstyle.checks.coding.ExplicitInitializationCheck"/>
+<error line="75" column="5" severity="error" message="Definição de acesso a variável em ordem errada." source="com.puppycrawl.tools.checkstyle.checks.coding.DeclarationOrderCheck"/>
+<error line="75" column="9" severity="error" message="A variável &apos;limpar&apos; deveria ser privada e ter métodos acessores." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="75" column="9" severity="error" message="A variável &apos;limpar&apos; foi inicializada explicitamente com &apos;0&apos; (valor padrão para o seu tipo)." source="com.puppycrawl.tools.checkstyle.checks.coding.ExplicitInitializationCheck"/>
+<error line="77" column="57" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="125" column="34" severity="error" message="&apos;-&gt;&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="125" column="34" severity="error" message="&apos;-&gt;&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="125" column="34" severity="error" message="Parênteses desnecessários em torno do valor lambda." source="com.puppycrawl.tools.checkstyle.checks.coding.UnnecessaryParenthesesCheck"/>
+<error line="125" column="36" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="126" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="126" column="28" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="129" column="17" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="129" column="88" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="132" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="134" column="21" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="135" column="22" severity="error" message="O filho de &apos;if&apos; está no nível de indentação incorreto de 21. O nível esperado era o 24." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="136" column="22" severity="error" message="O filho de &apos;if&apos; está no nível de indentação incorreto de 21. O nível esperado era o 24." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="137" column="22" severity="error" message="O filho de &apos;if&apos; está no nível de indentação incorreto de 21. O nível esperado era o 24." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="138" column="22" severity="error" message="&apos;if rparen&apos; tem um nível de indentação incorreto de 21. O nível esperado era o 20." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="138" column="23" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="144" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="152" column="44" severity="error" message="&apos;-&gt;&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="152" column="44" severity="error" message="&apos;-&gt;&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="152" column="44" severity="error" message="Parênteses desnecessários em torno do valor lambda." source="com.puppycrawl.tools.checkstyle.checks.coding.UnnecessaryParenthesesCheck"/>
+<error line="152" column="46" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="153" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="153" column="13" severity="error" message="A estrutura &apos;if&apos; deve utilizar &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="160" column="29" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="168" column="27" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="176" column="26" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="190" column="35" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="192" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="196" column="45" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="197" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="197" column="39" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="201" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\controllers\TelaPrincipal.java">
+<error line="6" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.App&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="6" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.App&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="19" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="19" column="75" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="31" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="38" column="5" severity="error" message="Definição de acesso a variável em ordem errada." source="com.puppycrawl.tools.checkstyle.checks.coding.DeclarationOrderCheck"/>
+<error line="38" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="38" column="35" severity="error" message="A variável &apos;viewModel&apos; deveria ser privada e ter métodos acessores." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="40" column="59" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="49" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="67" column="25" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="71" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="75" column="26" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="77" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="81" column="36" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="82" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="82" column="50" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="90" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\controllers\ViewModels\ClienteRow.java">
+<error line="1" severity="error" message="O arquivo não termina com uma linha em branco." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+<error line="1" column="9" severity="error" message="O nome &apos;ifpr.pgua.eic.trabalhofinal.controllers.ViewModels&apos; deve condizer com o padrão &apos;^[a-z]+(\.[a-z][a-z0-9]*)*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.PackageNameCheck"/>
+<error line="7" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="10" column="39" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="15" column="32" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="20" column="39" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="22" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="25" column="47" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="27" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="30" column="43" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="32" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="35" column="53" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="37" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="40" column="41" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="42" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="45" column="45" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="47" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="50" column="40" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="52" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="55" column="42" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="57" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="59" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\controllers\ViewModels\TelaClientesViewModel.java">
+<error line="1" column="9" severity="error" message="O nome &apos;ifpr.pgua.eic.trabalhofinal.controllers.ViewModels&apos; deve condizer com o padrão &apos;^[a-z]+(\.[a-z][a-z0-9]*)*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.PackageNameCheck"/>
+<error line="5" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="5" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="25" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="37" column="21" severity="error" message="A variável &apos;atualizar&apos; foi inicializada explicitamente com &apos;false&apos; (valor padrão para o seu tipo)." source="com.puppycrawl.tools.checkstyle.checks.coding.ExplicitInitializationCheck"/>
+<error line="55" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 158)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="55" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="55" column="158" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="65" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="65" column="31" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="68" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="69" column="9" severity="error" message="&apos;for&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="69" column="49" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="76" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="76" column="41" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="79" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="80" column="9" severity="error" message="&apos;for&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="80" column="79" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="82" column="45" severity="error" message="&apos;+&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="82" column="45" severity="error" message="&apos;+&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="82" column="49" severity="error" message="&apos;+&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="82" column="49" severity="error" message="&apos;+&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="87" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="87" column="29" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="90" column="9" severity="error" message="&apos;for&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="90" column="58" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="91" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="91" column="13" severity="error" message="A estrutura &apos;if&apos; deve utilizar &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="98" column="52" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="103" column="43" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="108" column="45" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="113" column="63" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="118" column="50" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="123" column="60" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="125" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="128" column="50" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="130" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="133" column="45" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="138" column="48" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="143" column="51" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="148" column="46" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="153" column="71" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="158" column="81" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="163" column="41" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="168" column="45" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="173" column="40" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="178" column="42" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="183" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="183" column="28" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="184" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 131)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="184" column="59" severity="error" message="&apos;-&gt;&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="184" column="59" severity="error" message="&apos;-&gt;&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="184" column="59" severity="error" message="Parênteses desnecessários em torno do valor lambda." source="com.puppycrawl.tools.checkstyle.checks.coding.UnnecessaryParenthesesCheck"/>
+<error line="185" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="185" column="30" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="196" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="196" column="45" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="197" column="59" severity="error" message="&apos;-&gt;&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="197" column="59" severity="error" message="&apos;-&gt;&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="197" column="59" severity="error" message="Parênteses desnecessários em torno do valor lambda." source="com.puppycrawl.tools.checkstyle.checks.coding.UnnecessaryParenthesesCheck"/>
+<error line="198" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="199" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="199" column="30" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="210" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="210" column="48" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="211" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 192)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="211" column="79" severity="error" message="&apos;-&gt;&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="211" column="79" severity="error" message="&apos;-&gt;&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="211" column="79" severity="error" message="Parênteses desnecessários em torno do valor lambda." source="com.puppycrawl.tools.checkstyle.checks.coding.UnnecessaryParenthesesCheck"/>
+<error line="211" column="101" severity="error" message="&apos;+&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="211" column="101" severity="error" message="&apos;+&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="211" column="105" severity="error" message="&apos;+&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="211" column="105" severity="error" message="&apos;+&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="212" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="212" column="30" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="223" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="223" column="65" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="224" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 138)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="224" column="79" severity="error" message="&apos;-&gt;&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="224" column="79" severity="error" message="&apos;-&gt;&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="224" column="79" severity="error" message="Parênteses desnecessários em torno do valor lambda." source="com.puppycrawl.tools.checkstyle.checks.coding.UnnecessaryParenthesesCheck"/>
+<error line="225" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="226" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="226" column="30" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="237" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="242" column="26" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="245" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="245" column="26" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="258" column="36" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="261" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="261" column="26" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="273" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="282" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 123)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="284" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 123)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="287" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="287" column="44" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="294" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="297" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="301" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="303" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="304" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="304" column="9" severity="error" message="A estrutura &apos;if&apos; deve utilizar &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="305" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="307" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="307" column="37" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="314" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="317" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="317" column="47" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="318" column="60" severity="error" message="&apos;+&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="318" column="60" severity="error" message="&apos;+&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="318" column="64" severity="error" message="&apos;+&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="318" column="64" severity="error" message="&apos;+&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="324" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="325" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="333" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="333" column="28" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="339" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="339" column="44" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="349" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\controllers\ViewModels\TelaPrincipalViewModel.java">
+<error line="1" severity="error" message="O arquivo não termina com uma linha em branco." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+<error line="1" column="9" severity="error" message="O nome &apos;ifpr.pgua.eic.trabalhofinal.controllers.ViewModels&apos; deve condizer com o padrão &apos;^[a-z]+(\.[a-z][a-z0-9]*)*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.PackageNameCheck"/>
+<error line="13" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="17" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="22" column="69" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="43" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="43" column="26" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="51" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="51" column="44" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="61" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="61" column="25" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\Launcher.java">
+<error line="1" severity="error" message="O arquivo não termina com uma linha em branco." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+<error line="3" column="1" severity="error" message="Classes utilitárias não deveriam ter construtores públicos ou com visibilidade de pacote." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+<error line="3" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="6" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="8" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\daos\CaracteristicaDAO.java">
+<error line="5" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="5" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="7" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="9" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\daos\ClienteDAO.java">
+<error line="5" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.models.entities.Cliente&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="5" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.models.entities.Cliente&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="8" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="10" column="5" severity="error" message="&apos;METHOD_DEF&apos; deve ser separado da linha anterior." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="11" column="5" severity="error" message="&apos;METHOD_DEF&apos; deve ser separado da linha anterior." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="12" column="5" severity="error" message="&apos;METHOD_DEF&apos; deve ser separado da linha anterior." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="13" column="5" severity="error" message="&apos;METHOD_DEF&apos; deve ser separado da linha anterior." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="14" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\daos\JDBCCaracteristicaDAO.java">
+<error line="10" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="10" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="13" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="13" column="64" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="18" column="66" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="28" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="29" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="33" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="34" column="13" severity="error" message="&apos;while&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="34" column="29" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="41" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="47" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="56" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\daos\JDBCClienteDAO.java">
+<error line="13" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="13" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="17" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="17" column="50" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="18" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 172)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="19" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 165)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="29" column="5" severity="error" message="&apos;CTOR_DEF&apos; é precedido por mais do que 1 linha vazia." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="29" column="59" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="37" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="37" column="13" severity="error" message="A estrutura &apos;if&apos; deve utilizar &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="37" column="49" severity="error" message="A expressão pode ser simplicada." source="com.puppycrawl.tools.checkstyle.checks.coding.SimplifyBooleanExpressionCheck"/>
+<error line="38" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="38" column="13" severity="error" message="A estrutura &apos;if&apos; deve utilizar &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="38" column="52" severity="error" message="A expressão pode ser simplicada." source="com.puppycrawl.tools.checkstyle.checks.coding.SimplifyBooleanExpressionCheck"/>
+<error line="48" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="49" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="49" column="30" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="50" column="25" severity="error" message="&apos;=&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="50" column="25" severity="error" message="&apos;=&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="55" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="55" column="41" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="61" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="61" column="51" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="62" column="30" severity="error" message="&apos;3&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="64" column="29" severity="error" message="&apos;3&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="66" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="67" column="28" severity="error" message="&apos;4&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="68" column="28" severity="error" message="&apos;5&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="69" column="28" severity="error" message="&apos;6&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="70" column="28" severity="error" message="&apos;7&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="87" column="9" severity="error" message="&apos;try&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="87" column="12" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="88" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="89" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="96" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="97" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="97" column="30" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="98" column="25" severity="error" message="&apos;=&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="98" column="25" severity="error" message="&apos;=&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="103" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="103" column="41" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="109" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="109" column="51" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="110" column="30" severity="error" message="&apos;3&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="112" column="29" severity="error" message="&apos;3&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="115" column="28" severity="error" message="&apos;4&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="116" column="28" severity="error" message="&apos;5&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="117" column="28" severity="error" message="&apos;6&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="118" column="25" severity="error" message="&apos;7&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="127" column="9" severity="error" message="&apos;}&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="127" column="10" severity="error" message="&apos;catch&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="127" column="10" severity="error" message="&apos;catch&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="127" column="31" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="135" column="9" severity="error" message="&apos;try&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="135" column="12" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="136" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="137" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="140" column="44" severity="error" message="Parênteses desnecessários ao redor do lado direito da atribuição." source="com.puppycrawl.tools.checkstyle.checks.coding.UnnecessaryParenthesesCheck"/>
+<error line="140" column="71" severity="error" message="&apos;+&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="140" column="71" severity="error" message="&apos;+&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="140" column="72" severity="error" message="&apos;10800000&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="141" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="152" column="9" severity="error" message="&apos;}&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="152" column="10" severity="error" message="&apos;catch&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="152" column="10" severity="error" message="&apos;catch&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="152" column="31" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="161" column="9" severity="error" message="&apos;try&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="161" column="12" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="162" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="163" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="189" column="9" severity="error" message="&apos;}&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="189" column="10" severity="error" message="&apos;catch&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="189" column="10" severity="error" message="&apos;catch&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="189" column="31" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="199" column="9" severity="error" message="&apos;try&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="199" column="12" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="200" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="201" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="205" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="206" column="13" severity="error" message="&apos;while&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="206" column="29" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="219" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="225" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="228" column="9" severity="error" message="&apos;}&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="228" column="10" severity="error" message="&apos;catch&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="228" column="10" severity="error" message="&apos;catch&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="228" column="31" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="235" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="235" column="49" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="257" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="257" column="46" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="277" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="278" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\daos\JDBCLoginDAO.java">
+<error line="8" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="8" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="10" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="10" column="46" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="15" column="57" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="22" column="9" severity="error" message="&apos;try&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="22" column="12" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="23" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="24" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="41" column="9" severity="error" message="&apos;}&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="41" column="10" severity="error" message="&apos;catch&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="41" column="10" severity="error" message="&apos;catch&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="41" column="31" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="47" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\daos\JDBCTipoDAO.java">
+<error line="10" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="10" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="13" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="13" column="44" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="18" column="56" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="28" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="29" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="33" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="34" column="13" severity="error" message="&apos;while&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="34" column="29" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="40" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="46" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="55" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\daos\LoginDAO.java">
+<error line="3" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="5" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\daos\TipoDAO.java">
+<error line="5" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.models.entities.Tipo&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="5" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.models.entities.Tipo&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="7" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="9" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\entities\Caracteristica.java">
+<error line="3" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="8" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="8" column="68" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="15" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="15" column="60" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\entities\Cliente.java">
+<error line="3" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="14" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 149)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="14" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="14" column="12" severity="error" message="Existe mais do que 7 parâmetros (encontrado 9)." source="com.puppycrawl.tools.checkstyle.checks.sizes.ParameterNumberCheck"/>
+<error line="27" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 141)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="27" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="27" column="12" severity="error" message="Existe mais do que 7 parâmetros (encontrado 8)." source="com.puppycrawl.tools.checkstyle.checks.sizes.ParameterNumberCheck"/>
+<error line="113" column="39" severity="error" message="&apos;+&apos; deveria estar numa nova linha." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="114" column="57" severity="error" message="&apos;+&apos; deveria estar numa nova linha." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="115" column="49" severity="error" message="&apos;+&apos; deveria estar numa nova linha." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="116" column="49" severity="error" message="&apos;+&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="116" column="68" severity="error" message="&apos;+&apos; deveria estar numa nova linha." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="117" column="45" severity="error" message="&apos;+&apos; deveria estar numa nova linha." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="118" column="53" severity="error" message="&apos;+&apos; deveria estar numa nova linha." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="119" column="43" severity="error" message="&apos;+&apos; deveria estar numa nova linha." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="120" column="47" severity="error" message="&apos;+&apos; deveria estar numa nova linha." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="123" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\entities\Endereco.java">
+<error line="3" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="12" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 121)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="12" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="12" column="121" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="23" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="23" column="113" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="53" column="34" severity="error" message="&apos;uf&apos; esconde um campo." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="61" column="34" severity="error" message="&apos;localidade&apos; esconde um campo." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="91" column="40" severity="error" message="&apos;+&apos; deveria estar numa nova linha." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="92" column="43" severity="error" message="&apos;+&apos; deveria estar numa nova linha." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="93" column="45" severity="error" message="&apos;+&apos; deveria estar numa nova linha." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="94" column="39" severity="error" message="&apos;+&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="94" column="52" severity="error" message="&apos;+&apos; deveria estar numa nova linha." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="95" column="57" severity="error" message="&apos;+&apos; deveria estar numa nova linha." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="96" column="49" severity="error" message="&apos;+&apos; deveria estar numa nova linha." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\entities\EnderecoResponse.java">
+<error line="3" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="7" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="7" column="59" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="20" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\entities\GetEndereco.java">
+<error line="9" column="1" severity="error" message="Classes utilitárias não deveriam ter construtores públicos ou com visibilidade de pacote." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+<error line="9" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="10" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="10" column="58" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="12" column="89" severity="error" message="&apos;+&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="12" column="89" severity="error" message="&apos;+&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="12" column="93" severity="error" message="&apos;+&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="12" column="93" severity="error" message="&apos;+&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\entities\Tipo.java">
+<error line="3" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="7" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="7" column="37" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="13" column="29" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="38" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\FabricaConexoes.java">
+<error line="7" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.utils.Env&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="7" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.utils.Env&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="9" column="1" severity="error" message="A classe FabricaConexoes deveria ser declarada como final." source="com.puppycrawl.tools.checkstyle.checks.design.FinalClassCheck"/>
+<error line="9" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="10" column="42" severity="error" message="&apos;=&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="10" column="42" severity="error" message="&apos;=&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="16" column="30" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="20" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="20" column="48" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="21" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="21" column="29" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="27" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="27" column="58" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="34" column="9" severity="error" message="&apos;for&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="34" column="18" severity="error" message="&apos;=&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="34" column="18" severity="error" message="&apos;=&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="34" column="20" severity="error" message="&apos;;&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="34" column="22" severity="error" message="&apos;&lt;&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="34" column="22" severity="error" message="&apos;&lt;&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="34" column="38" severity="error" message="&apos;;&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="34" column="43" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="35" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="35" column="27" severity="error" message="&apos;==&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="35" column="27" severity="error" message="&apos;==&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="35" column="60" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="36" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="37" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\repositories\CaracteristicasRepository.java">
+<error line="6" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.models.daos.CaracteristicaDAO&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="6" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.models.daos.CaracteristicaDAO&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="9" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="13" column="60" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="18" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="18" column="53" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\repositories\ClientesRepository.java">
+<error line="7" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.models.daos.ClienteDAO&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="7" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.models.daos.ClienteDAO&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="11" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="15" column="46" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="20" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 141)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="20" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="20" column="141" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="21" column="65" severity="error" message="&apos;-&gt;&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="21" column="65" severity="error" message="&apos;-&gt;&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="21" column="65" severity="error" message="Parênteses desnecessários em torno do valor lambda." source="com.puppycrawl.tools.checkstyle.checks.coding.UnnecessaryParenthesesCheck"/>
+<error line="22" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="23" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="23" column="30" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="28" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="33" severity="error" message="A linha contém mais do que 120 caracteres (foram encontrados 141)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="33" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="33" column="141" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="34" column="65" severity="error" message="&apos;-&gt;&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="34" column="65" severity="error" message="&apos;-&gt;&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="34" column="65" severity="error" message="Parênteses desnecessários em torno do valor lambda." source="com.puppycrawl.tools.checkstyle.checks.coding.UnnecessaryParenthesesCheck"/>
+<error line="35" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="36" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="36" column="30" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="40" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="40" column="13" severity="error" message="A estrutura &apos;if&apos; deve utilizar &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="41" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="41" column="13" severity="error" message="A estrutura &apos;if&apos; deve utilizar &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="42" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="42" column="13" severity="error" message="A estrutura &apos;if&apos; deve utilizar &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="43" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="43" column="13" severity="error" message="A estrutura &apos;if&apos; deve utilizar &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="43" column="21" severity="error" message="Literais de String deveriam ser comparados com &quot;equals()&quot;, não com &apos;!=&apos;." source="com.puppycrawl.tools.checkstyle.checks.coding.StringLiteralEqualityCheck"/>
+<error line="44" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="44" column="13" severity="error" message="A estrutura &apos;if&apos; deve utilizar &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="44" column="25" severity="error" message="Literais de String deveriam ser comparados com &quot;equals()&quot;, não com &apos;!=&apos;." source="com.puppycrawl.tools.checkstyle.checks.coding.StringLiteralEqualityCheck"/>
+<error line="45" column="13" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="45" column="13" severity="error" message="A estrutura &apos;if&apos; deve utilizar &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="45" column="20" severity="error" message="Literais de String deveriam ser comparados com &quot;equals()&quot;, não com &apos;!=&apos;." source="com.puppycrawl.tools.checkstyle.checks.coding.StringLiteralEqualityCheck"/>
+<error line="55" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="55" column="49" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="56" column="65" severity="error" message="&apos;-&gt;&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="56" column="65" severity="error" message="&apos;-&gt;&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="56" column="65" severity="error" message="Parênteses desnecessários em torno do valor lambda." source="com.puppycrawl.tools.checkstyle.checks.coding.UnnecessaryParenthesesCheck"/>
+<error line="57" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="58" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="58" column="30" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="70" column="38" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="74" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="75" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="75" column="39" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\repositories\LoginsRepository.java">
+<error line="5" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.models.daos.LoginDAO&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="5" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.models.daos.LoginDAO&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="9" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="12" column="42" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="17" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="17" column="60" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="20" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="20" column="25" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="22" column="17" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="22" column="86" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="31" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\repositories\TiposRepository.java">
+<error line="6" column="1" severity="error" message="Ordem errada para a importação &apos;ifpr.pgua.eic.trabalhofinal.models.daos.TipoDAO&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="6" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;ifpr.pgua.eic.trabalhofinal.models.daos.TipoDAO&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="9" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="13" column="40" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="18" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="18" column="33" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\results\FailResult.java">
+<error line="4" column="1" severity="error" message="&apos;/*&apos; é precedido por mais do que 1 linha vazia." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="6" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="14" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="20" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\results\Result.java">
+<error line="4" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="5" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="9" column="1" severity="error" message="&apos;CLASS_DEF&apos; é precedido por mais do que 1 linha vazia." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="12" column="30" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="16" column="45" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="20" column="42" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="24" column="27" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\models\results\SuccessResult.java">
+<error line="3" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="8" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="13" column="5" severity="error" message="&apos;}&apos; é sucedido por mais do que 1 linha vazia." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="14" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="15" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\utils\Env.java">
+<error line="5" column="1" severity="error" message="A classe Env deveria ser declarada como final." source="com.puppycrawl.tools.checkstyle.checks.design.FinalClassCheck"/>
+<error line="5" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="6" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="7" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="8" column="5" severity="error" message="&apos;CTOR_DEF&apos; deve ser separado da linha anterior." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="8" column="18" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="11" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="11" column="41" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="12" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="12" column="27" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="17" column="5" severity="error" message="&apos;}&apos; é sucedido por mais do que 1 linha vazia." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\utils\HashPassword.java">
+<error line="1" severity="error" message="O arquivo não termina com uma linha em branco." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+<error line="8" column="1" severity="error" message="Classes utilitárias não deveriam ter construtores públicos ou com visibilidade de pacote." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+<error line="8" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="9" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="17" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="17" column="50" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="20" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="21" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="22" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="22" column="69" severity="error" message="&apos;16&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="23" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="24" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="25" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="25" column="37" severity="error" message="&apos;32&apos; é um número mágico." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="25" column="40" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="26" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="27" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="30" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="31" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="32" column="5" severity="error" message="&apos;METHOD_DEF&apos; deve ser separado da linha anterior." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="32" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="33" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="33" column="9" severity="error" message="&apos;try&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="33" column="12" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="34" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="35" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="36" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="38" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="38" column="45" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="40" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\utils\Navigator\BaseAppNavigator.java">
+<error line="1" column="9" severity="error" message="O nome &apos;ifpr.pgua.eic.trabalhofinal.utils.Navigator&apos; deve condizer com o padrão &apos;^[a-z]+(\.[a-z][a-z0-9]*)*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.PackageNameCheck"/>
+<error line="6" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;javafx.application.Application&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="16" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="20" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="22" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="26" column="1" severity="error" message="&apos;CLASS_DEF&apos; é precedido por mais do que 1 linha vazia." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="26" column="59" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="31" column="5" severity="error" message="Definição de variável estática em ordem errada." source="com.puppycrawl.tools.checkstyle.checks.coding.DeclarationOrderCheck"/>
+<error line="31" column="30" severity="error" message="&apos;,&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="39" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="41" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="41" column="33" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="43" column="9" severity="error" message="&apos;}&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="43" column="10" severity="error" message="&apos;else&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="43" column="10" severity="error" message="&apos;else&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="43" column="14" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="47" column="30" severity="error" message="&apos;,&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="47" column="51" severity="error" message="&apos;,&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="60" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="61" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="62" column="8" severity="error" message="Tag @param não utilizada pelo &apos;screen&apos;." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="66" column="18" severity="error" message="O modificador &apos;static&apos; está fora da ordem sugerida pela JLS." source="com.puppycrawl.tools.checkstyle.checks.modifier.ModifierOrderCheck"/>
+<error line="66" column="57" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="68" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="68" column="42" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="69" column="61" severity="error" message="&apos;-&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="69" column="61" severity="error" message="&apos;-&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="76" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="77" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="78" column="5" severity="error" message="&apos;/*&apos; é precedido por mais do que 1 linha vazia." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="83" column="18" severity="error" message="O modificador &apos;static&apos; está fora da ordem sugerida pela JLS." source="com.puppycrawl.tools.checkstyle.checks.modifier.ModifierOrderCheck"/>
+<error line="83" column="41" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="84" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="84" column="42" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="87" column="60" severity="error" message="&apos;-&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="87" column="60" severity="error" message="&apos;-&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="88" column="57" severity="error" message="&apos;-&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="88" column="57" severity="error" message="&apos;-&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="95" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="96" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="96" column="8" severity="error" message="Tag @param não utilizada pelo &apos;screenPiece&apos;." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="101" column="18" severity="error" message="O modificador &apos;static&apos; está fora da ordem sugerida pela JLS." source="com.puppycrawl.tools.checkstyle.checks.modifier.ModifierOrderCheck"/>
+<error line="101" column="90" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="102" column="9" severity="error" message="&apos;try&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="102" column="12" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="104" column="98" severity="error" message="&apos;-&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="104" column="98" severity="error" message="&apos;-&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="105" column="20" severity="error" message="&apos;root&apos; esconde um campo." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="106" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="107" column="13" severity="error" message="&quot;switch&quot; sem a ramificação &quot;default&quot;." source="com.puppycrawl.tools.checkstyle.checks.coding.MissingSwitchDefaultCheck"/>
+<error line="107" column="13" severity="error" message="&apos;switch&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="107" column="27" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="108" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="110" column="17" severity="error" message="O filho de &apos;block&apos; está no nível de indentação incorreto de 16. O nível esperado era o 20." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="111" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="113" column="17" severity="error" message="O filho de &apos;block&apos; está no nível de indentação incorreto de 16. O nível esperado era o 20." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="114" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="116" column="17" severity="error" message="O filho de &apos;block&apos; está no nível de indentação incorreto de 16. O nível esperado era o 20." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="117" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="119" column="17" severity="error" message="O filho de &apos;block&apos; está no nível de indentação incorreto de 16. O nível esperado era o 20." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="122" column="17" severity="error" message="O filho de &apos;block&apos; está no nível de indentação incorreto de 16. O nível esperado era o 20." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="123" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="125" column="9" severity="error" message="&apos;}&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="125" column="10" severity="error" message="&apos;catch&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="125" column="10" severity="error" message="&apos;catch&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="125" column="10" severity="error" message="Capturar &apos;Exception&apos; não é permitido." source="com.puppycrawl.tools.checkstyle.checks.coding.IllegalCatchCheck"/>
+<error line="125" column="28" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="134" column="5" severity="error" message="&apos;/*&apos; é precedido por mais do que 1 linha vazia." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="136" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="143" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="148" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="148" column="63" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="149" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="149" column="61" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="153" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="153" column="25" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="157" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="157" column="44" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="165" column="56" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="166" column="9" severity="error" message="&apos;if&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="166" column="45" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="173" column="55" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\utils\Navigator\BorderPaneRegion.java">
+<error line="1" column="9" severity="error" message="O nome &apos;ifpr.pgua.eic.trabalhofinal.utils.Navigator&apos; deve condizer com o padrão &apos;^[a-z]+(\.[a-z][a-z0-9]*)*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.PackageNameCheck"/>
+<error line="3" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="4" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="4" column="11" severity="error" message="&apos;,&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="4" column="12" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="4" column="16" severity="error" message="&apos;,&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="4" column="17" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="4" column="22" severity="error" message="&apos;,&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="4" column="23" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="4" column="29" severity="error" message="&apos;,&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="4" column="30" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\utils\Navigator\LoaderFXML.java">
+<error line="1" column="9" severity="error" message="O nome &apos;ifpr.pgua.eic.trabalhofinal.utils.Navigator&apos; deve condizer com o padrão &apos;^[a-z]+(\.[a-z][a-z0-9]*)*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.PackageNameCheck"/>
+<error line="6" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;javafx.application.Platform&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="11" column="1" severity="error" message="Classes utilitárias não deveriam ter construtores públicos ou com visibilidade de pacote." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+<error line="11" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="12" column="9" severity="error" message="O comentário de bloco tem um nível de indentação incorreto de 8. O nível esperado era o 4. O indentação deverá ser no mesmo nível que a linha 19." source="com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"/>
+<error line="14" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="19" column="69" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="20" column="9" severity="error" message="&apos;try&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="20" column="12" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="28" column="9" severity="error" message="&apos;}&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="28" column="10" severity="error" message="&apos;catch&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="28" column="10" severity="error" message="&apos;catch&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="28" column="30" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="29" column="75" severity="error" message="&apos;+&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="29" column="75" severity="error" message="&apos;+&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="29" column="80" severity="error" message="&apos;+&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="29" column="80" severity="error" message="&apos;+&apos; não está seguido de espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="34" column="5" severity="error" message="&apos;}&apos; é sucedido por mais do que 1 linha vazia." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\utils\Navigator\ScreenRegistry.java">
+<error line="1" column="9" severity="error" message="O nome &apos;ifpr.pgua.eic.trabalhofinal.utils.Navigator&apos; deve condizer com o padrão &apos;^[a-z]+(\.[a-z][a-z0-9]*)*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.PackageNameCheck"/>
+<error line="5" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\utils\Navigator\ScreenRegistryFXML.java">
+<error line="1" column="9" severity="error" message="O nome &apos;ifpr.pgua.eic.trabalhofinal.utils.Navigator&apos; deve condizer com o padrão &apos;^[a-z]+(\.[a-z][a-z0-9]*)*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.PackageNameCheck"/>
+<error line="4" column="1" severity="error" message="&apos;import&apos; é precedido por mais do que 1 linha vazia." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="4" column="8" severity="error" message="Importação não utilizada - java.net.URL." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="6" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;javafx.scene.Parent&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="9" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="9" column="58" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="10" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="14" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="15" column="5" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="21" column="28" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="24" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\main\java\ifpr\pgua\eic\trabalhofinal\utils\Navigator\ScreenRegistryNoFXML.java">
+<error line="1" column="9" severity="error" message="O nome &apos;ifpr.pgua.eic.trabalhofinal.utils.Navigator&apos; deve condizer com o padrão &apos;^[a-z]+(\.[a-z][a-z0-9]*)*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.PackageNameCheck"/>
+<error line="4" column="1" severity="error" message="&apos;import&apos; é precedido por mais do que 1 linha vazia." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="4" column="8" severity="error" message="Importação não utilizada - java.net.URL." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="6" column="1" severity="error" message="Separação extra no grupo de importações anterior a &apos;javafx.scene.Parent&apos;" source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="9" column="1" severity="error" message="Falta o comentário Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="9" column="60" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="10" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="12" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="17" column="28" severity="error" message="&apos;{&apos; não está precedido por espaço em branco." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="19" column="5" severity="error" message="&apos;}&apos; é sucedido por mais do que 1 linha vazia." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="21" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+<file name="C:\Users\Admin\Documents\oo\trabalhofinal\src\test\java\ifpr\pgua\eic\trabalhofinal\AppTest.java">
+</file>
+</checkstyle>
