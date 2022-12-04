@@ -5,7 +5,6 @@ import java.util.Optional;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Endereco;
-import ifpr.pgua.eic.trabalhofinal.models.entities.GetEndereco;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Tipo;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.CaracteristicasRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ClientesRepository;
@@ -235,7 +234,8 @@ public class TelaClientesViewModel {
 
         }
 
-        Endereco e = GetEndereco.getEnderecoFromAPI(spCep.getValue());
+        Endereco e = enderecosRepository.getEnderecoFromAPI(spCep.getValue());
+        
         if(e == null){
             return Result.fail("CEP não econtrado!");
         } else {

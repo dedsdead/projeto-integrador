@@ -5,6 +5,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import com.google.gson.Gson;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 import ifpr.pgua.eic.trabalhofinal.models.daos.EnderecoDAO;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Endereco;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
@@ -16,6 +22,21 @@ public class EnderecosRepository {
     public EnderecosRepository(EnderecoDAO dao){
         this.dao = dao;
 
+    }
+
+    public Endereco getEnderecoFromAPI(String cep){
+        try {
+            HttpResponse<JsonNode> apiResponse = Unirest.get("https://viacep.com.br/ws/"+cep+"/json/").asJson();
+            Endereco endereco = new Gson().fromJson(apiResponse.getBody().toString(), Endereco.class);
+
+            return endereco;
+
+        } catch (UnirestException e) {
+            e.printStackTrace();
+
+        }
+
+        return null;
     }
 
     public Result adicionarEndereco(Endereco endereco){
