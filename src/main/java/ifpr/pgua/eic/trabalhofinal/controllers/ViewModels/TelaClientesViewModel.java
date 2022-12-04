@@ -87,7 +87,8 @@ public class TelaClientesViewModel {
         obsClientes.clear();
 
         for(Cliente c : clientesRepository.getClientes()){
-            obsClientes.add(new ClienteRow(c));
+            if(c.isAtivo())
+                obsClientes.add(new ClienteRow(c));
 
         }
 
@@ -279,7 +280,7 @@ public class TelaClientesViewModel {
 
         if(result instanceof SuccessResult){
             updateList();
-            limpar(temTipo, temCaracteristica);
+            limpar();
 
         }
 
@@ -323,7 +324,23 @@ public class TelaClientesViewModel {
 
     }
 
-    public void limpar(int temTipo, int temCaracteristica) {
+    public Result excluir(){
+        Cliente cliente = selecionado.get().getCliente();
+        Result result;
+
+        result = clientesRepository.desativarCliente(cliente.getEmail());
+
+        if(result instanceof SuccessResult){
+            updateList();
+            limpar();
+
+        }
+
+        return result;
+
+    }
+
+    public void limpar() {
         spEndereco.setValue(0);
         spNome.setValue("");
         spTelefone.setValue("");

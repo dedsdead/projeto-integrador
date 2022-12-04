@@ -56,6 +56,9 @@ public class TelaClientes extends BaseController implements Initializable{
 
     @FXML
     private Button btCadastrar;
+
+    @FXML
+    private Button btExcluir;
     
     @FXML
     private Button btLimpar;
@@ -105,6 +108,10 @@ public class TelaClientes extends BaseController implements Initializable{
 
         btCadastrar.textProperty().bind(viewModel.operacaoProperty());
 
+        btExcluir.managedProperty().bind(viewModel.podeEditarProperty().not());
+        btExcluir.visibleProperty().bind(viewModel.podeEditarProperty().not());
+
+
         viewModel.updateList();
 
         cbTipos.setOnAction((evt)->{
@@ -150,9 +157,17 @@ public class TelaClientes extends BaseController implements Initializable{
     }
 
     @FXML
+    private void excluir(){
+        Result result = viewModel.excluir();
+        showMessage(result);
+        limpar();
+
+    }
+
+    @FXML
     private void limpar(){
         limpar = 1;
-        viewModel.limpar(temTipo, temCaracteristica);
+        viewModel.limpar();
         temCaracteristica = 0;
         temTipo = 0;
         cbTipos.setItems(null);

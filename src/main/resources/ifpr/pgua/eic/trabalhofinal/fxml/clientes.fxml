@@ -45,6 +45,7 @@
             <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <children>
                   <Button fx:id="btCadastrar" onAction="#cadastrar" text="Cadastrar" />
+                  <Button fx:id="btExcluir" onAction="#excluir" text="Excluir" />
                   <Button onAction="#limpar" text="Limpar" />
                </children>
             </HBox>

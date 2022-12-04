@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 public class JDBCClienteDAO implements ClienteDAO{
     private static final String INSERT = "INSERT INTO TF_Cliente(codigo_endereco,codigo_tipo,codigo_caracteristica,nome,telefone,cpf,email,ativo) VALUES (?,?,?,?,?,?,?,1)";
     private static final String UPDATE = "UPDATE TF_Cliente set codigo_endereco=?, codigo_tipo=?, codigo_caracteristica=?, nome=?, telefone=?, cpf=? WHERE codigo=?";
-    private static final String DELETE = "UPDATE TF_Cliente set ativo=0 WHERE codigo=?";
+    private static final String DELETE = "UPDATE TF_Cliente set ativo=0, deleted_at=? WHERE codigo=?";
     private static final String SELECT_ALL = "SELECT * FROM TF_Cliente";
     private static final String SELECT_ID = "SELECT * FROM TF_Cliente WHERE codigo=?";
     private static final String CALL_CPF = "{? = call TF_Validar_cpf(?)}";
@@ -135,8 +136,11 @@ public class JDBCClienteDAO implements ClienteDAO{
             Connection con = fabricaConexoes.getConnection(); 
             
             PreparedStatement pstm = con.prepareStatement(DELETE);
+
+            Timestamp time = new Timestamp((System.currentTimeMillis()+10800000));
             
-            pstm.setInt(1, id);
+            pstm.setTimestamp(1, time);
+            pstm.setInt(2, id);
 
             pstm.execute();
 
