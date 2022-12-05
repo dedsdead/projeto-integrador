@@ -17,9 +17,9 @@ import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
 public class JDBCClienteDAO implements ClienteDAO{
-    private static final String INSERT = "INSERT INTO TF_Cliente(codigo_endereco,codigo_tipo,codigo_caracteristica,nome,telefone,cpf,email,ativo) VALUES (?,?,?,?,?,?,?)";
+    private static final String INSERT = "INSERT INTO TF_Cliente(codigo_endereco,codigo_tipo,codigo_caracteristica,nome,telefone,cpf,email) VALUES (?,?,?,?,?,?,?)";
     private static final String UPDATE = "UPDATE TF_Cliente set codigo_endereco=?, codigo_tipo=?, codigo_caracteristica=?, nome=?, telefone=?, cpf=? WHERE codigo=?";
-    private static final String DELETE = "UPDATE TF_Cliente set ativo=0, deleted_at=? WHERE codigo=?";
+    private static final String DELETE = "UPDATE TF_Cliente set excluido_em=? WHERE codigo=?";
     private static final String SELECT_ALL = "SELECT * FROM TF_Cliente";
     private static final String SELECT_ID = "SELECT * FROM TF_Cliente WHERE codigo=?";
     private static final String CALL_CPF = "{? = call TF_Validar_cpf(?)}";
@@ -71,7 +71,9 @@ public class JDBCClienteDAO implements ClienteDAO{
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return Result.fail(e.getMessage());
+
         }
+
     }
 
     @Override
@@ -110,7 +112,9 @@ public class JDBCClienteDAO implements ClienteDAO{
         }catch(SQLException e){
             System.out.println(e.getMessage());
             return Result.fail(e.getMessage());
+
         }
+
     }
 
     @Override
@@ -130,13 +134,14 @@ public class JDBCClienteDAO implements ClienteDAO{
             pstm.close();
             con.close();
 
-            return Result.success("Cliente desativado com sucesso!");
+            return Result.success("Cliente excluído com sucesso!");
 
         }catch(SQLException e){
             System.out.println(e.getMessage());
             return Result.fail(e.getMessage());
 
         }
+        
     }
 
     @Override
@@ -150,6 +155,8 @@ public class JDBCClienteDAO implements ClienteDAO{
 
             ResultSet rsc = pstm.executeQuery();
 
+            LocalDateTime dataExclusao = null;
+
             rsc.next();
 
             int idEndereco = rsc.getInt("codigo_endereco");
@@ -159,7 +166,8 @@ public class JDBCClienteDAO implements ClienteDAO{
             String telefone = rsc.getString("telefone");
             String cpf = rsc.getString("cpf");
             String email = rsc.getString("email");
-            LocalDateTime dataExclusao = rsc.getTimestamp("deleted_at").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
+            if(rsc.getTimestamp("excluido_em") != null)
+                dataExclusao = rsc.getTimestamp("excluido_em").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
 
             Cliente c = new Cliente(id, idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email, dataExclusao);
 
@@ -174,11 +182,13 @@ public class JDBCClienteDAO implements ClienteDAO{
             return null;
 
         }
+
     }
 
     @Override
     public List<Cliente> getAll() {
         ArrayList<Cliente> clientes = new ArrayList<>();
+        
         try{
             Connection con = fabricaConexoes.getConnection(); 
             
@@ -197,9 +207,8 @@ public class JDBCClienteDAO implements ClienteDAO{
                 String telefone = rs.getString("telefone");
                 String cpf = rs.getString("cpf");
                 String email = rs.getString("email");
-                System.out.println(rs.getTimestamp("deleted_at"));
-                if(rs.getTimestamp("deleted_at") != null)
-                    dataExclusao = rs.getTimestamp("deleted_at").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
+                if(rs.getTimestamp("excluido_em") != null)
+                    dataExclusao = rs.getTimestamp("excluido_em").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
 
                 Cliente c = new Cliente(id, idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email, dataExclusao);
                 clientes.add(c);
@@ -217,6 +226,7 @@ public class JDBCClienteDAO implements ClienteDAO{
             return null;
 
         }
+
     }
 
     public boolean mysqlRegexEmail(String email){
@@ -239,6 +249,7 @@ public class JDBCClienteDAO implements ClienteDAO{
             return false;
 
         }
+
     }
 
     public boolean mysqlValidaCpf(String cpf){
@@ -261,6 +272,7 @@ public class JDBCClienteDAO implements ClienteDAO{
             return false;
 
         }
-    } 
+
+    }
     
 }

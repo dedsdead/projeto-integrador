@@ -40,10 +40,11 @@ public class EnderecosRepository {
     }
 
     public Result adicionarEndereco(Endereco endereco){
-        Optional<Endereco> busca = enderecos.stream().filter((cli)->cli.getLogradouro().equals(endereco.getLogradouro())).filter((cli)->cli.getNumero() == endereco.getNumero()).findFirst();
+        Optional<Endereco> busca = enderecos.stream().filter((cli)->cli.getCep().equals(endereco.getCep())).filter((cli)->cli.getLogradouro().equals(endereco.getLogradouro())).filter((cli)->cli.getNumero() == endereco.getNumero()).findFirst();
         
         if(busca.isPresent()){
             endereco.setId(busca.get().getId());
+
             return Result.success("Endereço encontrado com sucesso!");
 
         }
@@ -54,6 +55,7 @@ public class EnderecosRepository {
 
     public List<Endereco> getEnderecos(){
         enderecos = dao.getAll();
+        
         return Collections.unmodifiableList(enderecos);
 
     }
