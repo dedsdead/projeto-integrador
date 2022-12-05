@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.sql.Types;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,7 @@ import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
 public class JDBCClienteDAO implements ClienteDAO{
-    private static final String INSERT = "INSERT INTO TF_Cliente(codigo_endereco,codigo_tipo,codigo_caracteristica,nome,telefone,cpf,email,ativo) VALUES (?,?,?,?,?,?,?,1)";
+    private static final String INSERT = "INSERT INTO TF_Cliente(codigo_endereco,codigo_tipo,codigo_caracteristica,nome,telefone,cpf,email,ativo) VALUES (?,?,?,?,?,?,?)";
     private static final String UPDATE = "UPDATE TF_Cliente set codigo_endereco=?, codigo_tipo=?, codigo_caracteristica=?, nome=?, telefone=?, cpf=? WHERE codigo=?";
     private static final String DELETE = "UPDATE TF_Cliente set ativo=0, deleted_at=? WHERE codigo=?";
     private static final String SELECT_ALL = "SELECT * FROM TF_Cliente";
@@ -40,16 +42,7 @@ public class JDBCClienteDAO implements ClienteDAO{
 
             PreparedStatement pstm = con.prepareStatement(INSERT);
 
-            // ALTERAR QUANDO FOR ADICIONAR ENDEREÇO !!!!!!!!!!!!!!!!!!!!!!!!
-            // ALTERAR QUANDO FOR ADICIONAR ENDEREÇO !!!!!!!!!!!!!!!!!!!!!!!!
-            // ALTERAR QUANDO FOR ADICIONAR ENDEREÇO !!!!!!!!!!!!!!!!!!!!!!!!
-            int endereco = cliente.getIdEndereco();
-            
-            if(endereco == 0){
-                endereco=1;
-            }
-
-            pstm.setInt(1, endereco);
+            pstm.setInt(1, cliente.getIdEndereco());
 
             if(cliente.getIdTipo() == 0){
                 pstm.setNull(2, Types.INTEGER);
@@ -88,16 +81,7 @@ public class JDBCClienteDAO implements ClienteDAO{
             
             PreparedStatement pstm = con.prepareStatement(UPDATE);
 
-            // ALTERAR QUANDO FOR ADICIONAR ENDEREÇO !!!!!!!!!!!!!!!!!!!!!!!!
-            // ALTERAR QUANDO FOR ADICIONAR ENDEREÇO !!!!!!!!!!!!!!!!!!!!!!!!
-            // ALTERAR QUANDO FOR ADICIONAR ENDEREÇO !!!!!!!!!!!!!!!!!!!!!!!!
-            int endereco = cliente.getIdEndereco();
-            
-            if(endereco == 0){
-                endereco=1;
-            }
-
-            pstm.setInt(1, endereco);
+            pstm.setInt(1, cliente.getIdEndereco());
 
             if(cliente.getIdTipo() == 0){
                 pstm.setNull(2, Types.INTEGER);
@@ -175,9 +159,9 @@ public class JDBCClienteDAO implements ClienteDAO{
             String telefone = rsc.getString("telefone");
             String cpf = rsc.getString("cpf");
             String email = rsc.getString("email");
-            boolean ativo = rsc.getBoolean("ativo");
+            LocalDateTime dataExclusao = rsc.getTimestamp("deleted_at").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
 
-            Cliente c = new Cliente(id, idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email, ativo);
+            Cliente c = new Cliente(id, idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email, dataExclusao);
 
             rsc.close();
             pstm.close();
@@ -201,6 +185,8 @@ public class JDBCClienteDAO implements ClienteDAO{
             PreparedStatement pstm = con.prepareStatement(SELECT_ALL);
 
             ResultSet rs = pstm.executeQuery();
+
+            LocalDateTime dataExclusao = null;
             
             while(rs.next()){
                 int id = rs.getInt("codigo");
@@ -211,9 +197,11 @@ public class JDBCClienteDAO implements ClienteDAO{
                 String telefone = rs.getString("telefone");
                 String cpf = rs.getString("cpf");
                 String email = rs.getString("email");
-                boolean ativo = rs.getBoolean("ativo");
+                System.out.println(rs.getTimestamp("deleted_at"));
+                if(rs.getTimestamp("deleted_at") != null)
+                    dataExclusao = rs.getTimestamp("deleted_at").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
 
-                Cliente c = new Cliente(id, idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email, ativo);
+                Cliente c = new Cliente(id, idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email, dataExclusao);
                 clientes.add(c);
                 
             }

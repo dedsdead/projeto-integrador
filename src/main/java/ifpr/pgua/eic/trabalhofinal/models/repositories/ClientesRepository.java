@@ -24,7 +24,7 @@ public class ClientesRepository {
             return Result.fail("Cliente já cadastrado!");
         }
 
-        Cliente cliente = new Cliente(idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email, true);
+        Cliente cliente = new Cliente(idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email);
         
         return dao.create(cliente);
 

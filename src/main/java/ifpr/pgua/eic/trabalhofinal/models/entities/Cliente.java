@@ -1,5 +1,7 @@
 package ifpr.pgua.eic.trabalhofinal.models.entities;
 
+import java.time.LocalDateTime;
+
 public class Cliente {
     private int id;
     private int idEndereco;
@@ -9,9 +11,10 @@ public class Cliente {
     private String telefone;
     private String cpf;
     private String email;
-    private boolean ativo;
+    private LocalDateTime dataCriacao;
+    private LocalDateTime dataExclusao;
 
-    public Cliente(int id, int idEndereco, int idTipo, int idCaracteristica, String nome, String telefone, String cpf, String email, boolean ativo) {
+    public Cliente(int id, int idEndereco, int idTipo, int idCaracteristica, String nome, String telefone, String cpf, String email, LocalDateTime dataExclusao) {
         this.id = id;
         this.idEndereco = idEndereco;
         this.idTipo = idTipo;
@@ -20,11 +23,11 @@ public class Cliente {
         this.telefone = telefone;
         this.cpf = cpf;
         this.email = email;
-        this.ativo = ativo;
+        this.dataExclusao = dataExclusao;
 
     }
 
-    public Cliente(int idEndereco, int idTipo, int idCaracteristica, String nome, String telefone, String cpf, String email, boolean ativo) {
+    public Cliente(int idEndereco, int idTipo, int idCaracteristica, String nome, String telefone, String cpf, String email) {
         this.idEndereco = idEndereco;
         this.idTipo = idTipo;
         this.idCaracteristica = idCaracteristica;
@@ -32,7 +35,6 @@ public class Cliente {
         this.telefone = telefone;
         this.cpf = cpf;
         this.email = email;
-        this.ativo = ativo;
 
     }
 
@@ -100,12 +102,20 @@ public class Cliente {
         this.email = email;
     }
 
-    public boolean isAtivo() {
-        return ativo;
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
     }
 
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
+    public void setDataCriacao(LocalDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public LocalDateTime getDataExclusao() {
+        return dataExclusao;
+    }
+
+    public void setDataExclusao(LocalDateTime dataExclusao) {
+        this.dataExclusao = dataExclusao;
     }
 
     @Override
@@ -118,7 +128,7 @@ public class Cliente {
                         "\n telefone = " + telefone +
                         "\n cpf = " + cpf +
                         "\n email = " + email +
-                        "\n ativo = " + ativo + " ]";
+                        "\n excluido em = " + dataExclusao + " ]";
     }
    
 }

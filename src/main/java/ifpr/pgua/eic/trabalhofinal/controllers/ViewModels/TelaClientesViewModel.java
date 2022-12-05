@@ -112,7 +112,7 @@ public class TelaClientesViewModel {
         obsClientes.clear();
 
         for(Cliente c : clientesRepository.getClientes()){
-            if(c.isAtivo())
+            if(c.getDataExclusao() == null)
                 obsClientes.add(new ClienteRow(c));
 
         }
