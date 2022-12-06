@@ -15,6 +15,9 @@ public class LoginsRepository {
     }
 
     public Result verificaLogin(String email, String senha){
+        if (email == null) return Result.fail("Insira um e-mail!");
+        if (senha == null) return Result.fail("Insira uma senha!");
+
         String hash = dao.verify(email);
 
         if(hash != null){

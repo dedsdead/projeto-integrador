@@ -196,9 +196,6 @@ public class JDBCImovelDAO implements ImovelDAO{
 
             ResultSet rs = pstm.executeQuery();
 
-            LocalDateTime dataVenda = null;
-            LocalDateTime dataExclusao = null;
-
             while(rs.next()){
                 int id = rs.getInt("codigo");
                 int idFoto = rs.getInt("codigo_foto");
@@ -210,6 +207,9 @@ public class JDBCImovelDAO implements ImovelDAO{
                 double metragem = rs.getDouble("metragem");
                 double valor = rs.getDouble("valor");
                 String matricula = rs.getString("matricula");
+                LocalDateTime dataVenda = null;
+                LocalDateTime dataExclusao = null;
+                
                 if(rs.getTimestamp("vendido_em") != null)
                     dataVenda = rs.getTimestamp("vendido_em").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
                 if(rs.getTimestamp("excluido_em") != null)

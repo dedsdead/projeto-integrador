@@ -204,6 +204,9 @@ public class TelaClientes extends BaseController implements Initializable{
         btBuscarCEP.managedProperty().bind(viewModel.pegarEnderecoProperty());
         btBuscarCEP.visibleProperty().bind(viewModel.pegarEnderecoProperty());
 
+        btEndereco.managedProperty().bind(viewModel.podeEditarProperty());
+        btEndereco.visibleProperty().bind(viewModel.podeEditarProperty());
+
         viewModel.updateList();
 
         cbTipos.setOnAction((evt)->{
@@ -244,7 +247,9 @@ public class TelaClientes extends BaseController implements Initializable{
     private void cadastrar(){
         Result result = viewModel.cadastrar(temTipo, temCaracteristica);
         showMessage(result);
-        limpar();
+
+        if(result instanceof SuccessResult)
+            limpar();
 
     }
 

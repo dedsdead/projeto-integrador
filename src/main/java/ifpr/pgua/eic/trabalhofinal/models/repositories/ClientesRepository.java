@@ -18,6 +18,8 @@ public class ClientesRepository {
     }
 
     public Result adicionarCliente(int idEndereco, int idTipo, int idCaracteristica, String nome, String telefone, String cpf, String email){
+        if(idEndereco == 0) return Result.fail("Adicione um endereço!");
+        
         Optional<Cliente> busca = clientes.stream().filter((cli)->cli.getEmail().equals(email)).findFirst();
         
         if(busca.isPresent()){

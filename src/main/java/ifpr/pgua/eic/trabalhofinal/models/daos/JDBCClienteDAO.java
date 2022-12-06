@@ -195,8 +195,6 @@ public class JDBCClienteDAO implements ClienteDAO{
             PreparedStatement pstm = con.prepareStatement(SELECT_ALL);
 
             ResultSet rs = pstm.executeQuery();
-
-            LocalDateTime dataExclusao = null;
             
             while(rs.next()){
                 int id = rs.getInt("codigo");
@@ -207,8 +205,12 @@ public class JDBCClienteDAO implements ClienteDAO{
                 String telefone = rs.getString("telefone");
                 String cpf = rs.getString("cpf");
                 String email = rs.getString("email");
-                if(rs.getTimestamp("excluido_em") != null)
+                LocalDateTime dataExclusao = null;
+                
+                if(rs.getTimestamp("excluido_em") != null){
                     dataExclusao = rs.getTimestamp("excluido_em").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
+                
+                }
 
                 Cliente c = new Cliente(id, idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email, dataExclusao);
                 clientes.add(c);

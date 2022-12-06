@@ -26,10 +26,12 @@ public class EnderecosRepository {
 
     public Endereco getEnderecoFromAPI(String cep){
         try {
-            HttpResponse<JsonNode> apiResponse = Unirest.get("https://viacep.com.br/ws/"+cep+"/json/").asJson();
-            Endereco endereco = new Gson().fromJson(apiResponse.getBody().toString(), Endereco.class);
+            if(cep.length() == 8){
+                HttpResponse<JsonNode> apiResponse = Unirest.get("https://viacep.com.br/ws/"+cep+"/json/").asJson();
+                Endereco endereco = new Gson().fromJson(apiResponse.getBody().toString(), Endereco.class);
+                return endereco;
 
-            return endereco;
+            }
 
         } catch (UnirestException e) {
             e.printStackTrace();

@@ -26,6 +26,8 @@ public class ImoveisRepository {
                                   double metragem,
                                   double valor,
                                   String matricula){
+        if(idEndereco == 0) return Result.fail("Adicione um enderço!");
+        
         Optional<Imovel> busca = imoveis.stream().filter((cli)->cli.getIdTipo() == idTipo).filter((cli)->cli.getIdProprietario() == idProprietario).filter((cli)->cli.getDescricao().equals(descricao)).findFirst();
 
         if(busca.isPresent()){

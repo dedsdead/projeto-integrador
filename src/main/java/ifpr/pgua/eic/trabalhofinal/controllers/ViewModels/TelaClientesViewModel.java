@@ -236,7 +236,7 @@ public class TelaClientesViewModel {
 
         Endereco e = enderecosRepository.getEnderecoFromAPI(spCep.getValue());
         
-        if(e == null){
+        if(e == null || e.getCep() == null){
             return Result.fail("CEP não econtrado!");
         } else {
             spEstado.setValue(e.getEstado());

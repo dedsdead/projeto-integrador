@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import ifpr.pgua.eic.trabalhofinal.App;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaPrincipalViewModel;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
+import ifpr.pgua.eic.trabalhofinal.models.results.SuccessResult;
 import ifpr.pgua.eic.trabalhofinal.utils.Navigator.BorderPaneRegion;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
@@ -76,7 +77,9 @@ public class TelaPrincipal extends BaseController implements Initializable{
     private void logar(){
         Result result = viewModel.logar();
         showMessage(result);
-        limpar();
+
+        if (result instanceof SuccessResult)
+            limpar();
         
     }
 
