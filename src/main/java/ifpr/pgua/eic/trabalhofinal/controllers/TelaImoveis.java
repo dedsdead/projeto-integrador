@@ -1,10 +1,11 @@
 package ifpr.pgua.eic.trabalhofinal.controllers;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.ClienteRow;
-import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaClientesViewModel;
+import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.ImovelRow;
+import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaImoveisViewModel;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 import ifpr.pgua.eic.trabalhofinal.models.results.SuccessResult;
 import javafx.beans.value.ChangeListener;
@@ -18,8 +19,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 
-public class TelaClientes extends BaseController implements Initializable{
+public class TelaImoveis extends BaseController implements Initializable{
     @FXML
     private ComboBox<String> cbTipos;
 
@@ -27,34 +29,40 @@ public class TelaClientes extends BaseController implements Initializable{
     private ComboBox<String> cbCaracteristicas;
 
     @FXML
-    private TableColumn<ClienteRow, String> tbcNome;
+    private ComboBox<String> cbClientes;
 
     @FXML
-    private TableColumn<ClienteRow, String> tbcTelefone;
+    private TableColumn<ImovelRow, String> tbcDescricao;
 
     @FXML
-    private TableColumn<ClienteRow,String> tbcCpf;
+    private TableColumn<ImovelRow, String> tbcMetragem;
 
     @FXML
-    private TableColumn<ClienteRow, String> tbcEmail;
+    private TableColumn<ImovelRow,String> tbcValor;
 
     @FXML
-    private TableColumn<ClienteRow, String> tbcId;
+    private TableColumn<ImovelRow, String> tbcMatricula;
 
     @FXML
-    private TableView<ClienteRow> tbClientes;
+    private TableColumn<ImovelRow, String> tbcId;
 
     @FXML
-    private TextField tfNome;
+    private TableView<ImovelRow> tbImoveis;
 
     @FXML
-    private TextField tfTelefone;
+    private TextField tfFoto;
 
     @FXML
-    private TextField tfCpf;
+    private TextField tfDescricao;
 
     @FXML
-    private TextField tfEmail;
+    private TextField tfMetragem;
+
+    @FXML
+    private TextField tfValor;
+
+    @FXML
+    private TextField tfMatricula;
 
     @FXML
     private TextField tfCep;
@@ -99,6 +107,12 @@ public class TelaClientes extends BaseController implements Initializable{
     private Button btEndereco;
 
     @FXML
+    private Button btBuscarFoto;
+
+    @FXML
+    private Button btSalvarFoto;
+
+    @FXML
     private Button btBuscarCEP;
 
     @FXML
@@ -107,13 +121,15 @@ public class TelaClientes extends BaseController implements Initializable{
     @FXML
     private Button btLimpar;
 
-    private TelaClientesViewModel viewModel;
+    private TelaImoveisViewModel viewModel;
 
     int temTipo = 0;
+    int temCliente = 0;
     int temCaracteristica = 0;
     int limpar = 0;
+    FileChooser fcFoto = new FileChooser();
 
-    public TelaClientes(TelaClientesViewModel viewModel){
+    public TelaImoveis(TelaImoveisViewModel viewModel){
         this.viewModel = viewModel;
 
     }
@@ -121,14 +137,14 @@ public class TelaClientes extends BaseController implements Initializable{
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         tbcId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        tbcNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
-        tbcCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
-        tbcEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tbcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        tbcMetragem.setCellValueFactory(new PropertyValueFactory<>("metragem"));
+        tbcValor.setCellValueFactory(new PropertyValueFactory<>("valor"));
+        tbcMatricula.setCellValueFactory(new PropertyValueFactory<>("matricula"));
 
-        tbClientes.setItems(viewModel.getClientes());
+        tbImoveis.setItems(viewModel.getImoveis());
 
-        viewModel.selecionadoProperty().bind(tbClientes.getSelectionModel().selectedItemProperty());
+        viewModel.selecionadoProperty().bind(tbImoveis.getSelectionModel().selectedItemProperty());
 
         viewModel.alertProperty().addListener((ChangeListener<Result>) (observable, oldVal, newVal) -> {
             showMessage(newVal);
@@ -141,22 +157,21 @@ public class TelaClientes extends BaseController implements Initializable{
         viewModel.caracteristicaProperty().bindBidirectional(cbCaracteristicas.selectionModelProperty());
         cbCaracteristicas.setItems(viewModel.getDescricoes());
 
-        tfNome.textProperty().bindBidirectional(viewModel.nomeProperty());
+        tfDescricao.textProperty().bindBidirectional(viewModel.descricaoProperty());
 
-        tfTelefone.textProperty().bindBidirectional(viewModel.telefoneProperty());
+        tfMetragem.textProperty().bindBidirectional(viewModel.metragemProperty());
 
-        tfCpf.textProperty().bindBidirectional(viewModel.cpfProperty());
+        tfValor.textProperty().bindBidirectional(viewModel.valorProperty());
 
-        tfEmail.textProperty().bindBidirectional(viewModel.emailProperty());
-        tfEmail.editableProperty().bind(viewModel.podeEditarProperty());
+        tfMatricula.textProperty().bindBidirectional(viewModel.matriculaProperty());
 
         btCadastrar.textProperty().bind(viewModel.operacaoProperty());
 
         btExcluir.managedProperty().bind(viewModel.podeEditarProperty().not());
         btExcluir.visibleProperty().bind(viewModel.podeEditarProperty().not());
 
-        tbClientes.managedProperty().bind(viewModel.pegarEnderecoProperty().not());
-        tbClientes.visibleProperty().bind(viewModel.pegarEnderecoProperty().not());
+        tbImoveis.managedProperty().bind(viewModel.pegarEnderecoProperty().not());
+        tbImoveis.visibleProperty().bind(viewModel.pegarEnderecoProperty().not());
 
         tfCep.textProperty().bindBidirectional(viewModel.cepProperty());
         tfEstado.textProperty().bindBidirectional(viewModel.estadoProperty());
@@ -204,6 +219,8 @@ public class TelaClientes extends BaseController implements Initializable{
         btBuscarCEP.managedProperty().bind(viewModel.pegarEnderecoProperty());
         btBuscarCEP.visibleProperty().bind(viewModel.pegarEnderecoProperty());
 
+        tfFoto.textProperty().bindBidirectional(viewModel.caminhoProperty());
+
         viewModel.updateList();
 
         cbTipos.setOnAction((evt)->{
@@ -238,11 +255,17 @@ public class TelaClientes extends BaseController implements Initializable{
 
         });
 
+        cbClientes.setOnAction((evt)->{
+            if(limpar == 0) temCliente = 1;
+
+        });
+
+        
     }
 
     @FXML
     private void cadastrar(){
-        Result result = viewModel.cadastrar(temTipo, temCaracteristica);
+        Result result = viewModel.cadastrar(temCliente, temTipo, temCaracteristica);
         showMessage(result);
         limpar();
 
@@ -262,6 +285,7 @@ public class TelaClientes extends BaseController implements Initializable{
         viewModel.limpar();
         temCaracteristica = 0;
         temTipo = 0;
+        temCliente = 0;
         cbTipos.setItems(null);
         cbTipos.setItems(viewModel.getNomes());
         cbCaracteristicas.setItems(null);
@@ -270,8 +294,31 @@ public class TelaClientes extends BaseController implements Initializable{
 
         btEndereco.setText("Endereço");
         viewModel.pegarEnderecoProperty().set(false);
+        tfFoto.clear();
 
     }
+
+    @FXML
+    private void buscarFoto(){
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Image files", "*.jpg", "*.jpeg", "*.png");
+        fcFoto.getExtensionFilters().add(filter);
+        File f = fcFoto.showOpenDialog(null);
+
+        tfFoto.setText(f.getAbsolutePath());
+
+    }
+
+    @FXML
+    private void salvarFoto(){
+        Result result = viewModel.cadastraFoto();
+
+        if(result instanceof SuccessResult)
+            tfFoto.clear();
+
+        showMessage(result);
+
+    }
+
 
     @FXML
     private void carregaEndereco(){

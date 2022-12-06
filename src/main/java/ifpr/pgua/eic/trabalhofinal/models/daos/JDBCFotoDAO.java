@@ -17,6 +17,11 @@ public class JDBCFotoDAO implements FotoDAO{
     private static final String SELECT_ALL = "SELECT * FROM TF_Foto";
 
     private FabricaConexoes fabricaConexoes;
+
+    public JDBCFotoDAO(FabricaConexoes fabricaConexoes){
+        this.fabricaConexoes = fabricaConexoes;
+        
+    }
     
     @Override
     public Result create(Foto foto) {

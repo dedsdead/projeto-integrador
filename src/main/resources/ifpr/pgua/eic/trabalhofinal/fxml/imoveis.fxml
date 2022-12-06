@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="800.0" prefWidth="800.0" spacing="10.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.trabalhofinal.controllers.TelaClientes">
+<VBox prefHeight="800.0" prefWidth="800.0" spacing="10.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.trabalhofinal.controllers.TelaImoveis">
    <children>
       <Pane prefHeight="46.0" prefWidth="780.0">
          <children>
-            <Label alignment="CENTER" layoutX="1.0" layoutY="4.0" prefHeight="16.0" prefWidth="780.0" text="Clientes" />
+            <Label alignment="CENTER" layoutX="1.0" layoutY="4.0" prefHeight="16.0" prefWidth="780.0" text="Imoveis" />
          </children>
       </Pane>
       <GridPane alignment="CENTER_RIGHT" hgap="5.0" prefHeight="155.0" prefWidth="800.0">
@@ -34,14 +34,14 @@
           <RowConstraints maxHeight="135.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="74.0" text="Nome:" />
-            <TextField fx:id="tfNome" promptText="Digite o nome do cliente" GridPane.columnIndex="1" />
-            <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="77.0" text="Telefone:" GridPane.rowIndex="1" />
-            <TextField fx:id="tfTelefone" promptText="Digite o telefone" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="92.0" text="CPF:" GridPane.columnIndex="2" />
-            <TextField fx:id="tfCpf" promptText="Digite o CPF" GridPane.columnIndex="3" />
-            <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="91.0" text="E-mail:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <TextField fx:id="tfEmail" promptText="Digite o e-mail" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="74.0" text="Descricao:" />
+            <TextField fx:id="tfDescricao" promptText="Digite a descricao do imovel" GridPane.columnIndex="1" />
+            <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="77.0" text="Metragem:" GridPane.rowIndex="1" />
+            <TextField fx:id="tfMetragem" promptText="Digite a metragem" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="92.0" text="Valor:" GridPane.columnIndex="2" />
+            <TextField fx:id="tfValor" promptText="Digite o valor" GridPane.columnIndex="3" />
+            <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="91.0" text="Matricula:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="tfMatricula" promptText="Digite a matricula" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <children>
                   <Button fx:id="btEndereco" onAction="#carregaEndereco" text="Endereço" />
@@ -56,15 +56,21 @@
             <ComboBox fx:id="cbCaracteristicas" prefHeight="24.0" prefWidth="356.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <TableView fx:id="tbClientes" prefHeight="400.0" prefWidth="800.0" onMouseClicked="#atualizar">
+      
+      <TextField fx:id="tfFoto"/>
+      <Button fx:id="btBuscarFoto" onAction="#buscarFoto" text="Selecionar foto" />
+      <Button fx:id="btSalvarFoto" onAction="#salvarFoto" text="Salvar foto" />
+
+      <TableView fx:id="tbImoveis" prefHeight="400.0" prefWidth="800.0" onMouseClicked="#atualizar">
         <columns>
             <TableColumn fx:id="tbcId" prefWidth="75.0" text="Id" />
-            <TableColumn fx:id="tbcNome" prefWidth="278.0" text="Nome" />
-            <TableColumn fx:id="tbcTelefone" prefWidth="143.0" text="Telefone" />
-            <TableColumn fx:id="tbcCpf" prefWidth="137.0" text="CPF" />
-            <TableColumn fx:id="tbcEmail" prefWidth="146.0" text="E-mail" />
+            <TableColumn fx:id="tbcDescricao" prefWidth="278.0" text="Descricao" />
+            <TableColumn fx:id="tbcMetragem" prefWidth="143.0" text="Metragem" />
+            <TableColumn fx:id="tbcValor" prefWidth="137.0" text="Valor" />
+            <TableColumn fx:id="tbcMatricula" prefWidth="146.0" text="Matricula" />
         </columns>
       </TableView>
+
       <Label fx:id="lbCep" alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="91.0" text="Cep:" />
       <TextField fx:id="tfCep" promptText="Digite o cep" />
       <Label fx:id="lbEstado" alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="91.0" text="Estado:" />

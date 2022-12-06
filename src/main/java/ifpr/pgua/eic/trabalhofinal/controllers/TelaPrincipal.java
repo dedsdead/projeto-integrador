@@ -96,5 +96,16 @@ public class TelaPrincipal extends BaseController implements Initializable{
         }
 
     }
+
+    @FXML
+    private void carregarImoveis(){
+        if(viewModel.logadoProperty().getValue()){
+            App.changeScreenRegion("IMOVEIS", BorderPaneRegion.CENTER);
+
+        } else {
+            showMessage(Result.fail("Faça login primeiro!"));
+        }
+
+    }
     
 }

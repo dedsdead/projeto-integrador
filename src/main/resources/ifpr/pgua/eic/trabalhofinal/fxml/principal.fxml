@@ -26,6 +26,7 @@
             </children>
          </Pane>
          <Button onAction="#carregarClientes" prefHeight="40.0" prefWidth="100.0" text="Clientes" />
+         <Button onAction="#carregarImoveis" prefHeight="40.0" prefWidth="100.0" text="Imoveis" />
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>

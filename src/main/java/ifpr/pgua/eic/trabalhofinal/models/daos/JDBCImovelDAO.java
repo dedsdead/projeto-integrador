@@ -51,7 +51,12 @@ public class JDBCImovelDAO implements ImovelDAO{
             pstm.setString(6, imovel.getDescricao());
             pstm.setDouble(7, imovel.getMetragem());
             pstm.setDouble(8, imovel.getValor());
-            pstm.setString(9, imovel.getMatricula());
+
+            if(imovel.getMatricula().equals("")){
+                pstm.setNull(9, Types.VARCHAR);
+            } else {
+                pstm.setString(9, imovel.getMatricula());
+            }
 
             pstm.execute();
 

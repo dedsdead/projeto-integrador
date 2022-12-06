@@ -5,10 +5,14 @@ import java.util.Optional;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Endereco;
+import ifpr.pgua.eic.trabalhofinal.models.entities.Foto;
+import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Tipo;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.CaracteristicasRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ClientesRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.EnderecosRepository;
+import ifpr.pgua.eic.trabalhofinal.models.repositories.FotosRepository;
+import ifpr.pgua.eic.trabalhofinal.models.repositories.ImoveisRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.TiposRepository;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 import ifpr.pgua.eic.trabalhofinal.models.results.SuccessResult;
@@ -24,14 +28,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.SingleSelectionModel;
 
-public class TelaClientesViewModel {
+public class TelaImoveisViewModel {
     private ObjectProperty<SingleSelectionModel<String>> spTipo = new SimpleObjectProperty<>();
     private ObjectProperty<SingleSelectionModel<String>> spCaracteristica = new SimpleObjectProperty<>();
-    private StringProperty spNome = new SimpleStringProperty();
-    private StringProperty spTelefone = new SimpleStringProperty();
-    private StringProperty spCpf = new SimpleStringProperty();
-    private StringProperty spEmail = new SimpleStringProperty();
+    private ObjectProperty<SingleSelectionModel<String>> spCliente = new SimpleObjectProperty<>();
 
+    private StringProperty spDescricao = new SimpleStringProperty();
+    private StringProperty spMetragem = new SimpleStringProperty();
+    private StringProperty spValor = new SimpleStringProperty();
+    private StringProperty spMatricula = new SimpleStringProperty();
+
+    private StringProperty spCaminho = new SimpleStringProperty();
+
+    private IntegerProperty spFoto = new SimpleIntegerProperty();
     private IntegerProperty spEndereco = new SimpleIntegerProperty();
     private StringProperty spCep = new SimpleStringProperty();
     private StringProperty spEstado = new SimpleStringProperty();
@@ -45,9 +54,9 @@ public class TelaClientesViewModel {
     private BooleanProperty pegarEndereco = new SimpleBooleanProperty(false);
     private boolean atualizar = false;
 
-    private ObservableList<ClienteRow> obsClientes = FXCollections.observableArrayList();
+    private ObservableList<ImovelRow> obsImoveis = FXCollections.observableArrayList();
 
-    private ObservableList<Endereco> enderecos = FXCollections.observableArrayList();
+    private ObservableList<Foto> fotos = FXCollections.observableArrayList();
 
     private ObservableList<Tipo> tipos = FXCollections.observableArrayList();
     private ObservableList<String> nomes = FXCollections.observableArrayList();
@@ -55,35 +64,62 @@ public class TelaClientesViewModel {
     private ObservableList<Caracteristica> caracteristicas = FXCollections.observableArrayList();
     private ObservableList<String> descricoes = FXCollections.observableArrayList();
 
-    private ObjectProperty<ClienteRow> selecionado = new SimpleObjectProperty<>();
+    private ObservableList<Cliente> clientes = FXCollections.observableArrayList();
+
+    private ObservableList<Endereco> enderecos = FXCollections.observableArrayList();
+
+    private ObjectProperty<ImovelRow> selecionado = new SimpleObjectProperty<>();
 
     private ObjectProperty<Result> alertProperty = new SimpleObjectProperty<>();
 
-    private ClientesRepository clientesRepository;
-    private EnderecosRepository enderecosRepository;
+    private ImoveisRepository imoveisRepository;
+    private FotosRepository fotosRepository;
     private TiposRepository tiposRepository;
     private CaracteristicasRepository caracteristicasRepository;
+    private EnderecosRepository enderecosRepository;
+    private ClientesRepository clientesRepository;
 
-    public TelaClientesViewModel(ClientesRepository clientesRepository, EnderecosRepository enderecosRepository, TiposRepository tiposRepository, CaracteristicasRepository caracteristicasRepository){
-        this.clientesRepository = clientesRepository;
-        this.enderecosRepository = enderecosRepository;
+    public TelaImoveisViewModel(ImoveisRepository imoveisRepository,
+                                FotosRepository fotosRepository,
+                                TiposRepository tiposRepository,
+                                CaracteristicasRepository caracteristicasRepository,
+                                EnderecosRepository enderecosRepository,
+                                ClientesRepository clientesRepository) {
+        this.imoveisRepository = imoveisRepository;
+        this.fotosRepository = fotosRepository;
         this.tiposRepository = tiposRepository;
         this.caracteristicasRepository = caracteristicasRepository;
+        this.enderecosRepository = enderecosRepository;
+        this.clientesRepository = clientesRepository;
 
         updateList();
-        carregaEnderecos();
+        carregaFotos();
         carregaTipos();
         carregaCaracteristicas();
-        
+        carregaEnderecos();
+        carregaClientes();
+    
     }
 
-    public void carregaEnderecos(){
-        enderecos.clear();
-        
-        for(Endereco e : enderecosRepository.getEnderecos()){
-            enderecos.add(e);
+    public void updateList(){
+        obsImoveis.clear();
+
+        for(Imovel i : imoveisRepository.getImoveis()){
+            if(i.getDataExclusao() == null)
+            obsImoveis.add(new ImovelRow(i));
 
         }
+
+    }
+
+    public void carregaFotos(){
+        fotos.clear();
+        
+        for(Foto f : fotosRepository.getFotos()){
+            fotos.add(f);
+
+        }
+
     }
 
     public void carregaTipos(){
@@ -95,6 +131,7 @@ public class TelaClientesViewModel {
             nomes.add(t.getNome());
 
         }
+
     }
 
     public void carregaCaracteristicas(){
@@ -106,21 +143,46 @@ public class TelaClientesViewModel {
             descricoes.add(c.getQuantidade()+" "+c.getDescricao());
 
         }
+
     }
 
-    public void updateList(){
-        obsClientes.clear();
-
-        for(Cliente c : clientesRepository.getClientes()){
-            if(c.getDataExclusao() == null)
-                obsClientes.add(new ClienteRow(c));
+    public void carregaEnderecos(){
+        enderecos.clear();
+        
+        for(Endereco e : enderecosRepository.getEnderecos()){
+            enderecos.add(e);
 
         }
+        
+    }
+
+    public void carregaClientes(){
+        clientes.clear();
+        
+        for(Cliente c : clientesRepository.getClientes()){
+            clientes.add(c);
+
+        }
+        
+    }
+
+    public ObjectProperty<SingleSelectionModel<String>> tipoProperty(){
+        return spTipo;
 
     }
 
-    public ObservableList<ClienteRow> getClientes(){
-        return this.obsClientes;
+    public ObjectProperty<SingleSelectionModel<String>> caracteristicaProperty(){
+        return spCaracteristica;
+
+    }
+
+    public ObjectProperty<SingleSelectionModel<String>> clienteProperty(){
+        return spCliente;
+
+    }
+
+    public ObservableList<ImovelRow> getImoveis(){
+        return this.obsImoveis;
 
     }
 
@@ -144,7 +206,12 @@ public class TelaClientesViewModel {
 
     }
 
-    public ObjectProperty<ClienteRow> selecionadoProperty(){
+    public ObservableList<Cliente> getClientes(){
+        return this.clientes;
+
+    }
+
+    public ObjectProperty<ImovelRow> selecionadoProperty(){
         return selecionado;
         
     }
@@ -169,33 +236,33 @@ public class TelaClientesViewModel {
 
     }
 
-    public ObjectProperty<SingleSelectionModel<String>> tipoProperty(){
-        return spTipo;
+    public StringProperty caminhoProperty(){
+        return this.spCaminho;
+        
+    }
+
+    public StringProperty descricaoProperty(){
+        return this.spDescricao;
 
     }
 
-    public ObjectProperty<SingleSelectionModel<String>> caracteristicaProperty(){
-        return spCaracteristica;
+    public StringProperty metragemProperty(){
+        return this.spMetragem;
 
     }
 
-    public StringProperty nomeProperty(){
-        return this.spNome;
+    public StringProperty valorProperty(){
+        return this.spValor;
 
     }
 
-    public StringProperty telefoneProperty(){
-        return this.spTelefone;
+    public StringProperty matriculaProperty(){
+        return this.spMatricula;
 
     }
 
-    public StringProperty cpfProperty(){
-        return this.spCpf;
-
-    }
-
-    public StringProperty emailProperty(){
-        return this.spEmail;
+    public IntegerProperty fotoProperty(){
+        return this.spFoto;
 
     }
 
@@ -228,26 +295,30 @@ public class TelaClientesViewModel {
         return this.spComplemento;
     }
 
-    public Result buscaCep(){
-        if(spCep.getValue() == ""){
-            return Result.fail("Insira um CEP!");
+    public Result cadastraFoto(){
+        Result result;
+
+        String caminho = spCaminho.getValue();
+
+        if(caminho == "")
+            result = Result.fail("Selecione uma foto!");
+
+        else{
+            Foto foto = new Foto(caminho);
+
+            result = fotosRepository.adicionarFoto(foto);
+
+            if(result instanceof SuccessResult){
+                limpar();
+                spFoto.setValue(foto.getId());
+                carregaEnderecos();
+    
+            }
 
         }
 
-        Endereco e = enderecosRepository.getEnderecoFromAPI(spCep.getValue());
-        
-        if(e == null){
-            return Result.fail("CEP não econtrado!");
-        } else {
-            spEstado.setValue(e.getEstado());
-            spCidade.setValue(e.getCidade());
-            spLogradouro.setValue(e.getLogradouro());
-            spNumero.setValue(String.valueOf(e.getNumero()));
-            spComplemento.setValue(e.getComplemento());
+        return result;
 
-            return Result.success("CEP encontrado com sucesso!");
-
-        }
     }
 
     public Tipo buscaTipo(){
@@ -263,8 +334,8 @@ public class TelaClientesViewModel {
 
     }
 
-    public Tipo buscaTipoId(Cliente cliente){
-        Optional<Tipo> busca = tipos.stream().filter((cli)->cli.getId() == cliente.getIdTipo()).findFirst();
+    public Tipo buscaTipoId(Imovel imovel){
+        Optional<Tipo> busca = tipos.stream().filter((cli)->cli.getId() == imovel.getIdTipo()).findFirst();
         
         if(busca.isPresent()){
             Tipo t = busca.get();
@@ -290,8 +361,8 @@ public class TelaClientesViewModel {
 
     }
 
-    public Caracteristica buscaCaracteristicaId(Cliente cliente){
-        Optional<Caracteristica> busca = caracteristicas.stream().filter((cli)->cli.getId() == cliente.getIdCaracteristica()).findFirst();
+    public Caracteristica buscaCaracteristicaId(Imovel imovel){
+        Optional<Caracteristica> busca = caracteristicas.stream().filter((cli)->cli.getId() == imovel.getIdCaracteristica()).findFirst();
         
         if(busca.isPresent()){
             Caracteristica c = busca.get();
@@ -304,10 +375,73 @@ public class TelaClientesViewModel {
 
     }
 
-    public Result cadastrar(int temTipo, int temCaracteristica) {
-        int idEndereco = spEndereco.getValue();
+    public Result buscaCep(){
+        if(spCep.getValue() == ""){
+            return Result.fail("Insira um CEP!");
+
+        }
+
+        Endereco e = enderecosRepository.getEnderecoFromAPI(spCep.getValue());
+        
+        if(e == null){
+            return Result.fail("CEP não econtrado!");
+        } else {
+            spEstado.setValue(e.getEstado());
+            spCidade.setValue(e.getCidade());
+            spLogradouro.setValue(e.getLogradouro());
+            spNumero.setValue(String.valueOf(e.getNumero()));
+            spComplemento.setValue(e.getComplemento());
+
+            return Result.success("CEP encontrado com sucesso!");
+
+        }
+    }
+
+    public Cliente buscaCliente(){
+        Optional<Cliente> busca = clientes.stream().filter((cli)->cli.getNome().equals(spCliente.getValue().getSelectedItem())).findFirst();
+        if(busca.isPresent()){
+            Cliente c = busca.get();
+            return c;
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public Cliente buscaClienteId(Imovel imovel){
+        Optional<Cliente> busca = clientes.stream().filter((cli)->cli.getId() == imovel.getIdProprietario()).findFirst();
+        
+        if(busca.isPresent()){
+            Cliente c = busca.get();
+            return c;
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public Result cadastrar(int temCliente, int temTipo, int temCaracteristica) {
         int idTipo;
         int idCaracteristica;
+        int idCliente;
+
+        if(temCliente == 1){
+            Cliente c = buscaCliente();
+
+            if(c != null)
+                idCliente = c.getId();
+            else
+                return Result.fail("Proprietário não encontrado!");
+
+        } else {
+            return Result.fail("Esccolha um proprietário!");
+
+        }
+
 
         if (temTipo == 1){
             Tipo t = buscaTipo();
@@ -316,12 +450,12 @@ public class TelaClientesViewModel {
                 idTipo = t.getId();
 
             } else {
-                idTipo = 0;
+                return Result.fail("Erro ao escolher o tipo!");
 
             }
 
         } else {
-            idTipo = 0;
+            return Result.fail("Escolha um tipo!");
 
         }
 
@@ -340,18 +474,37 @@ public class TelaClientesViewModel {
             idCaracteristica = 0;
 
         }
+
+        int idEndereco = spEndereco.getValue();
        
-        String nome = spNome.getValue();
-        String cpf = spCpf.getValue();
-        String telefone = spTelefone.getValue();
-        String email = spEmail.getValue();
+        String descricao = spDescricao.getValue();
+        double metragem = 0.0;
+        double valor = 0.0;
+
+        try {
+            metragem = Double.parseDouble(spMetragem.getValue());
+
+        } catch (NumberFormatException e) {
+            return Result.fail("Metragem inválida!");
+            
+        }
+
+        try {
+            valor = Double.parseDouble(spValor.getValue());
+
+        } catch (NumberFormatException e) {
+            return Result.fail("Valor inválido!");
+            
+        }
+
+        String matricula = spMatricula.getValue();
 
         Result result;
 
         if (atualizar) {
-            result = clientesRepository.atualizarCliente(idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email);
+            result = imoveisRepository.atualizarImovel(1, idTipo, idCaracteristica, idCliente, descricao, metragem, valor, matricula);
         } else {
-            result = clientesRepository.adicionarCliente(idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email);
+            result = imoveisRepository.adicionarImovel(1, idTipo, idCaracteristica, idEndereco, idCliente, descricao, metragem, valor, matricula);
         }
 
         if(result instanceof SuccessResult){
@@ -363,7 +516,7 @@ public class TelaClientesViewModel {
         return result;
         
     }
-
+    
     public Result cadastraEndereco(){
         Result result;
 
@@ -415,12 +568,10 @@ public class TelaClientesViewModel {
         podeEditar.setValue(false);
         atualizar = true;
         
-        Cliente cliente = selecionado.get().getCliente();
+        Imovel imovel = selecionado.get().getImovel();
         
-        if(cliente.getIdEndereco() != 0) spEndereco.setValue(cliente.getIdEndereco());
-        
-        Tipo t = buscaTipoId(cliente);
-        if(cliente.getIdTipo() != 0){
+        Tipo t = buscaTipoId(imovel);
+        if(imovel.getIdTipo() != 0){
             spTipo.get().select(t.getNome());
 
         } else {
@@ -428,29 +579,33 @@ public class TelaClientesViewModel {
 
         }
         
-        Caracteristica c = buscaCaracteristicaId(cliente);
+        Caracteristica c = buscaCaracteristicaId(imovel);
 
-        if(cliente.getIdCaracteristica() != 0){
+        if(imovel.getIdCaracteristica() != 0){
             spCaracteristica.get().select(c.getQuantidade()+" "+c.getDescricao());
 
         } else {
             spCaracteristica.get().clearSelection();
 
         }
+
+        if(imovel.getIdEndereco() != 0) spEndereco.setValue(imovel.getIdEndereco());
         
-        
-        spNome.setValue(cliente.getNome());
-        spTelefone.setValue(cliente.getTelefone());
-        spCpf.setValue(cliente.getCpf());
-        spEmail.setValue(cliente.getEmail());
+        Cliente cli = buscaClienteId(imovel);
+        spCliente.get().select(cli.getNome());
+
+        spDescricao.setValue(imovel.getDescricao());
+        spMetragem.setValue(String.valueOf(imovel.getMetragem()));
+        spValor.setValue(String.valueOf(imovel.getValor()));
+        spMatricula.setValue(imovel.getMatricula());
 
     }
 
     public Result excluir(){
-        Cliente cliente = selecionado.get().getCliente();
+        Imovel imovel = selecionado.get().getImovel();
         Result result;
 
-        result = clientesRepository.desativarCliente(cliente.getEmail());
+        result = imoveisRepository.excluirImovel(imovel.getDescricao());
 
         if(result instanceof SuccessResult){
             updateList();
@@ -463,21 +618,22 @@ public class TelaClientesViewModel {
     }
 
     public void limpar() {
+        spFoto.setValue(0);
+        spCaminho.setValue("");
         spEndereco.setValue(0);
+        spDescricao.setValue("");
+        spMetragem.setValue("");
+        spValor.setValue("");
+        spMatricula.setValue("");
         spCep.setValue("");
         spEstado.setValue("");
         spCidade.setValue("");
         spLogradouro.setValue("");
         spNumero.setValue("");
         spComplemento.setValue("");
-        
-        spNome.setValue("");
-        spTelefone.setValue("");
-        spCpf.setValue("");
-        spEmail.setValue("");
 
-        podeEditar.setValue(true);
         pegarEndereco.setValue(false);
+        podeEditar.setValue(true);
         atualizar = false;
         operacao.setValue("Cadastrar");
 
