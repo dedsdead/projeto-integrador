@@ -26,7 +26,10 @@ public class ImoveisRepository {
                                   double metragem,
                                   double valor,
                                   String matricula){
-        if(idEndereco == 0) return Result.fail("Adicione um enderço!");
+        if(idFoto == 0) return Result.fail("Adicione uma foto!");
+        if(idTipo == 0) return Result.fail("Adicione um tipo!");
+        if(idProprietario == 0) return Result.fail("Adicione um proprietário!");
+        if(idEndereco == 0) return Result.fail("Adicione um endereço!");
         
         Optional<Imovel> busca = imoveis.stream().filter((cli)->cli.getIdTipo() == idTipo).filter((cli)->cli.getIdProprietario() == idProprietario).filter((cli)->cli.getDescricao().equals(descricao)).findFirst();
 
@@ -40,7 +43,8 @@ public class ImoveisRepository {
 
     }
 
-    public Result atualizarImovel(int idFoto,
+    public Result atualizarImovel(int id,
+                                  int idFoto,
                                   int idTipo,
                                   int idCaracteristica,
                                   int idProprietario,
@@ -48,11 +52,10 @@ public class ImoveisRepository {
                                   double metragem,
                                   double valor,
                                   String matricula){
-        Optional<Imovel> busca = imoveis.stream().filter((cli)->cli.getDescricao().equals(descricao)).findFirst();
+        Optional<Imovel> busca = imoveis.stream().filter((cli)->cli.getId() == id).findFirst();
 
-        if(busca.isPresent()){
+        if(busca.isPresent() && id != 0){
             Imovel imovel = busca.get();
-            int id = imovel.getId();
 
             if(idFoto != 0) imovel.setIdFoto(idFoto);
             if(idTipo != 0) imovel.setIdTipo(idTipo);
@@ -63,7 +66,7 @@ public class ImoveisRepository {
             if(valor != 0.0)imovel.setValor(valor);
             if(matricula != "")imovel.setMatricula(matricula);
 
-            return dao.update(id, imovel);
+            return dao.update(imovel);
 
         }
 
@@ -71,18 +74,8 @@ public class ImoveisRepository {
 
     }
 
-    public Result excluirImovel(String descricao){
-        Optional<Imovel> busca = imoveis.stream().filter((cli)->cli.getDescricao().equals(descricao)).findFirst();
-        
-        if(busca.isPresent()){
-            Imovel imovel = busca.get();
-            int id = imovel.getId();
-
-            return dao.delete(id);
-
-        }
-
-        return Result.fail("Imovel não encontrado!");
+    public Result excluirImovel(int id){
+        return dao.delete(id);
 
     }
 

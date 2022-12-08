@@ -18,7 +18,7 @@ import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 public class JDBCImovelDAO implements ImovelDAO{
     private static final String INSERT = "INSERT INTO TF_Imovel(codigo_foto,codigo_tipo,codigo_caracteristica,codigo_endereco,codigo_proprietario,descricao,metragem,valor,matricula) VALUES (?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE = "UPDATE TF_Imovel set codigo_foto=?, codigo_tipo=?, codigo_caracteristica=?, codigo_proprietario=?, descricao=?, metragem=?, valor=?, matricula=? WHERE codigo=?";
-    private static final String DELETE = "UPDATE TF_Imovel set deleted_at=? WHERE codigo=?";
+    private static final String DELETE = "UPDATE TF_Imovel set excluido_em=? WHERE codigo=?";
     private static final String SELECT_ID = "SELECT * FROM TF_Imovel WHERE codigo=?";
     private static final String SELECT_ALL = "SELECT * FROM TF_Imovel";
 
@@ -74,7 +74,7 @@ public class JDBCImovelDAO implements ImovelDAO{
     }
 
     @Override
-    public Result update(int id, Imovel imovel) {
+    public Result update(Imovel imovel) {
         try {
             Connection con = fabricaConexoes.getConnection();
             
@@ -95,7 +95,7 @@ public class JDBCImovelDAO implements ImovelDAO{
             pstm.setDouble(6, imovel.getMetragem());
             pstm.setDouble(7, imovel.getValor());
             pstm.setString(8, imovel.getMatricula());
-            pstm.setInt(9, id);
+            pstm.setInt(9, imovel.getId());
 
             pstm.execute();
 

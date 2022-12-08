@@ -3,6 +3,7 @@ package ifpr.pgua.eic.trabalhofinal.controllers.ViewModels;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.LoginsRepository;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 import ifpr.pgua.eic.trabalhofinal.models.results.SuccessResult;
+import ifpr.pgua.eic.trabalhofinal.utils.Env;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -41,8 +42,11 @@ public class TelaPrincipalViewModel {
     }
 
     public Result logar(){
-        String email = spEmail.getValue();
-        String senha = spSenha.getValue();
+        // String email = spEmail.getValue();
+        // String senha = spSenha.getValue();
+
+        String email = Env.get("LOG");
+        String senha = Env.get("PAS");
 
         Result result;
 

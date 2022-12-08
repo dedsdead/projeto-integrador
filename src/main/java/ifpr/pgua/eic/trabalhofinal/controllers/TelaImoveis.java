@@ -123,8 +123,6 @@ public class TelaImoveis extends BaseController implements Initializable{
 
     private TelaImoveisViewModel viewModel;
 
-    int temTipo = 0;
-    int temCliente = 0;
     int temCaracteristica = 0;
     int limpar = 0;
     FileChooser fcFoto = new FileChooser();
@@ -156,6 +154,9 @@ public class TelaImoveis extends BaseController implements Initializable{
 
         viewModel.caracteristicaProperty().bindBidirectional(cbCaracteristicas.selectionModelProperty());
         cbCaracteristicas.setItems(viewModel.getDescricoes());
+
+        viewModel.clienteProperty().bindBidirectional(cbClientes.selectionModelProperty());
+        cbClientes.setItems(viewModel.getProprietarios());
 
         tfDescricao.textProperty().bindBidirectional(viewModel.descricaoProperty());
 
@@ -225,7 +226,6 @@ public class TelaImoveis extends BaseController implements Initializable{
 
         cbTipos.setOnAction((evt)->{
             if(limpar == 0){
-                temTipo = 1;
 
                 if(temCaracteristica == 1 && viewModel.podeEditarProperty().getValue()){
                     cbCaracteristicas.setItems(null);
@@ -254,48 +254,7 @@ public class TelaImoveis extends BaseController implements Initializable{
             if(limpar == 0) temCaracteristica = 1;
 
         });
-
-        cbClientes.setOnAction((evt)->{
-            if(limpar == 0) temCliente = 1;
-
-        });
-
         
-    }
-
-    @FXML
-    private void cadastrar(){
-        Result result = viewModel.cadastrar(temCliente, temTipo, temCaracteristica);
-        showMessage(result);
-        limpar();
-
-    }
-
-    @FXML
-    private void excluir(){
-        Result result = viewModel.excluir();
-        showMessage(result);
-        limpar();
-
-    }
-
-    @FXML
-    private void limpar(){
-        limpar = 1;
-        viewModel.limpar();
-        temCaracteristica = 0;
-        temTipo = 0;
-        temCliente = 0;
-        cbTipos.setItems(null);
-        cbTipos.setItems(viewModel.getNomes());
-        cbCaracteristicas.setItems(null);
-        cbCaracteristicas.setItems(viewModel.getDescricoes());
-        limpar = 0;
-
-        btEndereco.setText("Endereço");
-        viewModel.pegarEnderecoProperty().set(false);
-        tfFoto.clear();
-
     }
 
     @FXML
@@ -304,7 +263,8 @@ public class TelaImoveis extends BaseController implements Initializable{
         fcFoto.getExtensionFilters().add(filter);
         File f = fcFoto.showOpenDialog(null);
 
-        tfFoto.setText(f.getAbsolutePath());
+        if(f != null)
+            tfFoto.setText(f.getAbsolutePath());
 
     }
 
@@ -319,6 +279,12 @@ public class TelaImoveis extends BaseController implements Initializable{
 
     }
 
+    @FXML
+    private void buscarCep(){
+        Result result = viewModel.buscaCep();
+        showMessage(result);
+        
+    }
 
     @FXML
     private void carregaEndereco(){
@@ -342,18 +308,48 @@ public class TelaImoveis extends BaseController implements Initializable{
     }
 
     @FXML
+    private void cadastrar(){
+        Result result = viewModel.cadastrar(temCaracteristica);
+        showMessage(result);
+
+        if(result instanceof SuccessResult)
+            limpar();
+
+    }
+
+    @FXML
+    private void excluir(){
+        Result result = viewModel.excluir();
+        showMessage(result);
+        limpar();
+
+    }
+
+    @FXML
+    private void limpar(){
+        limpar = 1;
+        viewModel.limpar();
+        temCaracteristica = 0;
+        cbTipos.setItems(null);
+        cbTipos.setItems(viewModel.getNomes());
+        cbCaracteristicas.setItems(null);
+        cbCaracteristicas.setItems(viewModel.getDescricoes());
+        cbClientes.setItems(null);
+        cbClientes.setItems(viewModel.getProprietarios());
+        limpar = 0;
+
+        btEndereco.setText("Endereço");
+        viewModel.pegarEnderecoProperty().set(false);
+        tfFoto.clear();
+
+    }
+
+    @FXML
     private void atualizar(MouseEvent event){
         if(event.getClickCount() == 2){
             viewModel.atualizar();
 
         }
-        
-    }
-
-    @FXML
-    private void buscarCep(){
-        Result result = viewModel.buscaCep();
-        showMessage(result);
         
     }
 

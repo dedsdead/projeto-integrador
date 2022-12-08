@@ -346,12 +346,28 @@ public class TelaClientesViewModel {
         String telefone = spTelefone.getValue();
         String email = spEmail.getValue();
 
+        if(nome == null || nome == ""){
+            return Result.fail("Preencha o nome!");
+
+        } else if (cpf == null || cpf == ""){
+            return Result.fail("Preencha o cpf!");
+
+        } else if (telefone == null || telefone == ""){
+            return Result.fail("Preencha o numero de telefone!");
+
+        } else if(email == null || email == ""){
+            return Result.fail("Preencha o e-mail!");
+
+        }
+
         Result result;
 
         if (atualizar) {
             result = clientesRepository.atualizarCliente(idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email);
+        
         } else {
             result = clientesRepository.adicionarCliente(idEndereco, idTipo, idCaracteristica, nome, telefone, cpf, email);
+        
         }
 
         if(result instanceof SuccessResult){
@@ -377,7 +393,7 @@ public class TelaClientesViewModel {
             numero = Integer.parseInt(spNumero.getValue());
 
         }catch(NumberFormatException e){
-            result = Result.fail("Numero inválido!");
+            result = Result.fail("Número inválido!");
 
         }
 
@@ -392,12 +408,7 @@ public class TelaClientesViewModel {
             result = enderecosRepository.adicionarEndereco(endereco);
 
             if(result instanceof SuccessResult){
-                spCep.setValue("");
-                spEstado.setValue("");
-                spCidade.setValue("");
-                spLogradouro.setValue("");
-                spNumero.setValue("");
-                spComplemento.setValue("");
+                limpar();
 
                 spEndereco.setValue(endereco.getId());
                 carregaEnderecos();
@@ -470,11 +481,14 @@ public class TelaClientesViewModel {
         spLogradouro.setValue("");
         spNumero.setValue("");
         spComplemento.setValue("");
-        
-        spNome.setValue("");
-        spTelefone.setValue("");
-        spCpf.setValue("");
-        spEmail.setValue("");
+
+        if(!pegarEndereco.getValue()){
+            spNome.setValue("");
+            spTelefone.setValue("");
+            spCpf.setValue("");
+            spEmail.setValue("");
+
+        }
 
         podeEditar.setValue(true);
         pegarEndereco.setValue(false);
