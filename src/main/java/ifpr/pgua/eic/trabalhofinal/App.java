@@ -1,9 +1,11 @@
 package ifpr.pgua.eic.trabalhofinal;
 
 import ifpr.pgua.eic.trabalhofinal.controllers.TelaClientes;
+import ifpr.pgua.eic.trabalhofinal.controllers.TelaEnderecos;
 import ifpr.pgua.eic.trabalhofinal.controllers.TelaImoveis;
 import ifpr.pgua.eic.trabalhofinal.controllers.TelaPrincipal;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaClientesViewModel;
+import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaEnderecosViewModel;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaImoveisViewModel;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaPrincipalViewModel;
 import ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes;
@@ -37,9 +39,11 @@ public final class App extends BaseAppNavigator{
 
     private ClienteDAO clienteDao;
     private ClientesRepository clientesRepository;
+    private TelaClientesViewModel clientesViewModel;
 
     private ImovelDAO imovelDao;
     private ImoveisRepository imoveisRepository;
+    private TelaImoveisViewModel imoveisViewModel;
 
     private FotoDAO fotoDao;
     private FotosRepository fotosRepository;
@@ -56,6 +60,8 @@ public final class App extends BaseAppNavigator{
     @Override
     public void init() throws Exception{
         super.init();
+
+        super.setUserAgentStylesheet(STYLESHEET_CASPIAN);
 
         loginDAO = new JDBCLoginDAO(FabricaConexoes.getInstance());
         loginsRepository = new LoginsRepository(loginDAO);
@@ -77,6 +83,9 @@ public final class App extends BaseAppNavigator{
 
         caracteristicaDao = new JDBCCaracteristicaDAO(FabricaConexoes.getInstance());
         caracteristicasRepository = new CaracteristicasRepository(caracteristicaDao);
+
+        clientesViewModel = new TelaClientesViewModel(clientesRepository, tiposRepository, caracteristicasRepository);
+        imoveisViewModel = new TelaImoveisViewModel(imoveisRepository, fotosRepository, tiposRepository, caracteristicasRepository, clientesRepository);
 
     }
 
@@ -101,8 +110,11 @@ public final class App extends BaseAppNavigator{
     @Override
     public void registrarTelas() {
         registraTela("PRINCIPAL", new ScreenRegistryFXML(getClass(), "fxml/principal.fxml", (o)->new TelaPrincipal(new TelaPrincipalViewModel(loginsRepository))));
-        registraTela("CLIENTES", new ScreenRegistryFXML(getClass(), "fxml/clientes.fxml", (o)->new TelaClientes(new TelaClientesViewModel(clientesRepository, enderecosRepository, tiposRepository, caracteristicasRepository))));
-        registraTela("IMOVEIS", new ScreenRegistryFXML(getClass(), "fxml/imoveis.fxml", (o)->new TelaImoveis(new TelaImoveisViewModel(imoveisRepository, fotosRepository, tiposRepository, caracteristicasRepository, enderecosRepository, clientesRepository))));
+        registraTela("CLIENTES", new ScreenRegistryFXML(getClass(), "fxml/clientes.fxml", (o)->new TelaClientes(clientesViewModel)));
+        registraTela("IMOVEIS", new ScreenRegistryFXML(getClass(), "fxml/imoveis.fxml", (o)->new TelaImoveis(imoveisViewModel)));
+    
+        registraTela("ENDERECOS", new ScreenRegistryFXML(getClass(), "fxml/enderecos.fxml", (o)->new TelaEnderecos(new TelaEnderecosViewModel(enderecosRepository, clientesViewModel, imoveisViewModel))));
+
     }
 
 }

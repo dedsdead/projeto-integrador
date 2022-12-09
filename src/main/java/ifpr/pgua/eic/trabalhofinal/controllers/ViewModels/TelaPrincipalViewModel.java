@@ -54,17 +54,10 @@ public class TelaPrincipalViewModel {
 
         if(result instanceof SuccessResult){
             logado.setValue(true);
-            limpar();
 
         }
 
         return result;
-
-    }
-
-    public void limpar(){
-        spEmail.setValue("");
-        spSenha.setValue("");
 
     }
 

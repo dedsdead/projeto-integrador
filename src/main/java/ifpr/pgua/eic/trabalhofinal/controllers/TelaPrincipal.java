@@ -78,14 +78,10 @@ public class TelaPrincipal extends BaseController implements Initializable{
         Result result = viewModel.logar();
         showMessage(result);
 
-        if (result instanceof SuccessResult)
-            limpar();
-        
-    }
+        if (result instanceof SuccessResult){
+            App.changeScreenRegion("CLIENTES", BorderPaneRegion.CENTER);
 
-    @FXML
-    private void limpar(){
-        viewModel.limpar();
+        }
         
     }
 

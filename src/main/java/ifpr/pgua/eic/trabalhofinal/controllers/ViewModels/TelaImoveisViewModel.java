@@ -43,16 +43,9 @@ public class TelaImoveisViewModel {
 
     private IntegerProperty spFoto = new SimpleIntegerProperty();
     private IntegerProperty spEndereco = new SimpleIntegerProperty();
-    private StringProperty spCep = new SimpleStringProperty();
-    private StringProperty spEstado = new SimpleStringProperty();
-    private StringProperty spCidade = new SimpleStringProperty();
-    private StringProperty spLogradouro = new SimpleStringProperty();
-    private StringProperty spNumero = new SimpleStringProperty();
-    private StringProperty spComplemento = new SimpleStringProperty();
 
     private StringProperty operacao = new SimpleStringProperty("Cadastrar");
     private BooleanProperty podeEditar = new SimpleBooleanProperty(true);
-    private BooleanProperty pegarEndereco = new SimpleBooleanProperty(false);
     private boolean atualizar = false;
 
     private ObservableList<ImovelRow> obsImoveis = FXCollections.observableArrayList();
@@ -68,8 +61,6 @@ public class TelaImoveisViewModel {
     private ObservableList<Cliente> clientes = FXCollections.observableArrayList();
     private ObservableList<String> proprietarios = FXCollections.observableArrayList();
 
-    private ObservableList<Endereco> enderecos = FXCollections.observableArrayList();
-
     private ObjectProperty<ImovelRow> selecionado = new SimpleObjectProperty<>();
 
     private ObjectProperty<Result> alertProperty = new SimpleObjectProperty<>();
@@ -78,27 +69,23 @@ public class TelaImoveisViewModel {
     private FotosRepository fotosRepository;
     private TiposRepository tiposRepository;
     private CaracteristicasRepository caracteristicasRepository;
-    private EnderecosRepository enderecosRepository;
     private ClientesRepository clientesRepository;
 
     public TelaImoveisViewModel(ImoveisRepository imoveisRepository,
                                 FotosRepository fotosRepository,
                                 TiposRepository tiposRepository,
                                 CaracteristicasRepository caracteristicasRepository,
-                                EnderecosRepository enderecosRepository,
                                 ClientesRepository clientesRepository) {
         this.imoveisRepository = imoveisRepository;
         this.fotosRepository = fotosRepository;
         this.tiposRepository = tiposRepository;
         this.caracteristicasRepository = caracteristicasRepository;
-        this.enderecosRepository = enderecosRepository;
         this.clientesRepository = clientesRepository;
 
         updateList();
         carregaFotos();
         carregaTipos();
         carregaCaracteristicas();
-        carregaEnderecos();
         carregaClientes();
     
     }
@@ -146,16 +133,6 @@ public class TelaImoveisViewModel {
 
         }
 
-    }
-
-    public void carregaEnderecos(){
-        enderecos.clear();
-        
-        for(Endereco e : enderecosRepository.getEnderecos()){
-            enderecos.add(e);
-
-        }
-        
     }
 
     public void carregaClientes(){
@@ -243,11 +220,6 @@ public class TelaImoveisViewModel {
 
     }
 
-    public BooleanProperty pegarEnderecoProperty(){
-        return pegarEndereco;
-
-    }
-
     public StringProperty caminhoProperty(){
         return this.spCaminho;
         
@@ -286,30 +258,6 @@ public class TelaImoveisViewModel {
     public IntegerProperty enderecoProperty(){
         return this.spEndereco;
 
-    }
-
-    public StringProperty cepProperty() {
-        return this.spCep;
-    }
-
-    public StringProperty estadoProperty() {
-        return this.spEstado;
-    }
-
-    public StringProperty cidadeProperty() {
-        return this.spCidade;
-    }
-
-    public StringProperty logradouroProperty() {
-        return this.spLogradouro;
-    }
-
-    public StringProperty numeroProperty() {
-        return this.spNumero;
-    }
-
-    public StringProperty complementoProperty() {
-        return this.spComplemento;
     }
 
     public Result cadastraFoto(){
@@ -404,74 +352,6 @@ public class TelaImoveisViewModel {
 
         }
 
-    }
-
-    public Result buscaCep(){
-        if(spCep.getValue() == ""){
-            return Result.fail("Insira um CEP!");
-
-        }
-
-        Endereco e = enderecosRepository.getEnderecoFromAPI(spCep.getValue());
-        
-        if(e == null || e.getCep() == null){
-            return Result.fail("CEP não econtrado!");
-        } else {
-            spEstado.setValue(e.getEstado());
-            spCidade.setValue(e.getCidade());
-            spLogradouro.setValue(e.getLogradouro());
-            spNumero.setValue(String.valueOf(e.getNumero()));
-            spComplemento.setValue(e.getComplemento());
-
-            return Result.success("CEP encontrado com sucesso!");
-
-        }
-    }
-
-    public Result cadastraEndereco(){
-        Result result;
-
-        String cep = spCep.getValue();
-        String estado = spEstado.getValue();
-        String cidade = spCidade.getValue();
-        String logradouro = spLogradouro.getValue();
-        int numero = 0;
-
-        try{
-            numero = Integer.parseInt(spNumero.getValue());
-
-        }catch(NumberFormatException e){
-            result = Result.fail("Numero inválido!");
-
-        }
-
-        String complemento = spComplemento.getValue();
-
-        if(cep == "" || estado == "" || cidade == "" || logradouro == "" || numero == 0)
-            result = Result.fail("Preencha os campos!");
-
-        else{
-            Endereco endereco = new Endereco(cep, estado, cidade, logradouro, numero, complemento);
-            
-            result = enderecosRepository.adicionarEndereco(endereco);
-
-            if(result instanceof SuccessResult){
-                spCep.setValue("");
-                spEstado.setValue("");
-                spCidade.setValue("");
-                spLogradouro.setValue("");
-                spNumero.setValue("");
-                spComplemento.setValue("");
-
-                spEndereco.setValue(endereco.getId());
-                carregaEnderecos();
-    
-            }
-
-        }
-
-        return result;
-        
     }
 
     public Cliente buscaCliente(){
@@ -668,14 +548,6 @@ public class TelaImoveisViewModel {
         spMetragem.setValue("");
         spValor.setValue("");
         spMatricula.setValue("");
-        spCep.setValue("");
-        spEstado.setValue("");
-        spCidade.setValue("");
-        spLogradouro.setValue("");
-        spNumero.setValue("");
-        spComplemento.setValue("");
-
-        pegarEndereco.setValue(false);
         podeEditar.setValue(true);
         atualizar = false;
         operacao.setValue("Cadastrar");
