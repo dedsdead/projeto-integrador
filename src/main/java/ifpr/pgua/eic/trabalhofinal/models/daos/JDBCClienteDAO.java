@@ -17,13 +17,13 @@ import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
 public class JDBCClienteDAO implements ClienteDAO{
-    private static final String INSERT = "INSERT INTO TF_Cliente(codigo_endereco,codigo_tipo,codigo_caracteristica,nome,telefone,cpf,email) VALUES (?,?,?,?,?,?,?)";
-    private static final String UPDATE = "UPDATE TF_Cliente set codigo_endereco=?, codigo_tipo=?, codigo_caracteristica=?, nome=?, telefone=?, cpf=? WHERE codigo=?";
-    private static final String DELETE = "UPDATE TF_Cliente set excluido_em=? WHERE codigo=?";
-    private static final String SELECT_ALL = "SELECT * FROM TF_Cliente";
-    private static final String SELECT_ID = "SELECT * FROM TF_Cliente WHERE codigo=?";
-    private static final String CALL_CPF = "{? = call TF_Validar_cpf(?)}";
-    private static final String CALL_REGEX = "{? = call TF_Regex_email(?)}";
+    private static final String INSERT = "INSERT INTO Cliente(codigo_endereco,codigo_tipo,codigo_caracteristica,nome,telefone,cpf,email) VALUES (?,?,?,?,?,?,?)";
+    private static final String UPDATE = "UPDATE Cliente set codigo_endereco=?, codigo_tipo=?, codigo_caracteristica=?, nome=?, telefone=?, cpf=? WHERE codigo=?";
+    private static final String DELETE = "UPDATE Cliente set excluido_em=? WHERE codigo=?";
+    private static final String SELECT_ALL = "SELECT * FROM Cliente";
+    private static final String SELECT_ID = "SELECT * FROM Cliente WHERE codigo=?";
+    private static final String CALL_CPF = "{? = call Validar_cpf(?)}";
+    private static final String CALL_REGEX = "{? = call Regex_email(?)}";
 
     private FabricaConexoes fabricaConexoes;
 
@@ -35,8 +35,8 @@ public class JDBCClienteDAO implements ClienteDAO{
     @Override
     public Result create(Cliente cliente) {
         try {
-            if(mysqlValidaCpf(cliente.getCpf()) == false) return Result.fail("Insira um cpf válido!");
-            if(mysqlRegexEmail(cliente.getEmail()) == false) return Result.fail("Insira um email válido!");
+            //if(mysqlValidaCpf(cliente.getCpf()) == false) return Result.fail("Insira um cpf válido!");
+            //if(mysqlRegexEmail(cliente.getEmail()) == false) return Result.fail("Insira um email válido!");
 
             Connection con = fabricaConexoes.getConnection();
 

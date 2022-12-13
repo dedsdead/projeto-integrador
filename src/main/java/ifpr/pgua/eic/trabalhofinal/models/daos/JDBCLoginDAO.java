@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes;
 
 public class JDBCLoginDAO implements LoginDAO{
-    private static final String SELECT_EMAIL = "SELECT * FROM TF_Corretor WHERE email=?";
+    private static final String SELECT_EMAIL = "SELECT * FROM Corretor WHERE email=?";
 
     private FabricaConexoes fabricaConexoes;
 

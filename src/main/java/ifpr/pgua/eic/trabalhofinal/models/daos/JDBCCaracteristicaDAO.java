@@ -11,7 +11,7 @@ import ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica;
 
 public class JDBCCaracteristicaDAO implements CaracteristicaDAO{
-    private static final String SELECT_ALL = "SELECT * FROM TF_Caracteristica";
+    private static final String SELECT_ALL = "SELECT * FROM Caracteristica";
 
     private FabricaConexoes fabricaConexoes;
 

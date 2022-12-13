@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import ifpr.pgua.eic.trabalhofinal.models.daos.FotoDAO;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Foto;
+import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
 public class FotosRepository {
@@ -36,6 +37,19 @@ public class FotosRepository {
 
         return Collections.unmodifiableList(fotos);
         
+    }
+
+    public Foto buscaFotoId(Imovel imovel){
+        Optional<Foto> busca = fotos.stream().filter((cli)->cli.getId() == imovel.getIdFoto()).findFirst();
+        if(busca.isPresent()){
+            Foto f = busca.get();
+            return f;
+
+        } else {
+            return null;
+
+        }
+
     }
 
 }

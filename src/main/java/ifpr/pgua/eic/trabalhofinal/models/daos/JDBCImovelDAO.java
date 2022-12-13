@@ -16,11 +16,11 @@ import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
 public class JDBCImovelDAO implements ImovelDAO{
-    private static final String INSERT = "INSERT INTO TF_Imovel(codigo_foto,codigo_tipo,codigo_caracteristica,codigo_endereco,codigo_proprietario,descricao,metragem,valor,matricula) VALUES (?,?,?,?,?,?,?,?,?)";
-    private static final String UPDATE = "UPDATE TF_Imovel set codigo_foto=?, codigo_tipo=?, codigo_caracteristica=?, codigo_proprietario=?, descricao=?, metragem=?, valor=?, matricula=? WHERE codigo=?";
-    private static final String DELETE = "UPDATE TF_Imovel set excluido_em=? WHERE codigo=?";
-    private static final String SELECT_ID = "SELECT * FROM TF_Imovel WHERE codigo=?";
-    private static final String SELECT_ALL = "SELECT * FROM TF_Imovel";
+    private static final String INSERT = "INSERT INTO Imovel(codigo_foto,codigo_tipo,codigo_caracteristica,codigo_endereco,codigo_proprietario,descricao,metragem,valor,matricula) VALUES (?,?,?,?,?,?,?,?,?)";
+    private static final String UPDATE = "UPDATE Imovel set codigo_foto=?, codigo_tipo=?, codigo_caracteristica=?, codigo_proprietario=?, descricao=?, metragem=?, valor=?, matricula=? WHERE codigo=?";
+    private static final String DELETE = "UPDATE Imovel set excluido_em=? WHERE codigo=?";
+    private static final String SELECT_ID = "SELECT * FROM Imovel WHERE codigo=?";
+    private static final String SELECT_ALL = "SELECT * FROM Imovel";
 
     private FabricaConexoes fabricaConexoes;
 

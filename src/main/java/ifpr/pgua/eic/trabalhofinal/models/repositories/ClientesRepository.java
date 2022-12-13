@@ -6,7 +6,10 @@ import java.util.Optional;
 
 import ifpr.pgua.eic.trabalhofinal.models.daos.ClienteDAO;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
+import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
+import javafx.beans.property.ObjectProperty;
+import javafx.scene.control.SingleSelectionModel;
 
 public class ClientesRepository {
     private List<Cliente> clientes;
@@ -77,6 +80,33 @@ public class ClientesRepository {
     public List<Cliente> getClientes(){
         clientes = dao.getAll();
         return Collections.unmodifiableList(clientes);
+
+    }
+
+    public Cliente buscaCliente(ObjectProperty<SingleSelectionModel<String>> spCliente){
+        Optional<Cliente> busca = clientes.stream().filter((cli)->cli.getNome().equals(spCliente.getValue().getSelectedItem())).findFirst();
+        if(busca.isPresent()){
+            Cliente c = busca.get();
+            return c;
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public Cliente buscaClienteId(Imovel imovel){
+        Optional<Cliente> busca = clientes.stream().filter((cli)->cli.getId() == imovel.getIdProprietario()).findFirst();
+        
+        if(busca.isPresent()){
+            Cliente c = busca.get();
+            return c;
+
+        } else {
+            return null;
+
+        }
 
     }
 

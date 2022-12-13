@@ -13,8 +13,8 @@ import ifpr.pgua.eic.trabalhofinal.models.entities.Foto;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
 public class JDBCFotoDAO implements FotoDAO{
-    private static final String INSERT = "INSERT INTO TF_Foto(caminho_foto) VALUES (?)";
-    private static final String SELECT_ALL = "SELECT * FROM TF_Foto";
+    private static final String INSERT = "INSERT INTO Foto(caminho_foto) VALUES (?)";
+    private static final String SELECT_ALL = "SELECT * FROM Foto";
 
     private FabricaConexoes fabricaConexoes;
 

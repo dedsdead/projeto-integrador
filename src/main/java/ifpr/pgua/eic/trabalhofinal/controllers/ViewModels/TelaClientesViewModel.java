@@ -1,7 +1,5 @@
 package ifpr.pgua.eic.trabalhofinal.controllers.ViewModels;
 
-import java.util.Optional;
-
 import ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Tipo;
@@ -177,67 +175,13 @@ public class TelaClientesViewModel {
 
     }
 
-    public Tipo buscaTipo(){
-        Optional<Tipo> busca = tipos.stream().filter((cli)->cli.getNome().equals(spTipo.getValue().getSelectedItem())).findFirst();
-        if(busca.isPresent()){
-            Tipo t = busca.get();
-            return t;
-
-        } else {
-            return null;
-
-        }
-
-    }
-
-    public Tipo buscaTipoId(Cliente cliente){
-        Optional<Tipo> busca = tipos.stream().filter((cli)->cli.getId() == cliente.getIdTipo()).findFirst();
-        
-        if(busca.isPresent()){
-            Tipo t = busca.get();
-            return t;
-
-        } else {
-            return null;
-
-        }
-
-    }
-
-    public Caracteristica buscaCaracteristica(){
-        Optional<Caracteristica> busca = caracteristicas.stream().filter((cli)->(cli.getQuantidade()+" "+cli.getDescricao()).equals(spCaracteristica.getValue().getSelectedItem())).findFirst();
-        if(busca.isPresent()){
-            Caracteristica c = busca.get();
-            return c;
-
-        } else {
-            return null;
-
-        }
-
-    }
-
-    public Caracteristica buscaCaracteristicaId(Cliente cliente){
-        Optional<Caracteristica> busca = caracteristicas.stream().filter((cli)->cli.getId() == cliente.getIdCaracteristica()).findFirst();
-        
-        if(busca.isPresent()){
-            Caracteristica c = busca.get();
-            return c;
-
-        } else {
-            return null;
-
-        }
-
-    }
-
     public Result cadastrar(int temTipo, int temCaracteristica) {
         int idEndereco = spEndereco.getValue();
         int idTipo;
         int idCaracteristica;
 
         if (temTipo == 1){
-            Tipo t = buscaTipo();
+            Tipo t = tiposRepository.buscaTipo(spTipo);
 
             if(t != null){
                 idTipo = t.getId();
@@ -253,7 +197,7 @@ public class TelaClientesViewModel {
         }
 
         if (temCaracteristica == 1){
-            Caracteristica c = buscaCaracteristica();
+            Caracteristica c = caracteristicasRepository.buscaCaracteristica(spCaracteristica);
 
             if(c != null){
                 idCaracteristica = c.getId();
@@ -316,7 +260,7 @@ public class TelaClientesViewModel {
         
         if(cliente.getIdEndereco() != 0) spEndereco.setValue(cliente.getIdEndereco());
         
-        Tipo t = buscaTipoId(cliente);
+        Tipo t = tiposRepository.buscaTipoId(cliente);
         if(cliente.getIdTipo() != 0){
             spTipo.get().select(t.getNome());
 
@@ -325,7 +269,7 @@ public class TelaClientesViewModel {
 
         }
         
-        Caracteristica c = buscaCaracteristicaId(cliente);
+        Caracteristica c = caracteristicasRepository.buscaCaracteristicaId(cliente);
 
         if(cliente.getIdCaracteristica() != 0){
             spCaracteristica.get().select(c.getQuantidade()+" "+c.getDescricao());

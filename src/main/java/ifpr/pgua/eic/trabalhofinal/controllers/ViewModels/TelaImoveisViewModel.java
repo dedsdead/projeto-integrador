@@ -1,16 +1,12 @@
 package ifpr.pgua.eic.trabalhofinal.controllers.ViewModels;
 
-import java.util.Optional;
-
 import ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
-import ifpr.pgua.eic.trabalhofinal.models.entities.Endereco;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Foto;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Tipo;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.CaracteristicasRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ClientesRepository;
-import ifpr.pgua.eic.trabalhofinal.models.repositories.EnderecosRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.FotosRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ImoveisRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.TiposRepository;
@@ -287,100 +283,6 @@ public class TelaImoveisViewModel {
 
     }
 
-    public Foto buscaFotoId(Imovel imovel){
-        Optional<Foto> busca = fotos.stream().filter((cli)->cli.getId() == imovel.getIdFoto()).findFirst();
-        if(busca.isPresent()){
-            Foto f = busca.get();
-            return f;
-
-        } else {
-            return null;
-
-        }
-
-    }
-
-    public Tipo buscaTipo(){
-        Optional<Tipo> busca = tipos.stream().filter((cli)->cli.getNome().equals(spTipo.getValue().getSelectedItem())).findFirst();
-        if(busca.isPresent()){
-            Tipo t = busca.get();
-            return t;
-
-        } else {
-            return null;
-
-        }
-
-    }
-
-    public Tipo buscaTipoId(Imovel imovel){
-        Optional<Tipo> busca = tipos.stream().filter((cli)->cli.getId() == imovel.getIdTipo()).findFirst();
-        
-        if(busca.isPresent()){
-            Tipo t = busca.get();
-            return t;
-
-        } else {
-            return null;
-
-        }
-
-    }
-
-    public Caracteristica buscaCaracteristica(){
-        Optional<Caracteristica> busca = caracteristicas.stream().filter((cli)->(cli.getQuantidade()+" "+cli.getDescricao()).equals(spCaracteristica.getValue().getSelectedItem())).findFirst();
-        if(busca.isPresent()){
-            Caracteristica c = busca.get();
-            return c;
-
-        } else {
-            return null;
-
-        }
-
-    }
-
-    public Caracteristica buscaCaracteristicaId(Imovel imovel){
-        Optional<Caracteristica> busca = caracteristicas.stream().filter((cli)->cli.getId() == imovel.getIdCaracteristica()).findFirst();
-        
-        if(busca.isPresent()){
-            Caracteristica c = busca.get();
-            return c;
-
-        } else {
-            return null;
-
-        }
-
-    }
-
-    public Cliente buscaCliente(){
-        Optional<Cliente> busca = clientes.stream().filter((cli)->cli.getNome().equals(spCliente.getValue().getSelectedItem())).findFirst();
-        if(busca.isPresent()){
-            Cliente c = busca.get();
-            return c;
-
-        } else {
-            return null;
-
-        }
-
-    }
-
-    public Cliente buscaClienteId(Imovel imovel){
-        Optional<Cliente> busca = clientes.stream().filter((cli)->cli.getId() == imovel.getIdProprietario()).findFirst();
-        
-        if(busca.isPresent()){
-            Cliente c = busca.get();
-            return c;
-
-        } else {
-            return null;
-
-        }
-
-    }
-
     public Result cadastrar(int temCaracteristica) {
         int id = 0;
         int idFoto;
@@ -401,7 +303,7 @@ public class TelaImoveisViewModel {
 
         }
 
-        Tipo t = buscaTipo();
+        Tipo t = tiposRepository.buscaTipo(spTipo);
 
         if(t != null){
             idTipo = t.getId();
@@ -412,7 +314,7 @@ public class TelaImoveisViewModel {
         }
 
         if (temCaracteristica == 1){
-            Caracteristica c = buscaCaracteristica();
+            Caracteristica c = caracteristicasRepository.buscaCaracteristica(spCaracteristica);
 
             if(c != null){
                 idCaracteristica = c.getId();
@@ -429,7 +331,7 @@ public class TelaImoveisViewModel {
 
         int idEndereco = spEndereco.getValue();
 
-        Cliente cliente = buscaCliente();
+        Cliente cliente = clientesRepository.buscaCliente(spCliente);
 
         if(cliente != null){
             idCliente = cliente.getId();
@@ -493,14 +395,14 @@ public class TelaImoveisViewModel {
         
         Imovel imovel = selecionado.get().getImovel();
 
-        Foto f = buscaFotoId(imovel);
+        Foto f = fotosRepository.buscaFotoId(imovel);
         spCaminho.setValue(f.getCaminho());
         spFoto.setValue(f.getId());
         
-        Tipo t = buscaTipoId(imovel);
+        Tipo t = tiposRepository.buscaTipoId(imovel);
         spTipo.get().select(t.getNome());
         
-        Caracteristica c = buscaCaracteristicaId(imovel);
+        Caracteristica c = caracteristicasRepository.buscaCaracteristicaId(imovel);
 
         if(imovel.getIdCaracteristica() != 0){
             spCaracteristica.get().select(c.getQuantidade()+" "+c.getDescricao());
@@ -512,7 +414,7 @@ public class TelaImoveisViewModel {
 
         if(imovel.getIdEndereco() != 0) spEndereco.setValue(imovel.getIdEndereco());
         
-        Cliente cli = buscaClienteId(imovel);
+        Cliente cli = clientesRepository.buscaClienteId(imovel);
         spCliente.get().select(cli.getNome());
 
         spId.setValue(imovel.getId());

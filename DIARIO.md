@@ -29,3 +29,7 @@ Sétima semana **26/11:** ```Criação das duas funções (regex de email e veri
 Oitava semana **28/11:** ```Revisão da documentação.```
 
 Oitava semana **1/12:** ```Correções dos diagramas e modelos, correção do banco de dados.```
+
+Décima semana **12/12:** ```Correções dos diagramas de sequencia```
+
+Décima semana **13/12:** ```Correções do DER e MER, refatoração de parte do código em sala de aula```

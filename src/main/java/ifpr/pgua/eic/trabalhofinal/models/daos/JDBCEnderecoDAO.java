@@ -14,8 +14,8 @@ import ifpr.pgua.eic.trabalhofinal.models.entities.Endereco;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
 public class JDBCEnderecoDAO implements EnderecoDAO{
-    private static final String INSERT = "INSERT INTO TF_Endereco(cep,estado,cidade,logradouro,numero,complemento) VALUES (?,?,?,?,?,?)";
-    private static final String SELECT_ALL = "SELECT * FROM TF_Endereco";
+    private static final String INSERT = "INSERT INTO Endereco(cep,estado,cidade,logradouro,numero,complemento) VALUES (?,?,?,?,?,?)";
+    private static final String SELECT_ALL = "SELECT * FROM Endereco";
 
     private FabricaConexoes fabricaConexoes;
 

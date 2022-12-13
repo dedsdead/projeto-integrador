@@ -11,7 +11,7 @@ import ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Tipo;
 
 public class JDBCTipoDAO implements TipoDAO{
-    private static final String SELECT_ALL = "SELECT * FROM TF_Tipo";
+    private static final String SELECT_ALL = "SELECT * FROM Tipo";
 
     private FabricaConexoes fabricaConexoes;
 
