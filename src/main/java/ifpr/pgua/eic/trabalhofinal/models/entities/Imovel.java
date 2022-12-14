@@ -1,10 +1,10 @@
 package ifpr.pgua.eic.trabalhofinal.models.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Imovel {
     private int id;
-    private int idFoto;
     private int idTipo;
     private int idCaracteristica;
     private int idEndereco;
@@ -17,8 +17,9 @@ public class Imovel {
     private LocalDateTime dataCriacao;
     private LocalDateTime dataExclusao;
 
+    private ArrayList<Foto> fotos;
+
     public Imovel(int id,
-                  int idFoto,
                   int idTipo,
                   int idCaracteristica,
                   int idEndereco,
@@ -28,9 +29,9 @@ public class Imovel {
                   double valor,
                   String matricula,
                   LocalDateTime dataVenda,
-                  LocalDateTime dataExclusao) {
+                  LocalDateTime dataExclusao,
+                  ArrayList<Foto> fotos) {
         this.id = id;
-        this.idFoto = idFoto;
         this.idTipo = idTipo;
         this.idCaracteristica = idCaracteristica;
         this.idEndereco = idEndereco;
@@ -41,11 +42,11 @@ public class Imovel {
         this.matricula = matricula;
         this.dataVenda = dataVenda;
         this.dataExclusao = dataExclusao;
+        this.fotos = fotos;
         
     }
 
-    public Imovel(int idFoto,
-                  int idTipo,
+    public Imovel(int idTipo,
                   int idCaracteristica,
                   int idEndereco,
                   int idProprietario,
@@ -53,7 +54,6 @@ public class Imovel {
                   double metragem,
                   double valor,
                   String matricula) {
-        this.idFoto = idFoto;
         this.idTipo = idTipo;
         this.idCaracteristica = idCaracteristica;
         this.idEndereco = idEndereco;
@@ -71,14 +71,6 @@ public class Imovel {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getIdFoto() {
-        return idFoto;
-    }
-
-    public void setIdFoto(int idFoto) {
-        this.idFoto = idFoto;
     }
 
     public int getIdTipo() {
@@ -169,9 +161,17 @@ public class Imovel {
         this.dataExclusao = dataExclusao;
     }
 
+    public ArrayList<Foto> getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(ArrayList<Foto> fotos) {
+        this.fotos = fotos;
+    }
+
     @Override
     public String toString() {
-        return "Imovel [id = " + id + "\n, idFoto = " + idFoto + "\n, idTipo = " + idTipo + "\n, idCaracteristica = "
+        return "Imovel [id = " + id + "\n, idTipo = " + idTipo + "\n, idCaracteristica = "
                 + idCaracteristica + "\n, idEndereco = " + idEndereco + "\n, idProprietario = " + idProprietario
                 + "\n, descricao = " + descricao + "\n, metragem = " + metragem + "\n, valor = " + valor + "\n, matricula = "
                 + matricula + "\n, dataVenda = " + dataVenda + "\n, dataCriacao = " + dataCriacao + "\n, dataExclusao = "

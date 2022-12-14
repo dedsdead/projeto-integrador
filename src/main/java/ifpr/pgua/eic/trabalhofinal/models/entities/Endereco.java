@@ -5,25 +5,28 @@ public class Endereco {
     private String cep;
     private String uf;
     private String localidade;
+    private String bairro;
     private String logradouro;
     private int numero;
     private String complemento;
 
-    public Endereco(int id, String cep, String uf, String localidade, String logradouro, int numero, String complemento){
+    public Endereco(int id, String cep, String uf, String localidade, String bairro, String logradouro, int numero, String complemento){
         this.id = id;
         this.cep = cep;
         this.uf = uf;
         this.localidade = localidade;
+        this.bairro = bairro;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
 
     }
 
-    public Endereco(String cep, String uf, String localidade, String logradouro, int numero, String complemento){
+    public Endereco(String cep, String uf, String localidade, String bairro, String logradouro, int numero, String complemento){
         this.cep = cep;
         this.uf = uf;
         this.localidade = localidade;
+        this.bairro = bairro;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
@@ -62,6 +65,14 @@ public class Endereco {
         this.localidade = localidade;
     }
 
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
     public String getLogradouro() {
         return logradouro;
     }
@@ -92,6 +103,7 @@ public class Endereco {
                         "\n cep = " + cep +
                         "\n estado = " + uf +
                         "\n cidade = "+ localidade +
+                        "\n bairro = " + bairro +
                         "\n logradouro = " + logradouro +
                         "\n numero = " + numero +
                         "\n complemento = " + complemento + " ]";

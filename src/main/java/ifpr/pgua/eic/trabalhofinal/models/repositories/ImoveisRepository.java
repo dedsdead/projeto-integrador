@@ -17,8 +17,7 @@ public class ImoveisRepository {
 
     }
 
-    public Result adicionarImovel(int idFoto,
-                                  int idTipo,
+    public Result adicionarImovel(int idTipo,
                                   int idCaracteristica,
                                   int idEndereco,
                                   int idProprietario,
@@ -26,7 +25,6 @@ public class ImoveisRepository {
                                   double metragem,
                                   double valor,
                                   String matricula){
-        if(idFoto == 0) return Result.fail("Adicione uma foto!");
         if(idTipo == 0) return Result.fail("Adicione um tipo!");
         if(idProprietario == 0) return Result.fail("Adicione um proprietário!");
         if(idEndereco == 0) return Result.fail("Adicione um endereço!");
@@ -37,14 +35,13 @@ public class ImoveisRepository {
             return Result.fail("Imóvel já cadastrado!");
         }
 
-        Imovel imovel = new Imovel(idFoto, idTipo, idCaracteristica, idEndereco, idProprietario, descricao, metragem, valor, matricula);
+        Imovel imovel = new Imovel(idTipo, idCaracteristica, idEndereco, idProprietario, descricao, metragem, valor, matricula);
         
         return dao.create(imovel);
 
     }
 
     public Result atualizarImovel(int id,
-                                  int idFoto,
                                   int idTipo,
                                   int idCaracteristica,
                                   int idProprietario,
@@ -57,7 +54,6 @@ public class ImoveisRepository {
         if(busca.isPresent() && id != 0){
             Imovel imovel = busca.get();
 
-            if(idFoto != 0) imovel.setIdFoto(idFoto);
             if(idTipo != 0) imovel.setIdTipo(idTipo);
             if(idCaracteristica != 0) imovel.setIdCaracteristica(idCaracteristica);
             if(idProprietario != 0) imovel.setIdProprietario(idProprietario);

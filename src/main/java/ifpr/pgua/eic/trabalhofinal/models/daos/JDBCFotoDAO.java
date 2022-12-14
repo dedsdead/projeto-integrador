@@ -15,12 +15,13 @@ import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 public class JDBCFotoDAO implements FotoDAO{
     private static final String INSERT = "INSERT INTO Foto(caminho_foto) VALUES (?)";
     private static final String SELECT_ALL = "SELECT * FROM Foto";
+    private static final String SELECT_ID = "SELECT * FROM Foto WHERE codigo=?";
 
     private FabricaConexoes fabricaConexoes;
 
     public JDBCFotoDAO(FabricaConexoes fabricaConexoes){
         this.fabricaConexoes = fabricaConexoes;
-        
+
     }
     
     @Override
@@ -80,6 +81,37 @@ public class JDBCFotoDAO implements FotoDAO{
             con.close();
             
             return fotos;
+
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+            return null;
+
+        }
+
+    }
+
+    @Override
+    public Foto getPhoto(int id) {
+        try{
+            Connection con = fabricaConexoes.getConnection(); 
+            
+            PreparedStatement pstm = con.prepareStatement(SELECT_ALL);
+
+            pstm.setInt(1, id);
+
+            ResultSet rs = pstm.executeQuery();
+            
+            rs.next();
+
+            String caminho = rs.getString("caminho_foto");
+
+            Foto f = new Foto(id, caminho);
+
+            rs.close();
+            pstm.close();
+            con.close();
+            
+            return f;
 
         }catch(SQLException e){
             System.out.println(e.getMessage());

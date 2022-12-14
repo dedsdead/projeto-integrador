@@ -8,5 +8,6 @@ import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 public interface FotoDAO {
     Result create(Foto foto);
     List<Foto> getAll();
+    Foto getPhoto(int id);
     
 }

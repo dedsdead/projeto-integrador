@@ -5,8 +5,10 @@ import ifpr.pgua.eic.trabalhofinal.models.repositories.EnderecosRepository;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 import ifpr.pgua.eic.trabalhofinal.models.results.SuccessResult;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -14,9 +16,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class TelaEnderecosViewModel {
+    private IntegerProperty spEndereco = new SimpleIntegerProperty();
     private StringProperty spCep = new SimpleStringProperty();
     private StringProperty spEstado = new SimpleStringProperty();
     private StringProperty spCidade = new SimpleStringProperty();
+    private StringProperty spBairro = new SimpleStringProperty();
     private StringProperty spLogradouro = new SimpleStringProperty();
     private StringProperty spNumero = new SimpleStringProperty();
     private StringProperty spComplemento = new SimpleStringProperty();
@@ -37,6 +41,18 @@ public class TelaEnderecosViewModel {
         this.imoveisViewModel = imoveisViewModel;
         
         updateList();
+
+        if(clientesViewModel.enderecoProperty().getValue() != 0 && 
+            clientesViewModel.enderecoProperty().getValue() != -1){
+            this.spEndereco.setValue(clientesViewModel.enderecoProperty().getValue());
+
+        } else if(imoveisViewModel.enderecoProperty().getValue() != 0){
+            this.spEndereco.setValue(imoveisViewModel.enderecoProperty().getValue());
+
+        } else {
+            this.spEndereco.setValue(0);
+
+        }
 
     }
 
@@ -60,6 +76,10 @@ public class TelaEnderecosViewModel {
 
     }
 
+    public IntegerProperty enderecoProperty() {
+        return this.spEndereco;
+    }
+
     public StringProperty cepProperty() {
         return this.spCep;
     }
@@ -70,6 +90,10 @@ public class TelaEnderecosViewModel {
 
     public StringProperty cidadeProperty() {
         return this.spCidade;
+    }
+
+    public StringProperty bairroProperty() {
+        return this.spBairro;
     }
 
     public StringProperty logradouroProperty() {
@@ -99,6 +123,7 @@ public class TelaEnderecosViewModel {
         } else {
             spEstado.setValue(e.getEstado());
             spCidade.setValue(e.getCidade());
+            spBairro.setValue(e.getBairro());
             spLogradouro.setValue(e.getLogradouro());
             spNumero.setValue(String.valueOf(e.getNumero()));
             spComplemento.setValue(e.getComplemento());
@@ -114,6 +139,7 @@ public class TelaEnderecosViewModel {
         String cep = spCep.getValue();
         String estado = spEstado.getValue();
         String cidade = spCidade.getValue();
+        String bairro = spBairro.getValue();
         String logradouro = spLogradouro.getValue();
         int numero = 0;
 
@@ -127,11 +153,11 @@ public class TelaEnderecosViewModel {
 
         String complemento = spComplemento.getValue();
 
-        if(cep == "" || estado == "" || cidade == "" || logradouro == "" || numero == 0)
+        if(cep == "" || estado == "" || cidade == "" || bairro == "" || logradouro == "" || numero == 0)
             result = Result.fail("Preencha os campos!");
 
         else{
-            Endereco endereco = new Endereco(cep, estado, cidade, logradouro, numero, complemento);
+            Endereco endereco = new Endereco(cep, estado, cidade, bairro, logradouro, numero, complemento);
             
             result = enderecosRepository.adicionarEndereco(endereco);
 
@@ -156,10 +182,24 @@ public class TelaEnderecosViewModel {
         
     }
 
+    public void atualizaEndereco(){
+        Endereco e = enderecosRepository.buscaEnderecoId(spEndereco.getValue());
+
+        spEstado.setValue(e.getEstado());
+        spCidade.setValue(e.getCidade());
+        spBairro.setValue(e.getBairro());
+        spLogradouro.setValue(e.getLogradouro());
+        spNumero.setValue(String.valueOf(e.getNumero()));
+        spComplemento.setValue(e.getComplemento());
+        
+    }
+
     public void limpar() {
+        spEndereco.setValue(0);
         spCep.setValue("");
         spEstado.setValue("");
         spCidade.setValue("");
+        spBairro.setValue("");
         spLogradouro.setValue("");
         spNumero.setValue("");
         spComplemento.setValue("");

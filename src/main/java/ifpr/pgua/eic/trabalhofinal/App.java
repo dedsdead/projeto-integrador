@@ -14,11 +14,13 @@ import ifpr.pgua.eic.trabalhofinal.models.daos.ClienteDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.EnderecoDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.FotoDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.ImovelDAO;
+import ifpr.pgua.eic.trabalhofinal.models.daos.ImovelFotoDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.JDBCCaracteristicaDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.JDBCClienteDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.JDBCEnderecoDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.JDBCFotoDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.JDBCImovelDAO;
+import ifpr.pgua.eic.trabalhofinal.models.daos.JDBCImovelFotoDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.JDBCLoginDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.JDBCTipoDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.LoginDAO;
@@ -46,6 +48,7 @@ public final class App extends BaseAppNavigator{
     private TelaImoveisViewModel imoveisViewModel;
 
     private FotoDAO fotoDao;
+    private ImovelFotoDAO ifDao;
     private FotosRepository fotosRepository;
 
     private EnderecoDAO enderecoDao;
@@ -73,7 +76,8 @@ public final class App extends BaseAppNavigator{
         imoveisRepository = new ImoveisRepository(imovelDao);
 
         fotoDao = new JDBCFotoDAO(FabricaConexoes.getInstance());
-        fotosRepository = new FotosRepository(fotoDao);
+        ifDao = new JDBCImovelFotoDAO(FabricaConexoes.getInstance());
+        fotosRepository = new FotosRepository(fotoDao, ifDao);
 
         enderecoDao = new JDBCEnderecoDAO(FabricaConexoes.getInstance());
         enderecosRepository = new EnderecosRepository(enderecoDao);

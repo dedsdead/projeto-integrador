@@ -177,6 +177,7 @@ public class TelaClientesViewModel {
 
     public Result cadastrar(int temTipo, int temCaracteristica) {
         int idEndereco = spEndereco.getValue();
+        if(idEndereco == 0) return Result.fail("Preencha um endereço!");
         int idTipo;
         int idCaracteristica;
 
@@ -258,8 +259,6 @@ public class TelaClientesViewModel {
         
         Cliente cliente = selecionado.get().getCliente();
         
-        if(cliente.getIdEndereco() != 0) spEndereco.setValue(cliente.getIdEndereco());
-        
         Tipo t = tiposRepository.buscaTipoId(cliente);
         if(cliente.getIdTipo() != 0){
             spTipo.get().select(t.getNome());
@@ -278,7 +277,8 @@ public class TelaClientesViewModel {
             spCaracteristica.get().clearSelection();
 
         }
-        
+
+        spEndereco.setValue(cliente.getIdEndereco());
         
         spNome.setValue(cliente.getNome());
         spTelefone.setValue(cliente.getTelefone());

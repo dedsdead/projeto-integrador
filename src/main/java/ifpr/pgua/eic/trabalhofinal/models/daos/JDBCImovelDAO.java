@@ -12,20 +12,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes;
+import ifpr.pgua.eic.trabalhofinal.models.entities.Foto;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
 public class JDBCImovelDAO implements ImovelDAO{
-    private static final String INSERT = "INSERT INTO Imovel(codigo_foto,codigo_tipo,codigo_caracteristica,codigo_endereco,codigo_proprietario,descricao,metragem,valor,matricula) VALUES (?,?,?,?,?,?,?,?,?)";
-    private static final String UPDATE = "UPDATE Imovel set codigo_foto=?, codigo_tipo=?, codigo_caracteristica=?, codigo_proprietario=?, descricao=?, metragem=?, valor=?, matricula=? WHERE codigo=?";
+    private static final String INSERT = "INSERT INTO Imovel(codigo_tipo,codigo_caracteristica,codigo_endereco,codigo_proprietario,descricao,metragem,valor,matricula) VALUES (?,?,?,?,?,?,?,?)";
+    private static final String UPDATE = "UPDATE Imovel set codigo_tipo=?, codigo_caracteristica=?, codigo_proprietario=?, descricao=?, metragem=?, valor=?, matricula=? WHERE codigo=?";
     private static final String DELETE = "UPDATE Imovel set excluido_em=? WHERE codigo=?";
     private static final String SELECT_ID = "SELECT * FROM Imovel WHERE codigo=?";
     private static final String SELECT_ALL = "SELECT * FROM Imovel";
 
     private FabricaConexoes fabricaConexoes;
+    private JDBCImovelFotoDAO ifDao;
+    private JDBCFotoDAO fotoDao;
 
     public JDBCImovelDAO(FabricaConexoes fabricaConexoes) {
         this.fabricaConexoes = fabricaConexoes;
+        this.ifDao = new JDBCImovelFotoDAO(fabricaConexoes);
+        this.fotoDao = new JDBCFotoDAO(fabricaConexoes);
 
     }
 
@@ -36,26 +41,24 @@ public class JDBCImovelDAO implements ImovelDAO{
             
             PreparedStatement pstm = con.prepareStatement(INSERT);
 
-            pstm.setInt(1, imovel.getIdFoto());
-
-            pstm.setInt(2, imovel.getIdTipo());
+            pstm.setInt(1, imovel.getIdTipo());
 
             if(imovel.getIdCaracteristica() == 0){
-                pstm.setNull(3, Types.INTEGER);
+                pstm.setNull(2, Types.INTEGER);
             } else {
-                pstm.setInt(3, imovel.getIdCaracteristica());
+                pstm.setInt(2, imovel.getIdCaracteristica());
             }
             
-            pstm.setInt(4, imovel.getIdEndereco());
-            pstm.setInt(5, imovel.getIdProprietario());
-            pstm.setString(6, imovel.getDescricao());
-            pstm.setDouble(7, imovel.getMetragem());
-            pstm.setDouble(8, imovel.getValor());
+            pstm.setInt(3, imovel.getIdEndereco());
+            pstm.setInt(4, imovel.getIdProprietario());
+            pstm.setString(5, imovel.getDescricao());
+            pstm.setDouble(6, imovel.getMetragem());
+            pstm.setDouble(7, imovel.getValor());
 
             if(imovel.getMatricula().equals("")){
-                pstm.setNull(9, Types.VARCHAR);
+                pstm.setNull(8, Types.VARCHAR);
             } else {
-                pstm.setString(9, imovel.getMatricula());
+                pstm.setString(8, imovel.getMatricula());
             }
 
             pstm.execute();
@@ -80,22 +83,20 @@ public class JDBCImovelDAO implements ImovelDAO{
             
             PreparedStatement pstm = con.prepareStatement(UPDATE);
 
-            pstm.setInt(1, imovel.getIdFoto());
-
-            pstm.setInt(2, imovel.getIdTipo());
+            pstm.setInt(1, imovel.getIdTipo());
 
             if(imovel.getIdCaracteristica() == 0){
-                pstm.setNull(3, Types.INTEGER);
+                pstm.setNull(2, Types.INTEGER);
             } else {
-                pstm.setInt(3, imovel.getIdCaracteristica());
+                pstm.setInt(2, imovel.getIdCaracteristica());
             }
             
-            pstm.setInt(4, imovel.getIdProprietario());
-            pstm.setString(5, imovel.getDescricao());
-            pstm.setDouble(6, imovel.getMetragem());
-            pstm.setDouble(7, imovel.getValor());
-            pstm.setString(8, imovel.getMatricula());
-            pstm.setInt(9, imovel.getId());
+            pstm.setInt(3, imovel.getIdProprietario());
+            pstm.setString(4, imovel.getDescricao());
+            pstm.setDouble(5, imovel.getMetragem());
+            pstm.setDouble(6, imovel.getValor());
+            pstm.setString(7, imovel.getMatricula());
+            pstm.setInt(8, imovel.getId());
 
             pstm.execute();
 
@@ -155,7 +156,6 @@ public class JDBCImovelDAO implements ImovelDAO{
 
             rsc.next();
 
-            int idFoto = rsc.getInt("codigo_foto");
             int idTipo = rsc.getInt("codigo_tipo");
             int idCaracteristica = rsc.getInt("codigo_caracteristica");
             int idEndereco = rsc.getInt("codigo_endereco");
@@ -169,7 +169,15 @@ public class JDBCImovelDAO implements ImovelDAO{
             if(rsc.getTimestamp("excluido_em") != null)
                 dataExclusao = rsc.getTimestamp("excluido_em").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
 
-            Imovel i = new Imovel(id, idFoto, idTipo, idCaracteristica, idEndereco, idProprietario, descricao, metragem, valor, matricula, dataVenda, dataExclusao);
+            ArrayList<Integer> idsFotos = ifDao.getPhotos(id);
+            ArrayList<Foto> fotos = new ArrayList<>();
+            
+            for (int idFoto : idsFotos) {
+                fotos.add(fotoDao.getPhoto(idFoto));
+                
+            }
+
+            Imovel i = new Imovel(id, idTipo, idCaracteristica, idEndereco, idProprietario, descricao, metragem, valor, matricula, dataVenda, dataExclusao, fotos);
 
             rsc.close();
             pstm.close();
@@ -198,7 +206,6 @@ public class JDBCImovelDAO implements ImovelDAO{
 
             while(rs.next()){
                 int id = rs.getInt("codigo");
-                int idFoto = rs.getInt("codigo_foto");
                 int idTipo = rs.getInt("codigo_tipo");
                 int idCaracteristica = rs.getInt("codigo_caracteristica");
                 int idEndereco = rs.getInt("codigo_endereco");
@@ -215,7 +222,15 @@ public class JDBCImovelDAO implements ImovelDAO{
                 if(rs.getTimestamp("excluido_em") != null)
                     dataExclusao = rs.getTimestamp("excluido_em").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
     
-                Imovel i = new Imovel(id, idFoto, idTipo, idCaracteristica, idEndereco, idProprietario, descricao, metragem, valor, matricula, dataVenda, dataExclusao);
+                ArrayList<Integer> idsFotos = ifDao.getPhotos(id);
+                ArrayList<Foto> fotos = new ArrayList<>();
+                
+                for (int idFoto : idsFotos) {
+                    fotos.add(fotoDao.getPhoto(idFoto));
+                    
+                }
+
+                Imovel i = new Imovel(id, idTipo, idCaracteristica, idEndereco, idProprietario, descricao, metragem, valor, matricula, dataVenda, dataExclusao, fotos);
                 imoveis.add(i);
 
             }

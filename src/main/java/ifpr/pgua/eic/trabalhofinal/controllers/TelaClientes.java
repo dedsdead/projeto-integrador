@@ -116,9 +116,6 @@ public class TelaClientes extends BaseController implements Initializable{
         btExcluir.managedProperty().bind(viewModel.podeEditarProperty().not());
         btExcluir.visibleProperty().bind(viewModel.podeEditarProperty().not());
 
-        btEnderecos.managedProperty().bind(viewModel.podeEditarProperty());
-        btEnderecos.visibleProperty().bind(viewModel.podeEditarProperty());
-
         viewModel.updateList();
 
         cbTipos.setOnAction((evt)->{
@@ -157,7 +154,9 @@ public class TelaClientes extends BaseController implements Initializable{
 
     @FXML
     private void telaEnderecos(){
-        viewModel.enderecoProperty().set(-1);
+        if(viewModel.podeEditarProperty().getValue())
+            viewModel.enderecoProperty().set(-1);
+            
         App.pushScreen("ENDERECOS");
 
     }

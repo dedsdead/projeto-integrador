@@ -25,6 +25,9 @@ public class TelaEnderecos extends BaseController implements Initializable{
     private TextField tfCidade;
 
     @FXML
+    private TextField tfBairro;
+
+    @FXML
     private TextField tfLogradouro;
 
     @FXML
@@ -41,6 +44,9 @@ public class TelaEnderecos extends BaseController implements Initializable{
 
     @FXML
     private Label lbCidade;
+
+    @FXML
+    private Label lbBairro;
 
     @FXML
     private Label lbLogradouro;
@@ -69,9 +75,16 @@ public class TelaEnderecos extends BaseController implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        if(viewModel.enderecoProperty().getValue() != 0){
+            viewModel.pegarEnderecoProperty().set(!viewModel.pegarEnderecoProperty().getValue());
+            viewModel.atualizaEndereco();
+            
+        }
+
         tfCep.textProperty().bindBidirectional(viewModel.cepProperty());
         tfEstado.textProperty().bindBidirectional(viewModel.estadoProperty());
         tfCidade.textProperty().bindBidirectional(viewModel.cidadeProperty());
+        tfBairro.textProperty().bindBidirectional(viewModel.bairroProperty());
         tfLogradouro.textProperty().bindBidirectional(viewModel.logradouroProperty());
         tfNumero.textProperty().bindBidirectional(viewModel.numeroProperty());
         tfComplemento.textProperty().bindBidirectional(viewModel.complementoProperty());
@@ -84,6 +97,9 @@ public class TelaEnderecos extends BaseController implements Initializable{
 
         tfCidade.managedProperty().bind(viewModel.pegarEnderecoProperty());
         tfCidade.visibleProperty().bind(viewModel.pegarEnderecoProperty());
+
+        tfBairro.managedProperty().bind(viewModel.pegarEnderecoProperty());
+        tfBairro.visibleProperty().bind(viewModel.pegarEnderecoProperty());
 
         tfLogradouro.managedProperty().bind(viewModel.pegarEnderecoProperty());
         tfLogradouro.visibleProperty().bind(viewModel.pegarEnderecoProperty());
@@ -102,6 +118,9 @@ public class TelaEnderecos extends BaseController implements Initializable{
 
         lbCidade.managedProperty().bind(viewModel.pegarEnderecoProperty());
         lbCidade.visibleProperty().bind(viewModel.pegarEnderecoProperty());
+
+        lbBairro.managedProperty().bind(viewModel.pegarEnderecoProperty());
+        lbBairro.visibleProperty().bind(viewModel.pegarEnderecoProperty());
 
         lbLogradouro.managedProperty().bind(viewModel.pegarEnderecoProperty());
         lbLogradouro.visibleProperty().bind(viewModel.pegarEnderecoProperty());

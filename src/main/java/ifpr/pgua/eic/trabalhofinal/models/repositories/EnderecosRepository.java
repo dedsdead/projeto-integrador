@@ -61,5 +61,19 @@ public class EnderecosRepository {
         return Collections.unmodifiableList(enderecos);
 
     }
+
+    public Endereco buscaEnderecoId(int id){
+        Optional<Endereco> busca = enderecos.stream().filter((cli)->cli.getId() == id).findFirst();
+
+        if(busca.isPresent()){
+            Endereco e = busca.get();
+            return e;
+
+        } else {
+            return null;
+
+        }
+
+    }
     
 }

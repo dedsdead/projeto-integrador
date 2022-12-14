@@ -12,6 +12,8 @@
     <TextField fx:id="tfEstado" promptText="Digite o estado" />
     <Label fx:id="lbCidade" alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="92.0" text="Cidade:" />
     <TextField fx:id="tfCidade" promptText="Digite a cidade" />
+    <Label fx:id="lbBairro" alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="92.0" text="Bairro:" />
+    <TextField fx:id="tfBairro" promptText="Digite o bairro" />
     <Label fx:id="lbLogradouro" alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="91.0" text="Logradouro:" />
     <TextField fx:id="tfLogradouro" promptText="Digite o logradouro" />
     <Label fx:id="lbNumero" alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="91.0" text="Numero:" />

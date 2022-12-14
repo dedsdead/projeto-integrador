@@ -14,7 +14,7 @@ import ifpr.pgua.eic.trabalhofinal.models.entities.Endereco;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
 public class JDBCEnderecoDAO implements EnderecoDAO{
-    private static final String INSERT = "INSERT INTO Endereco(cep,estado,cidade,logradouro,numero,complemento) VALUES (?,?,?,?,?,?)";
+    private static final String INSERT = "INSERT INTO Endereco(cep,estado,cidade,bairro,logradouro,numero,complemento) VALUES (?,?,?,?,?,?,?)";
     private static final String SELECT_ALL = "SELECT * FROM Endereco";
 
     private FabricaConexoes fabricaConexoes;
@@ -34,8 +34,9 @@ public class JDBCEnderecoDAO implements EnderecoDAO{
             pstm.setString(1, endereco.getCep());
             pstm.setString(2, endereco.getEstado());
             pstm.setString(3, endereco.getCidade());
-            pstm.setString(4, endereco.getLogradouro());
-            pstm.setInt(5, endereco.getNumero());
+            pstm.setString(4, endereco.getBairro());
+            pstm.setString(5, endereco.getLogradouro());
+            pstm.setInt(6, endereco.getNumero());
             
 
             if(endereco.getComplemento().equals("")){
@@ -82,11 +83,12 @@ public class JDBCEnderecoDAO implements EnderecoDAO{
                 String cep = rs.getString("cep");
                 String estado = rs.getString("estado");
                 String cidade = rs.getString("cidade");
+                String bairro = rs.getString("bairro");
                 String logradouro = rs.getString("logradouro");
                 int numero = rs.getInt("numero");
                 String complemento = rs.getString("complemento");
 
-                Endereco e = new Endereco(id, cep, estado, cidade, logradouro, numero, complemento);
+                Endereco e = new Endereco(id, cep, estado, cidade, bairro, logradouro, numero, complemento);
                 enderecos.add(e);
                 
             }

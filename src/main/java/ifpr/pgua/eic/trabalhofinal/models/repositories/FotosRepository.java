@@ -1,20 +1,25 @@
 package ifpr.pgua.eic.trabalhofinal.models.repositories;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import ifpr.pgua.eic.trabalhofinal.models.daos.FotoDAO;
+import ifpr.pgua.eic.trabalhofinal.models.daos.ImovelFotoDAO;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Foto;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
+import ifpr.pgua.eic.trabalhofinal.models.results.SuccessResult;
 
 public class FotosRepository {
     private List<Foto> fotos;
     private FotoDAO dao;
+    private ImovelFotoDAO ifDao;
 
-    public FotosRepository(FotoDAO dao){
+    public FotosRepository(FotoDAO dao, ImovelFotoDAO ifDao){
         this.dao = dao;
+        this.ifDao = ifDao;
 
     }
 
@@ -32,24 +37,32 @@ public class FotosRepository {
 
     }
 
+    public Result adicionarImovelFoto(int id, ArrayList<Integer> idsFotos){
+        int i = 0;
+        Result result;
+
+        for (int idFoto : idsFotos) {
+            result = ifDao.create(id, idFoto);
+
+            if(result instanceof SuccessResult)
+                i++;
+        }
+
+        if (i > 0) {
+            return Result.success(i+"Foto(s) cadastrada(s) com sucesso!");
+
+        } else {
+            return Result.fail("Erro ao cadastrar as fotos!");
+
+        }
+
+    }
+
     public List<Foto> getFotos(){
         fotos = dao.getAll();
 
         return Collections.unmodifiableList(fotos);
         
-    }
-
-    public Foto buscaFotoId(Imovel imovel){
-        Optional<Foto> busca = fotos.stream().filter((cli)->cli.getId() == imovel.getIdFoto()).findFirst();
-        if(busca.isPresent()){
-            Foto f = busca.get();
-            return f;
-
-        } else {
-            return null;
-
-        }
-
     }
 
 }

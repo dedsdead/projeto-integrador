@@ -22,11 +22,6 @@ public class ImovelRow {
         
     }
 
-    public StringProperty idFotoProperty(){
-        return new SimpleStringProperty(String.valueOf(imovel.getIdFoto()));
-        
-    }
-
     public StringProperty idTipoProperty(){
         return new SimpleStringProperty(String.valueOf(imovel.getIdTipo()));
         

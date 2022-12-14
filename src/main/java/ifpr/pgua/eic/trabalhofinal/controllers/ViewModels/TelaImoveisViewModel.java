@@ -1,5 +1,7 @@
 package ifpr.pgua.eic.trabalhofinal.controllers.ViewModels;
 
+import java.util.ArrayList;
+
 import ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Foto;
@@ -47,6 +49,7 @@ public class TelaImoveisViewModel {
     private ObservableList<ImovelRow> obsImoveis = FXCollections.observableArrayList();
 
     private ObservableList<Foto> fotos = FXCollections.observableArrayList();
+    private ArrayList<Integer> idsFotos = new ArrayList<>();
 
     private ObservableList<Tipo> tipos = FXCollections.observableArrayList();
     private ObservableList<String> nomes = FXCollections.observableArrayList();
@@ -79,71 +82,10 @@ public class TelaImoveisViewModel {
         this.clientesRepository = clientesRepository;
 
         updateList();
-        carregaFotos();
         carregaTipos();
         carregaCaracteristicas();
         carregaClientes();
     
-    }
-
-    public void updateList(){
-        obsImoveis.clear();
-
-        for(Imovel i : imoveisRepository.getImoveis()){
-            if(i.getDataExclusao() == null)
-            obsImoveis.add(new ImovelRow(i));
-
-        }
-
-    }
-
-    public void carregaFotos(){
-        fotos.clear();
-        
-        for(Foto f : fotosRepository.getFotos()){
-            fotos.add(f);
-
-        }
-
-    }
-
-    public void carregaTipos(){
-        tipos.clear();
-        nomes.clear();
-        
-        for(Tipo t : tiposRepository.getTipos()){
-            tipos.add(t);
-            nomes.add(t.getNome());
-
-        }
-
-    }
-
-    public void carregaCaracteristicas(){
-        caracteristicas.clear();
-        descricoes.clear();
-        
-        for(Caracteristica c : caracteristicasRepository.getCaracteristicas()){
-            caracteristicas.add(c);
-            descricoes.add(c.getQuantidade()+" "+c.getDescricao());
-
-        }
-
-    }
-
-    public void carregaClientes(){
-        clientes.clear();
-        proprietarios.clear();
-        
-        for(Cliente c : clientesRepository.getClientes()){
-            if(c.getDataExclusao() == null){
-                clientes.add(c);
-                proprietarios.add(c.getNome());
-
-            }
-
-        }
-        
     }
 
     public ObjectProperty<SingleSelectionModel<String>> tipoProperty(){
@@ -251,9 +193,71 @@ public class TelaImoveisViewModel {
 
     }
 
+    public ArrayList<Integer> getIdsFotos(){
+        return this.idsFotos;
+
+    }
+
     public IntegerProperty enderecoProperty(){
         return this.spEndereco;
 
+    }
+
+    public void updateList(){
+        obsImoveis.clear();
+
+        for(Imovel i : imoveisRepository.getImoveis()){
+            if(i.getDataExclusao() == null)
+            obsImoveis.add(new ImovelRow(i));
+
+        }
+
+    }
+
+    public void carregaFotos(Imovel imovel){
+        fotos.clear();
+        
+        fotos.addAll(imovel.getFotos());
+
+    }
+
+    public void carregaTipos(){
+        tipos.clear();
+        nomes.clear();
+        
+        for(Tipo t : tiposRepository.getTipos()){
+            tipos.add(t);
+            nomes.add(t.getNome());
+
+        }
+
+    }
+
+    public void carregaCaracteristicas(){
+        caracteristicas.clear();
+        descricoes.clear();
+        
+        for(Caracteristica c : caracteristicasRepository.getCaracteristicas()){
+            caracteristicas.add(c);
+            descricoes.add(c.getQuantidade()+" "+c.getDescricao());
+
+        }
+
+    }
+
+    public void carregaClientes(){
+        clientes.clear();
+        proprietarios.clear();
+        
+        for(Cliente c : clientesRepository.getClientes()){
+            if(c.getDataExclusao() == null){
+                clientes.add(c);
+                proprietarios.add(c.getNome());
+
+            }
+
+        }
+        
     }
 
     public Result cadastraFoto(){
@@ -273,7 +277,7 @@ public class TelaImoveisViewModel {
                 spFoto.setValue(0);
                 spCaminho.setValue("");
                 spFoto.setValue(foto.getId());
-                carregaFotos();
+                idsFotos.add(foto.getId());
     
             }
 
@@ -285,7 +289,6 @@ public class TelaImoveisViewModel {
 
     public Result cadastrar(int temCaracteristica) {
         int id = 0;
-        int idFoto;
         int idTipo;
         int idCaracteristica;
         int idCliente;
@@ -295,11 +298,8 @@ public class TelaImoveisViewModel {
             
         }
 
-        if(spFoto.getValue() != 0){
-            idFoto = spFoto.getValue();
-
-        } else {
-            return Result.fail("Escolha uma foto!");
+        if(idsFotos.size() == 0){
+            return Result.fail("Escolha ao menos uma foto!");
 
         }
 
@@ -371,11 +371,12 @@ public class TelaImoveisViewModel {
         Result result;
 
         if (atualizar) {
-            result = imoveisRepository.atualizarImovel(id, idFoto, idTipo, idCaracteristica, idCliente, descricao, metragem, valor, matricula);
-        
+            result = imoveisRepository.atualizarImovel(id, idTipo, idCaracteristica, idCliente, descricao, metragem, valor, matricula);
+            fotosRepository.adicionarImovelFoto(id, idsFotos);
+
         } else {
-            result = imoveisRepository.adicionarImovel(idFoto, idTipo, idCaracteristica, idEndereco, idCliente, descricao, metragem, valor, matricula);
-        
+            result = imoveisRepository.adicionarImovel(idTipo, idCaracteristica, idEndereco, idCliente, descricao, metragem, valor, matricula);
+            
         }
 
         if(result instanceof SuccessResult){
@@ -395,9 +396,7 @@ public class TelaImoveisViewModel {
         
         Imovel imovel = selecionado.get().getImovel();
 
-        Foto f = fotosRepository.buscaFotoId(imovel);
-        spCaminho.setValue(f.getCaminho());
-        spFoto.setValue(f.getId());
+        carregaFotos(imovel);
         
         Tipo t = tiposRepository.buscaTipoId(imovel);
         spTipo.get().select(t.getNome());
@@ -412,10 +411,10 @@ public class TelaImoveisViewModel {
 
         }
 
-        if(imovel.getIdEndereco() != 0) spEndereco.setValue(imovel.getIdEndereco());
+        spEndereco.setValue(imovel.getIdEndereco());
         
-        Cliente cli = clientesRepository.buscaClienteId(imovel);
-        spCliente.get().select(cli.getNome());
+        Cliente cliente = clientesRepository.buscaClienteId(imovel);
+        spCliente.get().select(cliente.getNome());
 
         spId.setValue(imovel.getId());
         spDescricao.setValue(imovel.getDescricao());
@@ -445,11 +444,15 @@ public class TelaImoveisViewModel {
         spId.setValue(0);
         spFoto.setValue(0);
         spCaminho.setValue("");
+        idsFotos.clear();
+
         spEndereco.setValue(0);
+
         spDescricao.setValue("");
         spMetragem.setValue("");
         spValor.setValue("");
         spMatricula.setValue("");
+        
         podeEditar.setValue(true);
         atualizar = false;
         operacao.setValue("Cadastrar");
