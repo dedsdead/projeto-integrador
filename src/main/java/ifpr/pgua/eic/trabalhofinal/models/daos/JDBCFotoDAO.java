@@ -95,7 +95,7 @@ public class JDBCFotoDAO implements FotoDAO{
         try{
             Connection con = fabricaConexoes.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement(SELECT_ALL);
+            PreparedStatement pstm = con.prepareStatement(SELECT_ID);
 
             pstm.setInt(1, id);
 

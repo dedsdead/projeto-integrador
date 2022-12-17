@@ -8,7 +8,6 @@ import java.util.Optional;
 import ifpr.pgua.eic.trabalhofinal.models.daos.FotoDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.ImovelFotoDAO;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Foto;
-import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 import ifpr.pgua.eic.trabalhofinal.models.results.SuccessResult;
 
@@ -21,6 +20,8 @@ public class FotosRepository {
         this.dao = dao;
         this.ifDao = ifDao;
 
+        getFotos();
+        
     }
 
     public Result adicionarFoto(Foto foto){

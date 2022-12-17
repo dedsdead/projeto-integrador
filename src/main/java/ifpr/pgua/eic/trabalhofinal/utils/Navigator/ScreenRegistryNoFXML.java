@@ -1,8 +1,5 @@
 package ifpr.pgua.eic.trabalhofinal.utils.Navigator;
 
-
-import java.net.URL;
-
 import javafx.scene.Parent;
 import javafx.util.Callback;
 

@@ -274,7 +274,6 @@ public class TelaImoveisViewModel {
             result = fotosRepository.adicionarFoto(foto);
 
             if(result instanceof SuccessResult){
-                spFoto.setValue(0);
                 spCaminho.setValue("");
                 spFoto.setValue(foto.getId());
                 idsFotos.add(foto.getId());
@@ -372,11 +371,11 @@ public class TelaImoveisViewModel {
 
         if (atualizar) {
             result = imoveisRepository.atualizarImovel(id, idTipo, idCaracteristica, idCliente, descricao, metragem, valor, matricula);
-            fotosRepository.adicionarImovelFoto(id, idsFotos);
-
+            
         } else {
             result = imoveisRepository.adicionarImovel(idTipo, idCaracteristica, idEndereco, idCliente, descricao, metragem, valor, matricula);
-            
+            fotosRepository.adicionarImovelFoto(id, idsFotos);
+
         }
 
         if(result instanceof SuccessResult){
