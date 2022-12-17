@@ -2,10 +2,12 @@ package ifpr.pgua.eic.trabalhofinal;
 
 import ifpr.pgua.eic.trabalhofinal.controllers.TelaClientes;
 import ifpr.pgua.eic.trabalhofinal.controllers.TelaEnderecos;
+import ifpr.pgua.eic.trabalhofinal.controllers.TelaFotos;
 import ifpr.pgua.eic.trabalhofinal.controllers.TelaImoveis;
 import ifpr.pgua.eic.trabalhofinal.controllers.TelaPrincipal;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaClientesViewModel;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaEnderecosViewModel;
+import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaFotosViewModel;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaImoveisViewModel;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaPrincipalViewModel;
 import ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes;
@@ -118,6 +120,7 @@ public final class App extends BaseAppNavigator{
         registraTela("IMOVEIS", new ScreenRegistryFXML(getClass(), "fxml/imoveis.fxml", (o)->new TelaImoveis(imoveisViewModel)));
     
         registraTela("ENDERECOS", new ScreenRegistryFXML(getClass(), "fxml/enderecos.fxml", (o)->new TelaEnderecos(new TelaEnderecosViewModel(enderecosRepository, clientesViewModel, imoveisViewModel))));
+        registraTela("FOTOS", new ScreenRegistryFXML(getClass(), "fxml/fotos.fxml", (o)->new TelaFotos(new TelaFotosViewModel(fotosRepository, imoveisViewModel))));
 
     }
 

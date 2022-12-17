@@ -37,9 +37,9 @@ public class TelaImoveisViewModel {
     private StringProperty spValor = new SimpleStringProperty();
     private StringProperty spMatricula = new SimpleStringProperty();
 
-    private StringProperty spCaminho = new SimpleStringProperty();
+    //esse array de fotos tem que ser comunicado nas telas imoveis e fotos \/
+    private ArrayList<Integer> idsFotos = new ArrayList<>();
 
-    private IntegerProperty spFoto = new SimpleIntegerProperty();
     private IntegerProperty spEndereco = new SimpleIntegerProperty();
 
     private StringProperty operacao = new SimpleStringProperty("Cadastrar");
@@ -47,9 +47,6 @@ public class TelaImoveisViewModel {
     private boolean atualizar = false;
 
     private ObservableList<ImovelRow> obsImoveis = FXCollections.observableArrayList();
-
-    private ObservableList<Foto> fotos = FXCollections.observableArrayList();
-    private ArrayList<Integer> idsFotos = new ArrayList<>();
 
     private ObservableList<Tipo> tipos = FXCollections.observableArrayList();
     private ObservableList<String> nomes = FXCollections.observableArrayList();
@@ -158,11 +155,6 @@ public class TelaImoveisViewModel {
 
     }
 
-    public StringProperty caminhoProperty(){
-        return this.spCaminho;
-        
-    }
-
     public IntegerProperty idProperty(){
         return this.spId;
 
@@ -188,11 +180,6 @@ public class TelaImoveisViewModel {
 
     }
 
-    public IntegerProperty fotoProperty(){
-        return this.spFoto;
-
-    }
-
     public ArrayList<Integer> getIdsFotos(){
         return this.idsFotos;
 
@@ -215,9 +202,12 @@ public class TelaImoveisViewModel {
     }
 
     public void carregaFotos(Imovel imovel){
-        fotos.clear();
+        idsFotos.clear();
         
-        fotos.addAll(imovel.getFotos());
+        for (Foto f : imovel.getFotos()) {
+            idsFotos.add(f.getId());
+
+        }
 
     }
 
@@ -258,32 +248,6 @@ public class TelaImoveisViewModel {
 
         }
         
-    }
-
-    public Result cadastraFoto(){
-        Result result;
-
-        String caminho = spCaminho.getValue();
-
-        if(caminho == "")
-            result = Result.fail("Selecione uma foto!");
-
-        else{
-            Foto foto = new Foto(caminho);
-
-            result = fotosRepository.adicionarFoto(foto);
-
-            if(result instanceof SuccessResult){
-                spCaminho.setValue("");
-                spFoto.setValue(foto.getId());
-                idsFotos.add(foto.getId());
-    
-            }
-
-        }
-
-        return result;
-
     }
 
     public Result cadastrar(int temCaracteristica) {
@@ -441,8 +405,6 @@ public class TelaImoveisViewModel {
 
     public void limpar() {
         spId.setValue(0);
-        spFoto.setValue(0);
-        spCaminho.setValue("");
         idsFotos.clear();
 
         spEndereco.setValue(0);

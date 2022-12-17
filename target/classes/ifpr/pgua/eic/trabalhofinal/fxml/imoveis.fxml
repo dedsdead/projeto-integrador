@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.Group?>
 
 <VBox prefHeight="800.0" prefWidth="800.0" spacing="10.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.trabalhofinal.controllers.TelaImoveis">
    <children>
@@ -55,6 +54,7 @@
 
             <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <children>
+                  <Button fx:id="btFotos" onAction="#telaFotos" text="Fotos" />
                   <Button fx:id="btEnderecos" onAction="#telaEnderecos" text="Endereços" />
                   <Button fx:id="btCadastrar" onAction="#cadastrar" text="Cadastrar" />
                   <Button fx:id="btExcluir" onAction="#excluir" text="Excluir" />
@@ -63,17 +63,6 @@
             </HBox>
          </children>
       </GridPane>
-      
-      <HBox alignment="CENTER" prefHeight="150.0" prefWidth="800.0" spacing="20.0">
-         <VBox alignment="CENTER">
-            <Group fx:id="gpImagens" />
-            <TextField fx:id="tfFoto" />
-            <HBox>
-               <Button fx:id="btBuscarFoto" onAction="#buscarFoto" text="Selecionar foto" />
-               <Button fx:id="btSalvarFoto" onAction="#salvarFoto" text="Salvar foto" />
-            </HBox>
-         </VBox>
-      </HBox>
 
       <TableView fx:id="tbImoveis" prefHeight="300.0" prefWidth="800.0" onMouseClicked="#atualizar">
         <columns>

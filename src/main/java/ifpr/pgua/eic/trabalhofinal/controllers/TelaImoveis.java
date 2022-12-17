@@ -1,8 +1,5 @@
 package ifpr.pgua.eic.trabalhofinal.controllers;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -14,17 +11,13 @@ import ifpr.pgua.eic.trabalhofinal.models.results.SuccessResult;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.FileChooser;
 
 public class TelaImoveis extends BaseController implements Initializable{
     @FXML
@@ -55,9 +48,6 @@ public class TelaImoveis extends BaseController implements Initializable{
     private TableView<ImovelRow> tbImoveis;
 
     @FXML
-    private TextField tfFoto;
-
-    @FXML
     private TextField tfDescricao;
 
     @FXML
@@ -76,10 +66,7 @@ public class TelaImoveis extends BaseController implements Initializable{
     private Button btEnderecos;
 
     @FXML
-    private Button btBuscarFoto;
-
-    @FXML
-    private Button btSalvarFoto;
+    private Button btFotos;
 
     @FXML
     private Button btExcluir;
@@ -87,14 +74,10 @@ public class TelaImoveis extends BaseController implements Initializable{
     @FXML
     private Button btLimpar;
 
-    @FXML
-    private Group gpImagens;
-
     private TelaImoveisViewModel viewModel;
 
     int temCaracteristica = 0;
     int limpar = 0;
-    FileChooser fcFoto = new FileChooser();
 
     public TelaImoveis(TelaImoveisViewModel viewModel){
         this.viewModel = viewModel;
@@ -140,8 +123,6 @@ public class TelaImoveis extends BaseController implements Initializable{
         btExcluir.managedProperty().bind(viewModel.podeEditarProperty().not());
         btExcluir.visibleProperty().bind(viewModel.podeEditarProperty().not());
 
-        tfFoto.textProperty().bindBidirectional(viewModel.caminhoProperty());
-
         viewModel.updateList();
 
         cbTipos.setOnAction((evt)->{
@@ -178,42 +159,14 @@ public class TelaImoveis extends BaseController implements Initializable{
     }
 
     @FXML
-    private void buscarFoto(){
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Image files", "*.jpg", "*.jpeg", "*.png");
-        fcFoto.getExtensionFilters().add(filter);
-
-        try {
-            File f = fcFoto.showOpenDialog(null);
-            tfFoto.setText(f.getAbsolutePath());
-            Image image = new Image(new FileInputStream(f));
-            ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(100); 
-            imageView.setFitWidth(100); 
-            gpImagens.getChildren().add(imageView);
-
-        } catch (FileNotFoundException e) {
-            e.getStackTrace();
-            showMessage(Result.fail(e.getMessage()));
-
-        }
-        
-
-    }
-
-    @FXML
-    private void salvarFoto(){
-        Result result = viewModel.cadastraFoto();
-
-        if(result instanceof SuccessResult)
-            tfFoto.clear();
-
-        showMessage(result);
-
-    }
-
-    @FXML
     private void telaEnderecos(){
         App.pushScreen("ENDERECOS");
+        
+    }
+
+    @FXML
+    private void telaFotos(){
+        App.pushScreen("FOTOS");
         
     }
 
@@ -256,8 +209,6 @@ public class TelaImoveis extends BaseController implements Initializable{
         cbClientes.setItems(null);
         cbClientes.setItems(viewModel.getProprietarios());
         limpar = 0;
-
-        tfFoto.clear();
 
     }
 
