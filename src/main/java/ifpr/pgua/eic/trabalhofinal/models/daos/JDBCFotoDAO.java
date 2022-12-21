@@ -13,7 +13,7 @@ import ifpr.pgua.eic.trabalhofinal.models.entities.Foto;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
 public class JDBCFotoDAO implements FotoDAO{
-    private static final String INSERT = "INSERT INTO Foto(caminho_foto) VALUES (?)";
+    private static final String INSERT = "INSERT INTO Foto(caminho) VALUES (?)";
     private static final String SELECT_ALL = "SELECT * FROM Foto";
     private static final String SELECT_ID = "SELECT * FROM Foto WHERE codigo=?";
 
@@ -69,7 +69,7 @@ public class JDBCFotoDAO implements FotoDAO{
             
             while(rs.next()){
                 int id = rs.getInt("codigo");
-                String caminho = rs.getString("caminho_foto");
+                String caminho = rs.getString("caminho");
 
                 Foto f = new Foto(id, caminho);
                 fotos.add(f);
@@ -103,7 +103,7 @@ public class JDBCFotoDAO implements FotoDAO{
             
             rs.next();
 
-            String caminho = rs.getString("caminho_foto");
+            String caminho = rs.getString("caminho");
 
             Foto f = new Foto(id, caminho);
 

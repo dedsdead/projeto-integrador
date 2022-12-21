@@ -1,7 +1,6 @@
 package ifpr.pgua.eic.trabalhofinal.models.entities;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 public class Imovel {
     private int id;
@@ -17,8 +16,6 @@ public class Imovel {
     private LocalDateTime dataCriacao;
     private LocalDateTime dataExclusao;
 
-    private ArrayList<Foto> fotos;
-
     public Imovel(int id,
                   int idTipo,
                   int idCaracteristica,
@@ -29,8 +26,7 @@ public class Imovel {
                   double valor,
                   String matricula,
                   LocalDateTime dataVenda,
-                  LocalDateTime dataExclusao,
-                  ArrayList<Foto> fotos) {
+                  LocalDateTime dataExclusao) {
         this.id = id;
         this.idTipo = idTipo;
         this.idCaracteristica = idCaracteristica;
@@ -42,7 +38,6 @@ public class Imovel {
         this.matricula = matricula;
         this.dataVenda = dataVenda;
         this.dataExclusao = dataExclusao;
-        this.fotos = fotos;
         
     }
 
@@ -159,14 +154,6 @@ public class Imovel {
 
     public void setDataExclusao(LocalDateTime dataExclusao) {
         this.dataExclusao = dataExclusao;
-    }
-
-    public ArrayList<Foto> getFotos() {
-        return fotos;
-    }
-
-    public void setFotos(ArrayList<Foto> fotos) {
-        this.fotos = fotos;
     }
 
     @Override

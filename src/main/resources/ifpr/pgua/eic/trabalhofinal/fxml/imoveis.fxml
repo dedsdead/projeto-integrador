@@ -52,17 +52,18 @@
             <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="84.0" text="Cliente:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <ComboBox fx:id="cbClientes" prefHeight="24.0" prefWidth="356.0"  GridPane.columnIndex="3" GridPane.rowIndex="2" />
 
-            <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-               <children>
-                  <Button fx:id="btFotos" onAction="#telaFotos" text="Fotos" />
-                  <Button fx:id="btEnderecos" onAction="#telaEnderecos" text="Endereços" />
-                  <Button fx:id="btCadastrar" onAction="#cadastrar" text="Cadastrar" />
-                  <Button fx:id="btExcluir" onAction="#excluir" text="Excluir" />
-                  <Button onAction="#limpar" text="Limpar" />
-               </children>
-            </HBox>
          </children>
       </GridPane>
+
+      <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="300.0" spacing="10.0">
+         <children>
+            <Button fx:id="btFotos" onAction="#telaFotos" text="Fotos" />
+            <Button fx:id="btEnderecos" onAction="#telaEnderecos" text="Endereços" />
+            <Button fx:id="btCadastrar" onAction="#cadastrar" text="Cadastrar" />
+            <Button fx:id="btExcluir" onAction="#excluir" text="Excluir" />
+            <Button onAction="#limpar" text="Limpar" />
+         </children>
+      </HBox>
 
       <TableView fx:id="tbImoveis" prefHeight="300.0" prefWidth="800.0" onMouseClicked="#atualizar">
         <columns>

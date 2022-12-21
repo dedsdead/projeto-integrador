@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.sql.Types;
 import java.time.LocalDateTime;
@@ -12,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes;
-import ifpr.pgua.eic.trabalhofinal.models.entities.Foto;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 
@@ -24,13 +24,9 @@ public class JDBCImovelDAO implements ImovelDAO{
     private static final String SELECT_ALL = "SELECT * FROM Imovel";
 
     private FabricaConexoes fabricaConexoes;
-    private JDBCImovelFotoDAO ifDao;
-    private JDBCFotoDAO fotoDao;
 
     public JDBCImovelDAO(FabricaConexoes fabricaConexoes) {
         this.fabricaConexoes = fabricaConexoes;
-        this.ifDao = new JDBCImovelFotoDAO(fabricaConexoes);
-        this.fotoDao = new JDBCFotoDAO(fabricaConexoes);
 
     }
 
@@ -39,7 +35,16 @@ public class JDBCImovelDAO implements ImovelDAO{
         try {
             Connection con = fabricaConexoes.getConnection();
             
-            PreparedStatement pstm = con.prepareStatement(INSERT);
+            PreparedStatement pstm = con.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
+
+            try (ResultSet rs = pstm.getGeneratedKeys()){
+                if(rs.next()){
+                    imovel.setId(rs.getInt(1));
+
+                }
+                rs.close();
+                
+            }
 
             pstm.setInt(1, imovel.getIdTipo());
 
@@ -55,7 +60,7 @@ public class JDBCImovelDAO implements ImovelDAO{
             pstm.setDouble(6, imovel.getMetragem());
             pstm.setDouble(7, imovel.getValor());
 
-            if(imovel.getMatricula().equals("")){
+            if(imovel.getMatricula() == "" || imovel.getMatricula() == null){
                 pstm.setNull(8, Types.VARCHAR);
             } else {
                 pstm.setString(8, imovel.getMatricula());
@@ -68,7 +73,7 @@ public class JDBCImovelDAO implements ImovelDAO{
 
             return Result.success("Imóvel cadastrado com sucesso!");
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             return Result.fail(e.getMessage());
             
@@ -105,7 +110,7 @@ public class JDBCImovelDAO implements ImovelDAO{
 
             return Result.success("Imóvel atualizado com sucesso!");
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             return Result.fail(e.getMessage());
             
@@ -169,15 +174,7 @@ public class JDBCImovelDAO implements ImovelDAO{
             if(rsc.getTimestamp("excluido_em") != null)
                 dataExclusao = rsc.getTimestamp("excluido_em").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
 
-            ArrayList<Integer> idsFotos = ifDao.getPhotos(id);
-            ArrayList<Foto> fotos = new ArrayList<>();
-            
-            for (int idFoto : idsFotos) {
-                fotos.add(fotoDao.getPhoto(idFoto));
-                
-            }
-
-            Imovel i = new Imovel(id, idTipo, idCaracteristica, idEndereco, idProprietario, descricao, metragem, valor, matricula, dataVenda, dataExclusao, fotos);
+            Imovel i = new Imovel(id, idTipo, idCaracteristica, idEndereco, idProprietario, descricao, metragem, valor, matricula, dataVenda, dataExclusao);
 
             rsc.close();
             pstm.close();
@@ -221,16 +218,8 @@ public class JDBCImovelDAO implements ImovelDAO{
                     dataVenda = rs.getTimestamp("vendido_em").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
                 if(rs.getTimestamp("excluido_em") != null)
                     dataExclusao = rs.getTimestamp("excluido_em").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
-    
-                ArrayList<Integer> idsFotos = ifDao.getPhotos(id);
-                ArrayList<Foto> fotos = new ArrayList<>();
-                
-                for (int idFoto : idsFotos) {
-                    fotos.add(fotoDao.getPhoto(idFoto));
-                    
-                }
 
-                Imovel i = new Imovel(id, idTipo, idCaracteristica, idEndereco, idProprietario, descricao, metragem, valor, matricula, dataVenda, dataExclusao, fotos);
+                Imovel i = new Imovel(id, idTipo, idCaracteristica, idEndereco, idProprietario, descricao, metragem, valor, matricula, dataVenda, dataExclusao);
                 imoveis.add(i);
 
             }

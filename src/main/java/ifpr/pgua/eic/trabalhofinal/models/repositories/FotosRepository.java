@@ -13,6 +13,7 @@ import ifpr.pgua.eic.trabalhofinal.models.results.SuccessResult;
 
 public class FotosRepository {
     private List<Foto> fotos;
+    private ArrayList<Integer> idsFotos;
     private FotoDAO dao;
     private ImovelFotoDAO ifDao;
 
@@ -21,6 +22,21 @@ public class FotosRepository {
         this.ifDao = ifDao;
 
         getFotos();
+        
+    }
+
+    public String getCaminhoFoto(int id){
+        Optional<Foto> busca = fotos.stream().filter((cli)->cli.getId() == id).findFirst();
+
+        if(busca.isPresent()){
+            Foto f = busca.get();
+
+            return f.getCaminho();
+
+        } else {
+            return null;
+
+        }
         
     }
 
@@ -59,10 +75,24 @@ public class FotosRepository {
 
     }
 
+    public Result atualizarImovelFoto(int id, ArrayList<Integer> idsFotos){
+        ifDao.delete(id);
+
+        return adicionarImovelFoto(id, idsFotos);
+
+    }
+
     public List<Foto> getFotos(){
         fotos = dao.getAll();
 
         return Collections.unmodifiableList(fotos);
+        
+    }
+
+    public ArrayList<Integer> getIdsFotos(int id){
+        idsFotos = ifDao.getPhotos(id);
+
+        return idsFotos;
         
     }
 

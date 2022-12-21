@@ -12,6 +12,7 @@ import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 public class JDBCImovelFotoDAO implements ImovelFotoDAO{
     private static final String INSERT = "INSERT INTO Imovel_tem_Foto(codigo_imovel, codigo_foto) VALUES (?,?)";
     private static final String SELECT_PHOTOS = "SELECT * FROM Imovel_tem_Foto WHERE codigo_imovel=?";
+    private static final String DELETE = "DELETE FROM Imovel_tem_Foto WHERE codigo_imovel=?";
 
     private FabricaConexoes fabricaConexoes;
 
@@ -28,7 +29,7 @@ public class JDBCImovelFotoDAO implements ImovelFotoDAO{
             PreparedStatement pstm = con.prepareStatement(INSERT);
 
             pstm.setInt(1, idImovel);
-            pstm.setInt(1, idFoto);
+            pstm.setInt(2, idFoto);
 
             pstm.execute();
             
@@ -43,6 +44,27 @@ public class JDBCImovelFotoDAO implements ImovelFotoDAO{
 
         }
 
+    }
+
+    @Override
+    public void delete(int idImovel) {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement pstm = con.prepareStatement(DELETE);
+
+            pstm.setInt(1, idImovel);
+
+            pstm.execute();
+            
+            pstm.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+        }
+        
     }
 
     @Override

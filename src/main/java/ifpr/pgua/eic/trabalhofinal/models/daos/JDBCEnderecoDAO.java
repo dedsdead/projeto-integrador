@@ -40,9 +40,9 @@ public class JDBCEnderecoDAO implements EnderecoDAO{
             
 
             if(endereco.getComplemento().equals("")){
-                pstm.setNull(6, Types.VARCHAR);
+                pstm.setNull(7, Types.VARCHAR);
             } else {
-                pstm.setString(6, endereco.getComplemento());
+                pstm.setString(7, endereco.getComplemento());
             }
 
             pstm.execute();

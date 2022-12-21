@@ -13,11 +13,11 @@ import ifpr.pgua.eic.trabalhofinal.models.results.SuccessResult;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.TilePane;
 import javafx.stage.FileChooser;
 
 public class TelaFotos extends BaseController implements Initializable{
@@ -25,7 +25,7 @@ public class TelaFotos extends BaseController implements Initializable{
     private TextField tfFoto;
 
     @FXML
-    private Button btBuscarFoto;
+    private Button btSelecionarFoto;
 
     @FXML
     private Button btSalvarFoto;
@@ -34,7 +34,7 @@ public class TelaFotos extends BaseController implements Initializable{
     private Button btSair;
     
     @FXML
-    private Group gpImagens;
+    private TilePane painel;
 
     private TelaFotosViewModel viewModel;
 
@@ -51,33 +51,43 @@ public class TelaFotos extends BaseController implements Initializable{
 
         });
 
-        tfFoto.textProperty().bindBidirectional(viewModel.caminhoProperty());
+        viewModel.painelProperty().addListener((ChangeListener<TilePane>) (obs, oldPane, newPane) -> {
+            painel.getChildren().clear();
+            painel.getChildren().addAll(newPane);
+            
+        });
 
-        viewModel.updateList();
+        tfFoto.textProperty().bindBidirectional(viewModel.caminhoProperty());
         
+        viewModel.getCaminhos();
+        viewModel.getMiniaturas();
+
     }
 
     @FXML
-    private void buscarFoto(){
+    private void selecionarFoto(){
         FileChooser fcFoto = new FileChooser();
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Image files", "*.jpg", "*.jpeg", "*.png");
         fcFoto.getExtensionFilters().add(filter);
 
         try {
             File f = fcFoto.showOpenDialog(null);
-            tfFoto.setText(f.getAbsolutePath());
-            Image image = new Image(new FileInputStream(f));
-            ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(100); 
-            imageView.setFitWidth(100); 
-            gpImagens.getChildren().add(imageView);
+            if(f != null){
+                tfFoto.setText(f.getAbsolutePath());
+                Image image = new Image(new FileInputStream(f));
+                ImageView imageView = new ImageView(image);
+                imageView.setFitHeight(100); 
+                imageView.setFitWidth(100);
+                painel.getChildren().clear();
+                painel.getChildren().add(imageView);
+
+            }
 
         } catch (FileNotFoundException e) {
             e.getStackTrace();
             showMessage(Result.fail(e.getMessage()));
 
         }
-        
 
     }
 

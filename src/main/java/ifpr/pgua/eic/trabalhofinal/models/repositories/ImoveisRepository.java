@@ -17,26 +17,18 @@ public class ImoveisRepository {
 
     }
 
-    public Result adicionarImovel(int idTipo,
-                                  int idCaracteristica,
-                                  int idEndereco,
-                                  int idProprietario,
-                                  String descricao,
-                                  double metragem,
-                                  double valor,
-                                  String matricula){
-        if(idTipo == 0) return Result.fail("Adicione um tipo!");
-        if(idProprietario == 0) return Result.fail("Adicione um proprietário!");
-        if(idEndereco == 0) return Result.fail("Adicione um endereço!");
+    public Result adicionarImovel(Imovel imovel){
+        if(imovel.getIdTipo() == 0) return Result.fail("Adicione um tipo!");
+        if(imovel.getIdProprietario() == 0) return Result.fail("Adicione um proprietário!");
+        if(imovel.getIdEndereco() == 0) return Result.fail("Adicione um endereço!");
         
-        Optional<Imovel> busca = imoveis.stream().filter((cli)->cli.getIdTipo() == idTipo).filter((cli)->cli.getIdProprietario() == idProprietario).filter((cli)->cli.getDescricao().equals(descricao)).findFirst();
+        Optional<Imovel> busca = imoveis.stream().filter((cli)->cli.getIdTipo() == imovel.getIdTipo()).filter((cli)->cli.getIdProprietario() == imovel.getIdProprietario()).filter((cli)->cli.getDescricao().equals(imovel.getDescricao())).findFirst();
 
         if(busca.isPresent()){
             return Result.fail("Imóvel já cadastrado!");
+
         }
 
-        Imovel imovel = new Imovel(idTipo, idCaracteristica, idEndereco, idProprietario, descricao, metragem, valor, matricula);
-        
         return dao.create(imovel);
 
     }
@@ -51,7 +43,7 @@ public class ImoveisRepository {
                                   String matricula){
         Optional<Imovel> busca = imoveis.stream().filter((cli)->cli.getId() == id).findFirst();
 
-        if(busca.isPresent() && id != 0){
+        if(busca.isPresent()){
             Imovel imovel = busca.get();
 
             if(idTipo != 0) imovel.setIdTipo(idTipo);

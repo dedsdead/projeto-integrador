@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
-import ifpr.pgua.eic.trabalhofinal.models.entities.Foto;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Tipo;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.CaracteristicasRepository;
@@ -37,7 +36,6 @@ public class TelaImoveisViewModel {
     private StringProperty spValor = new SimpleStringProperty();
     private StringProperty spMatricula = new SimpleStringProperty();
 
-    //esse array de fotos tem que ser comunicado nas telas imoveis e fotos \/
     private ArrayList<Integer> idsFotos = new ArrayList<>();
 
     private IntegerProperty spEndereco = new SimpleIntegerProperty();
@@ -204,10 +202,7 @@ public class TelaImoveisViewModel {
     public void carregaFotos(Imovel imovel){
         idsFotos.clear();
         
-        for (Foto f : imovel.getFotos()) {
-            idsFotos.add(f.getId());
-
-        }
+        idsFotos = fotosRepository.getIdsFotos(imovel.getId());
 
     }
 
@@ -255,11 +250,7 @@ public class TelaImoveisViewModel {
         int idTipo;
         int idCaracteristica;
         int idCliente;
-
-        if(spId.getValue() != 0 && spId.getValue() != null){
-            id = spId.getValue();
-            
-        }
+        int idEndereco;
 
         if(idsFotos.size() == 0){
             return Result.fail("Escolha ao menos uma foto!");
@@ -292,7 +283,13 @@ public class TelaImoveisViewModel {
 
         }
 
-        int idEndereco = spEndereco.getValue();
+        if(spEndereco != null){
+            idEndereco = spEndereco.getValue();
+
+        } else {
+            return Result.fail("Escolha o endereço!");
+
+        }
 
         Cliente cliente = clientesRepository.buscaCliente(spCliente);
 
@@ -334,10 +331,14 @@ public class TelaImoveisViewModel {
         Result result;
 
         if (atualizar) {
+            id = spId.getValue();
             result = imoveisRepository.atualizarImovel(id, idTipo, idCaracteristica, idCliente, descricao, metragem, valor, matricula);
+            fotosRepository.atualizarImovelFoto(id, idsFotos);
             
         } else {
-            result = imoveisRepository.adicionarImovel(idTipo, idCaracteristica, idEndereco, idCliente, descricao, metragem, valor, matricula);
+            Imovel imovel = new Imovel(idTipo, idCaracteristica, idCliente, idEndereco, descricao, metragem, valor, matricula);
+            result = imoveisRepository.adicionarImovel(imovel);
+            id = imovel.getId();
             fotosRepository.adicionarImovelFoto(id, idsFotos);
 
         }
