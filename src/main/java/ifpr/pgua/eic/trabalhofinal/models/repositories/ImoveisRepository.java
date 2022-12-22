@@ -6,7 +6,10 @@ import java.util.Optional;
 
 import ifpr.pgua.eic.trabalhofinal.models.daos.ImovelDAO;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
+import ifpr.pgua.eic.trabalhofinal.models.entities.Venda;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
+import javafx.beans.property.ObjectProperty;
+import javafx.scene.control.SingleSelectionModel;
 
 public class ImoveisRepository {
     private List<Imovel> imoveis;
@@ -22,7 +25,7 @@ public class ImoveisRepository {
         if(imovel.getIdProprietario() == 0) return Result.fail("Adicione um proprietário!");
         if(imovel.getIdEndereco() == 0) return Result.fail("Adicione um endereço!");
         
-        Optional<Imovel> busca = imoveis.stream().filter((cli)->cli.getIdTipo() == imovel.getIdTipo()).filter((cli)->cli.getIdProprietario() == imovel.getIdProprietario()).filter((cli)->cli.getDescricao().equals(imovel.getDescricao())).findFirst();
+        Optional<Imovel> busca = imoveis.stream().filter((im)->im.getIdTipo() == imovel.getIdTipo()).filter((im)->im.getIdProprietario() == imovel.getIdProprietario()).filter((im)->im.getDescricao().equals(imovel.getDescricao())).findFirst();
 
         if(busca.isPresent()){
             return Result.fail("Imóvel já cadastrado!");
@@ -33,32 +36,8 @@ public class ImoveisRepository {
 
     }
 
-    public Result atualizarImovel(int id,
-                                  int idTipo,
-                                  int idCaracteristica,
-                                  int idProprietario,
-                                  String descricao,
-                                  double metragem,
-                                  double valor,
-                                  String matricula){
-        Optional<Imovel> busca = imoveis.stream().filter((cli)->cli.getId() == id).findFirst();
-
-        if(busca.isPresent()){
-            Imovel imovel = busca.get();
-
-            if(idTipo != 0) imovel.setIdTipo(idTipo);
-            if(idCaracteristica != 0) imovel.setIdCaracteristica(idCaracteristica);
-            if(idProprietario != 0) imovel.setIdProprietario(idProprietario);
-            if(descricao != "")imovel.setDescricao(descricao);
-            if(metragem != 0.0)imovel.setMetragem(metragem);
-            if(valor != 0.0)imovel.setValor(valor);
-            if(matricula != "")imovel.setMatricula(matricula);
-
-            return dao.update(imovel);
-
-        }
-
-        return Result.fail("Imóvel não encontrado!");
+    public Result atualizarImovel(Imovel imovel){
+        return dao.update(imovel);
 
     }
 
@@ -75,6 +54,33 @@ public class ImoveisRepository {
     public List<Imovel> getImoveis(){
         imoveis = dao.getAll();
         return Collections.unmodifiableList(imoveis);
+
+    }
+
+    public Imovel buscaImovel(ObjectProperty<SingleSelectionModel<String>> spImovel){
+        Optional<Imovel> busca = imoveis.stream().filter((im)->im.getDescricao().equals(spImovel.getValue().getSelectedItem())).findFirst();
+        if(busca.isPresent()){
+            Imovel i = busca.get();
+            return i;
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public Imovel buscaImovelId(Venda venda){
+        Optional<Imovel> busca = imoveis.stream().filter((im)->im.getId() == venda.getIdImovel()).findFirst();
+        
+        if(busca.isPresent()){
+            Imovel imovel = busca.get();
+            return imovel;
+
+        } else {
+            return null;
+
+        }
 
     }
 

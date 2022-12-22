@@ -5,11 +5,13 @@ import ifpr.pgua.eic.trabalhofinal.controllers.TelaEnderecos;
 import ifpr.pgua.eic.trabalhofinal.controllers.TelaFotos;
 import ifpr.pgua.eic.trabalhofinal.controllers.TelaImoveis;
 import ifpr.pgua.eic.trabalhofinal.controllers.TelaPrincipal;
+import ifpr.pgua.eic.trabalhofinal.controllers.TelaVendas;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaClientesViewModel;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaEnderecosViewModel;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaFotosViewModel;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaImoveisViewModel;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaPrincipalViewModel;
+import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaVendasViewModel;
 import ifpr.pgua.eic.trabalhofinal.models.FabricaConexoes;
 import ifpr.pgua.eic.trabalhofinal.models.daos.CaracteristicaDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.ClienteDAO;
@@ -25,8 +27,10 @@ import ifpr.pgua.eic.trabalhofinal.models.daos.JDBCImovelDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.JDBCImovelFotoDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.JDBCLoginDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.JDBCTipoDAO;
+import ifpr.pgua.eic.trabalhofinal.models.daos.JDBCVendaDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.LoginDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.TipoDAO;
+import ifpr.pgua.eic.trabalhofinal.models.daos.VendaDAO;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.CaracteristicasRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ClientesRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.EnderecosRepository;
@@ -34,6 +38,7 @@ import ifpr.pgua.eic.trabalhofinal.models.repositories.FotosRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ImoveisRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.LoginsRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.TiposRepository;
+import ifpr.pgua.eic.trabalhofinal.models.repositories.VendasRepository;
 import ifpr.pgua.eic.trabalhofinal.utils.Navigator.BaseAppNavigator;
 import ifpr.pgua.eic.trabalhofinal.utils.Navigator.ScreenRegistryFXML;
 
@@ -48,6 +53,10 @@ public final class App extends BaseAppNavigator{
     private ImovelDAO imovelDao;
     private ImoveisRepository imoveisRepository;
     private TelaImoveisViewModel imoveisViewModel;
+
+    private VendaDAO vendaDAO;
+    private VendasRepository vendasRepository;
+    private TelaVendasViewModel vendasViewModel;
 
     private FotoDAO fotoDao;
     private ImovelFotoDAO ifDao;
@@ -77,6 +86,9 @@ public final class App extends BaseAppNavigator{
         imovelDao = new JDBCImovelDAO(FabricaConexoes.getInstance());
         imoveisRepository = new ImoveisRepository(imovelDao);
 
+        vendaDAO = new JDBCVendaDAO(FabricaConexoes.getInstance());
+        vendasRepository = new VendasRepository(vendaDAO);
+
         fotoDao = new JDBCFotoDAO(FabricaConexoes.getInstance());
         ifDao = new JDBCImovelFotoDAO(FabricaConexoes.getInstance());
         fotosRepository = new FotosRepository(fotoDao, ifDao);
@@ -92,6 +104,7 @@ public final class App extends BaseAppNavigator{
 
         clientesViewModel = new TelaClientesViewModel(clientesRepository, tiposRepository, caracteristicasRepository);
         imoveisViewModel = new TelaImoveisViewModel(imoveisRepository, fotosRepository, tiposRepository, caracteristicasRepository, clientesRepository);
+        vendasViewModel = new TelaVendasViewModel(vendasRepository, imoveisRepository, clientesRepository);
 
     }
 
@@ -118,7 +131,9 @@ public final class App extends BaseAppNavigator{
         registraTela("PRINCIPAL", new ScreenRegistryFXML(getClass(), "fxml/principal.fxml", (o)->new TelaPrincipal(new TelaPrincipalViewModel(loginsRepository))));
         registraTela("CLIENTES", new ScreenRegistryFXML(getClass(), "fxml/clientes.fxml", (o)->new TelaClientes(clientesViewModel)));
         registraTela("IMOVEIS", new ScreenRegistryFXML(getClass(), "fxml/imoveis.fxml", (o)->new TelaImoveis(imoveisViewModel)));
+        registraTela("VENDAS", new ScreenRegistryFXML(getClass(), "fxml/vendas.fxml", (o)->new TelaVendas(vendasViewModel)));
     
+
         registraTela("ENDERECOS", new ScreenRegistryFXML(getClass(), "fxml/enderecos.fxml", (o)->new TelaEnderecos(new TelaEnderecosViewModel(enderecosRepository, clientesViewModel, imoveisViewModel))));
         registraTela("FOTOS", new ScreenRegistryFXML(getClass(), "fxml/fotos.fxml", (o)->new TelaFotos(new TelaFotosViewModel(fotosRepository, imoveisViewModel))));
 

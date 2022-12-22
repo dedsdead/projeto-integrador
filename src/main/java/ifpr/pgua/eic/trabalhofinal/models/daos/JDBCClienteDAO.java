@@ -35,8 +35,8 @@ public class JDBCClienteDAO implements ClienteDAO{
     @Override
     public Result create(Cliente cliente) {
         try {
-            //if(mysqlValidaCpf(cliente.getCpf()) == false) return Result.fail("Insira um cpf válido!");
-            //if(mysqlRegexEmail(cliente.getEmail()) == false) return Result.fail("Insira um email válido!");
+            //TODO if(mysqlValidaCpf(cliente.getCpf()) == false) return Result.fail("Insira um cpf válido!");
+            //TODO if(mysqlRegexEmail(cliente.getEmail()) == false) return Result.fail("Insira um email válido!");
 
             Connection con = fabricaConexoes.getConnection();
 

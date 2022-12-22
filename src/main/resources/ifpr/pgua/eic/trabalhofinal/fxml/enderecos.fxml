@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 
-<VBox prefHeight="800.0" prefWidth="800.0" spacing="10.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.trabalhofinal.controllers.TelaClientes">
+<VBox prefHeight="800.0" prefWidth="800.0" spacing="10.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.trabalhofinal.controllers.TelaEnderecos">
     <Label fx:id="lbCep" alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="91.0" text="Cep:" />
     <TextField fx:id="tfCep" promptText="Digite o cep" />
     <Label fx:id="lbEstado" alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="91.0" text="Estado:" />

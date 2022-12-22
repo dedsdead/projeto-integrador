@@ -332,7 +332,8 @@ public class TelaImoveisViewModel {
 
         if (atualizar) {
             id = spId.getValue();
-            result = imoveisRepository.atualizarImovel(id, idTipo, idCaracteristica, idCliente, descricao, metragem, valor, matricula);
+            Imovel imovel = new Imovel(id, idTipo, idCaracteristica, idCliente, idEndereco, descricao, metragem, valor, matricula, null, null);
+            result = imoveisRepository.atualizarImovel(imovel);
             fotosRepository.atualizarImovelFoto(id, idsFotos);
             
         } else {
