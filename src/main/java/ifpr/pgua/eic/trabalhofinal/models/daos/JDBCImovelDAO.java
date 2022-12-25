@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
 import java.sql.Types;
 import java.time.LocalDateTime;
@@ -35,16 +34,7 @@ public class JDBCImovelDAO implements ImovelDAO{
         try {
             Connection con = fabricaConexoes.getConnection();
             
-            PreparedStatement pstm = con.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
-
-            try (ResultSet rs = pstm.getGeneratedKeys()){
-                if(rs.next()){
-                    imovel.setId(rs.getInt(1));
-
-                }
-                rs.close();
-                
-            }
+            PreparedStatement pstm = con.prepareStatement(INSERT);
 
             pstm.setInt(1, imovel.getIdTipo());
 

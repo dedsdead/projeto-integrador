@@ -31,7 +31,7 @@ public class HashPassword {
     } 
     public static void main(String[] args) {
         try{ 
-            String string1 = "ric02164";  
+            String string1 = "";  
             System.out.println("\n" + string1 + " : " + toHexString(getSHA(string1)));  
   
 

@@ -40,7 +40,7 @@
             <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="77.0" text="Contrato:" GridPane.rowIndex="1" />
             <TextField fx:id="tfContrato" promptText="Digite o caminho do contrato" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="92.0" text="Data:" GridPane.columnIndex="2" />
-            <DatePicker fx:id="dpData" promptText="Escolha a data da venda" GridPane.columnIndex="3" />
+            <DatePicker fx:id="dpVenda" promptText="Escolha a data da venda" GridPane.columnIndex="3" />
             <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <children>
                   <Button fx:id="btCadastrar" onAction="#cadastrar" text="Cadastrar" />

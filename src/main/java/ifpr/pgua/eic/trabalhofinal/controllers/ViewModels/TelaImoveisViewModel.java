@@ -193,7 +193,7 @@ public class TelaImoveisViewModel {
 
         for(Imovel i : imoveisRepository.getImoveis()){
             if(i.getDataExclusao() == null)
-            obsImoveis.add(new ImovelRow(i));
+                obsImoveis.add(new ImovelRow(i));
 
         }
 
@@ -243,6 +243,24 @@ public class TelaImoveisViewModel {
 
         }
         
+    }
+
+    public boolean vendido(String descricao){
+        Imovel i = imoveisRepository.buscaImovelDescricao(descricao);
+        if(i != null){
+            if(i.getDataVenda() != null){
+                return true;
+                
+            } else {
+                return false;
+
+            }
+
+        } else {
+            return false;
+
+        }
+
     }
 
     public Result cadastrar(int temCaracteristica) {
@@ -310,12 +328,22 @@ public class TelaImoveisViewModel {
 
         }
 
+        if (spMetragem.getValue() == null || spMetragem.getValue() == ""){
+            return Result.fail("Digite uma metragem!");
+
+        }
+
         try {
             metragem = Double.parseDouble(spMetragem.getValue());
 
         } catch (NumberFormatException e) {
             return Result.fail("Metragem inválida!");
             
+        }
+
+        if (spValor.getValue() == null || spValor.getValue() == ""){
+            return Result.fail("Digite um valor!");
+
         }
 
         try {
@@ -332,20 +360,20 @@ public class TelaImoveisViewModel {
 
         if (atualizar) {
             id = spId.getValue();
-            Imovel imovel = new Imovel(id, idTipo, idCaracteristica, idCliente, idEndereco, descricao, metragem, valor, matricula, null, null);
+            Imovel imovel = new Imovel(id, idTipo, idCaracteristica, idEndereco, idCliente, descricao, metragem, valor, matricula, null, null);
             result = imoveisRepository.atualizarImovel(imovel);
-            fotosRepository.atualizarImovelFoto(id, idsFotos);
             
         } else {
-            Imovel imovel = new Imovel(idTipo, idCaracteristica, idCliente, idEndereco, descricao, metragem, valor, matricula);
+            Imovel imovel = new Imovel(idTipo, idCaracteristica, idEndereco, idCliente, descricao, metragem, valor, matricula);
             result = imoveisRepository.adicionarImovel(imovel);
-            id = imovel.getId();
-            fotosRepository.adicionarImovelFoto(id, idsFotos);
-
+            updateList();
+            id = imoveisRepository.buscaIdImovel(imovel);
+            
         }
 
         if(result instanceof SuccessResult){
             updateList();
+            fotosRepository.adicionarImovelFoto(id, idsFotos);
             limpar();
 
         }
@@ -378,7 +406,7 @@ public class TelaImoveisViewModel {
 
         spEndereco.setValue(imovel.getIdEndereco());
         
-        Cliente cliente = clientesRepository.buscaClienteId(imovel);
+        Cliente cliente = clientesRepository.buscaClienteImovel(imovel);
         spCliente.get().select(cliente.getNome());
 
         spId.setValue(imovel.getId());

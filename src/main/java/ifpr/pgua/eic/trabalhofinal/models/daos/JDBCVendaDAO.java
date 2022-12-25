@@ -183,13 +183,13 @@ public class JDBCVendaDAO implements VendaDAO{
                 int idComprador = rs.getInt("codigo_comprador");
                 LocalDate dataVenda = rs.getDate("data_venda").toLocalDate();
                 double valor = rs.getDouble("valor");
-                String matricula = rs.getString("caminho_contrato");
+                String contrato = rs.getString("caminho_contrato");
                 LocalDateTime dataExclusao = null;
                 
-                if(rs.getTimestamp("excluido_em") != null)
-                    dataExclusao = rs.getTimestamp("excluido_em").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
+                if(rs.getTimestamp("excluida_em") != null)
+                    dataExclusao = rs.getTimestamp("excluida_em").toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
 
-                Venda v = new Venda(id, idImovel, idComprador, dataVenda, valor, matricula, dataExclusao);
+                Venda v = new Venda(id, idImovel, idComprador, dataVenda, valor, contrato, dataExclusao);
                 vendas.add(v);
 
             }

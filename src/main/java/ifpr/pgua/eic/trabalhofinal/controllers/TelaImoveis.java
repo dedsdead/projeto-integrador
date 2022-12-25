@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import ifpr.pgua.eic.trabalhofinal.App;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.ImovelRow;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaImoveisViewModel;
+import ifpr.pgua.eic.trabalhofinal.models.repositories.ImoveisRepository;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 import ifpr.pgua.eic.trabalhofinal.models.results.SuccessResult;
 import javafx.beans.value.ChangeListener;
@@ -13,11 +14,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.util.Callback;
 
 public class TelaImoveis extends BaseController implements Initializable{
     @FXML
@@ -92,8 +96,29 @@ public class TelaImoveis extends BaseController implements Initializable{
         tbcValor.setCellValueFactory(new PropertyValueFactory<>("valor"));
         tbcMatricula.setCellValueFactory(new PropertyValueFactory<>("matricula"));
 
-        tbImoveis.setItems(viewModel.getImoveis());
+        tbcDescricao.setCellFactory(new Callback<TableColumn<ImovelRow,String>,TableCell<ImovelRow,String>>() {
+            @Override
+            public TableCell<ImovelRow, String> call(TableColumn<ImovelRow, String> arg0) {
+                return new TableCell<ImovelRow, String>(){
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if(!isEmpty()){
+                            if(viewModel.vendido(item))
+                                this.setTextFill(Color.BLUE);
+                            setText(item);
 
+                        }
+                    }
+                    
+                };
+
+            }
+            
+        });
+
+        tbImoveis.setItems(viewModel.getImoveis());
+        
         viewModel.selecionadoProperty().bind(tbImoveis.getSelectionModel().selectedItemProperty());
 
         viewModel.alertProperty().addListener((ChangeListener<Result>) (observable, oldVal, newVal) -> {
@@ -124,6 +149,7 @@ public class TelaImoveis extends BaseController implements Initializable{
         btExcluir.visibleProperty().bind(viewModel.podeEditarProperty().not());
 
         viewModel.updateList();
+        viewModel.carregaClientes();
 
         cbTipos.setOnAction((evt)->{
             if(limpar == 0){

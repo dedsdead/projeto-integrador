@@ -61,6 +61,8 @@ public class TelaVendas extends BaseController implements Initializable{
 
     private TelaVendasViewModel viewModel;
 
+    private boolean limpar = false;
+
     public TelaVendas(TelaVendasViewModel viewModel){
         this.viewModel = viewModel;
 
@@ -69,7 +71,7 @@ public class TelaVendas extends BaseController implements Initializable{
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         tbcId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        tbcData.setCellValueFactory(new PropertyValueFactory<>("data_venda"));
+        tbcData.setCellValueFactory(new PropertyValueFactory<>("data"));
         tbcValor.setCellValueFactory(new PropertyValueFactory<>("valor"));
         tbcContrato.setCellValueFactory(new PropertyValueFactory<>("contrato"));
 
@@ -77,12 +79,12 @@ public class TelaVendas extends BaseController implements Initializable{
 
         viewModel.selecionadoProperty().bind(tbVendas.getSelectionModel().selectedItemProperty());
 
-        dpVenda.valueProperty().bindBidirectional(viewModel.dataProperty());
-
         viewModel.alertProperty().addListener((ChangeListener<Result>) (observable, oldVal, newVal) -> {
             showMessage(newVal);
 
         });
+
+        dpVenda.valueProperty().bindBidirectional(viewModel.dataProperty());
         
         viewModel.imovelProperty().bindBidirectional(cbImoveis.selectionModelProperty());
         cbImoveis.setItems(viewModel.getDescricoes());
@@ -99,6 +101,16 @@ public class TelaVendas extends BaseController implements Initializable{
         btExcluir.visibleProperty().bind(viewModel.podeEditarProperty().not());
 
         viewModel.updateList();
+        viewModel.carregaImoveis();
+        viewModel.carregaClientes();
+
+        cbImoveis.setOnAction(evt -> {
+            if(limpar == false){
+                viewModel.descartaProprietarioComprador();
+
+            }
+
+        });
         
     }
 
@@ -131,11 +143,13 @@ public class TelaVendas extends BaseController implements Initializable{
 
     @FXML
     private void limpar(){
+        limpar = true;
         viewModel.limpar();
         cbImoveis.setItems(null);
         cbImoveis.setItems(viewModel.getDescricoes());
         cbClientes.setItems(null);
         cbClientes.setItems(viewModel.getCompradores());
+        limpar = false;
 
     }
 

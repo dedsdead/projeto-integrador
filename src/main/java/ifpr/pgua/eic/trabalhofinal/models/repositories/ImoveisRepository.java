@@ -57,7 +57,7 @@ public class ImoveisRepository {
 
     }
 
-    public Imovel buscaImovel(ObjectProperty<SingleSelectionModel<String>> spImovel){
+    public Imovel buscaImovelProperty(ObjectProperty<SingleSelectionModel<String>> spImovel){
         Optional<Imovel> busca = imoveis.stream().filter((im)->im.getDescricao().equals(spImovel.getValue().getSelectedItem())).findFirst();
         if(busca.isPresent()){
             Imovel i = busca.get();
@@ -70,8 +70,36 @@ public class ImoveisRepository {
 
     }
 
-    public Imovel buscaImovelId(Venda venda){
+    public Imovel buscaImovelVenda(Venda venda){
         Optional<Imovel> busca = imoveis.stream().filter((im)->im.getId() == venda.getIdImovel()).findFirst();
+        
+        if(busca.isPresent()){
+            Imovel imovel = busca.get();
+            return imovel;
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public int buscaIdImovel(Imovel imovel){
+        Optional<Imovel> busca = imoveis.stream().filter((im)->im.getDescricao().equals(imovel.getDescricao())).filter((im)->im.getIdProprietario() == imovel.getIdProprietario()).findFirst();
+        
+        if(busca.isPresent()){
+            Imovel i = busca.get();
+            return i.getId();
+
+        } else {
+            return 0;
+
+        }
+
+    }
+
+    public Imovel buscaImovelDescricao(String descricao){
+        Optional<Imovel> busca = imoveis.stream().filter((im)->im.getDescricao().equals(descricao)).findFirst();
         
         if(busca.isPresent()){
             Imovel imovel = busca.get();

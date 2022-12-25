@@ -1,6 +1,7 @@
 package ifpr.pgua.eic.trabalhofinal.controllers.ViewModels;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
@@ -35,8 +36,6 @@ public class TelaVendasViewModel {
     private BooleanProperty podeEditar = new SimpleBooleanProperty(true);
     private boolean atualizar = false;
 
-    private ObservableList<VendaRow> obsVendas = FXCollections.observableArrayList();
-
     private ObservableList<Cliente> clientes = FXCollections.observableArrayList();
     private ObservableList<String> compradores = FXCollections.observableArrayList();
 
@@ -48,6 +47,8 @@ public class TelaVendasViewModel {
     private ObjectProperty<LocalDate> dataProperty = new SimpleObjectProperty<>();
 
     private ObjectProperty<Result> alertProperty = new SimpleObjectProperty<>();
+
+    private ObservableList<VendaRow> obsVendas = FXCollections.observableArrayList();
 
     private VendasRepository vendasRepository;
     private ImoveisRepository imoveisRepository;
@@ -164,8 +165,11 @@ public class TelaVendasViewModel {
         descricoes.clear();
 
         for (Imovel imovel : imoveisRepository.getImoveis()) {
-            imoveis.add(imovel);
-            descricoes.add(imovel.getDescricao());
+            if(imovel.getDataExclusao() == null && imovel.getDataVenda() == null){
+                imoveis.add(imovel);
+                descricoes.add(imovel.getDescricao());
+
+            }
 
         }
 
@@ -176,11 +180,35 @@ public class TelaVendasViewModel {
         compradores.clear();
 
         for (Cliente cliente : clientesRepository.getClientes()) {
-            clientes.add(cliente);
-            compradores.add(cliente.getNome());
+            if(cliente.getDataExclusao() == null){
+                clientes.add(cliente);
+                compradores.add(cliente.getNome());
+
+            }
 
         }
 
+    }
+
+    public void descartaProprietarioComprador(){
+        if(spImovel.getValue().getSelectedItem() != null){
+            Imovel i = imoveisRepository.buscaImovelProperty(spImovel);
+            Cliente c = clientesRepository.buscaClienteImovel(i);
+            
+            clientes.clear();
+            compradores.clear();
+
+            for (Cliente cliente : clientesRepository.getClientes()) {
+                if(cliente.getId() != c.getId()){
+                    clientes.add(cliente);
+                    compradores.add(cliente.getNome());
+    
+                }
+    
+            }
+
+        }
+        
     }
 
     public Result cadastrar(){
@@ -192,7 +220,7 @@ public class TelaVendasViewModel {
         String contrato;
         Result result;
 
-        Imovel imovel = imoveisRepository.buscaImovel(spImovel);
+        Imovel imovel = imoveisRepository.buscaImovelProperty(spImovel);
 
         if(imovel != null){
             idImovel = imovel.getId();
@@ -212,11 +240,21 @@ public class TelaVendasViewModel {
             
         }
 
-        if(dataProperty.getValue() == null || dataProperty.getValue().equals("")){
+        if(dataProperty.getValue() == null){
             return Result.fail("Escolha uma data!");
 
         } else {
             dataVenda = dataProperty.getValue();
+
+            if(dataVenda.isAfter(LocalDate.now())){
+                return Result.fail("Data inválida, não pode criar uma venda no futuro!");
+
+            }
+
+        }
+
+        if (spValor.getValue() == null || spValor.getValue() == ""){
+            return Result.fail("Digite um valor!");
 
         }
         
@@ -258,10 +296,10 @@ public class TelaVendasViewModel {
         
         Venda venda = selecionado.get().getVenda();
         
-        Imovel imovel = imoveisRepository.buscaImovelId(venda);
+        Imovel imovel = imoveisRepository.buscaImovelVenda(venda);
         spImovel.get().select(imovel.getDescricao());
         
-        Cliente cliente = clientesRepository.buscaClienteId(imovel);
+        Cliente cliente = clientesRepository.buscaClienteVenda(venda);
         spCliente.get().select(cliente.getNome());
 
         ipId.setValue(venda.getId());
@@ -291,7 +329,7 @@ public class TelaVendasViewModel {
         ipId.setValue(0);
 
         spDescricao.setValue("");
-        dataProperty.setValue(LocalDate.parse(""));
+        dataProperty.setValue(null);
         spValor.setValue("");
         spContrato.setValue("");
         

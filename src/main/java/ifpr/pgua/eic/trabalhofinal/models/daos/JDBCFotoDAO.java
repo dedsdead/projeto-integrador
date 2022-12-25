@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,20 +28,11 @@ public class JDBCFotoDAO implements FotoDAO{
         try {
             Connection con = fabricaConexoes.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pstm = con.prepareStatement(INSERT);
 
             pstm.setString(1, foto.getCaminho());
 
             pstm.execute();
-
-            try (ResultSet rs = pstm.getGeneratedKeys()){
-                if(rs.next()){
-                    foto.setId(rs.getInt(1));
-
-                }
-                rs.close();
-                
-            }
             
             pstm.close();
             con.close();
