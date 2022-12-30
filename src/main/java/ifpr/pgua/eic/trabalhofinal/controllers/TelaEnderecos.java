@@ -164,6 +164,9 @@ public class TelaEnderecos extends BaseController implements Initializable{
         showMessage(result);
 
         if(result instanceof SuccessResult){
+            viewModel.limpar();
+            btSair.setText("Sair");
+            
             App.popScreen();
             
         }
@@ -172,13 +175,13 @@ public class TelaEnderecos extends BaseController implements Initializable{
 
     @FXML
     private void sair(){
-        if(viewModel.pegarEnderecoProperty().getValue() == false){
+        if(viewModel.pegarEnderecoProperty().getValue() == true){
+            viewModel.limpar();
+            btSair.setText("Sair");
+
             App.popScreen();
 
         }
-
-        viewModel.limpar();
-        btSair.setText("Sair");
         
     }
     

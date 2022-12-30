@@ -63,7 +63,7 @@ public class EnderecosRepository {
     }
 
     public Endereco buscaEnderecoId(int id){
-        Optional<Endereco> busca = enderecos.stream().filter((cli)->cli.getId() == id).findFirst();
+        Optional<Endereco> busca = enderecos.stream().filter((end)->end.getId() == id).findFirst();
 
         if(busca.isPresent()){
             Endereco e = busca.get();

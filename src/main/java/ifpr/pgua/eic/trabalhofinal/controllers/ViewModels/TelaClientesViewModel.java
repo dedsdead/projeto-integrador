@@ -1,10 +1,16 @@
 package ifpr.pgua.eic.trabalhofinal.controllers.ViewModels;
 
+import java.util.List;
+
 import ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
+import ifpr.pgua.eic.trabalhofinal.models.entities.Endereco;
+import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Tipo;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.CaracteristicasRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ClientesRepository;
+import ifpr.pgua.eic.trabalhofinal.models.repositories.EnderecosRepository;
+import ifpr.pgua.eic.trabalhofinal.models.repositories.ImoveisRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.TiposRepository;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 import ifpr.pgua.eic.trabalhofinal.models.results.SuccessResult;
@@ -50,11 +56,15 @@ public class TelaClientesViewModel {
     private ClientesRepository clientesRepository;
     private TiposRepository tiposRepository;
     private CaracteristicasRepository caracteristicasRepository;
+    private ImoveisRepository imoveisRepository;
+    private EnderecosRepository enderecosRepository;
 
-    public TelaClientesViewModel(ClientesRepository clientesRepository, TiposRepository tiposRepository, CaracteristicasRepository caracteristicasRepository){
+    public TelaClientesViewModel(ClientesRepository clientesRepository, TiposRepository tiposRepository, CaracteristicasRepository caracteristicasRepository, ImoveisRepository imoveisRepository, EnderecosRepository enderecosRepository){
         this.clientesRepository = clientesRepository;
         this.tiposRepository = tiposRepository;
         this.caracteristicasRepository = caracteristicasRepository;
+        this.imoveisRepository = imoveisRepository;
+        this.enderecosRepository = enderecosRepository;
 
         updateList();
         carregaTipos();
@@ -172,7 +182,49 @@ public class TelaClientesViewModel {
 
     public IntegerProperty enderecoProperty(){
         return this.spEndereco;
+        
+    }
 
+    public Tipo buscaTipoImovel(Imovel imovel){
+        Tipo t = tiposRepository.buscaTipoId(imovel);
+        return t;
+
+    }
+
+    public Caracteristica buscaCaracteristicaImovel(Imovel imovel){
+        Caracteristica c = caracteristicasRepository.buscaCaracteristicaId(imovel);
+        return c;
+        
+    }
+
+    public List<Imovel> buscaImoveis(int temTipo, int temCaracteristica) {
+        if(temTipo == 1 && temCaracteristica == 1){
+            Tipo t = tiposRepository.buscaTipo(spTipo);
+            Caracteristica c = caracteristicasRepository.buscaCaracteristica(spCaracteristica);
+
+            return imoveisRepository.buscaImovelTipoCaracteristica(t.getId(), c.getId());
+
+        } else if(temCaracteristica == 0) {
+            Tipo t = tiposRepository.buscaTipo(spTipo);
+
+            return imoveisRepository.buscaImovelTipo(t.getId());
+
+        } else if(temTipo == 0){
+            Caracteristica c = caracteristicasRepository.buscaCaracteristica(spCaracteristica);
+
+            return imoveisRepository.buscaImovelCaracteristica(c.getId());
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public Endereco buscaEnderecoById(int id){
+        Endereco e = enderecosRepository.buscaEnderecoId(id);
+        return e;
+        
     }
 
     public Result cadastrar(int temTipo, int temCaracteristica) {
@@ -242,11 +294,8 @@ public class TelaClientesViewModel {
         
         }
 
-        if(result instanceof SuccessResult){
+        if(result instanceof SuccessResult)
             updateList();
-            limpar();
-
-        }
 
         return result;
         

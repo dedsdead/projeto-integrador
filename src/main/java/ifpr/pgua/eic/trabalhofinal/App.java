@@ -102,7 +102,7 @@ public final class App extends BaseAppNavigator{
         caracteristicaDao = new JDBCCaracteristicaDAO(FabricaConexoes.getInstance());
         caracteristicasRepository = new CaracteristicasRepository(caracteristicaDao);
 
-        clientesViewModel = new TelaClientesViewModel(clientesRepository, tiposRepository, caracteristicasRepository);
+        clientesViewModel = new TelaClientesViewModel(clientesRepository, tiposRepository, caracteristicasRepository, imoveisRepository, enderecosRepository);
         imoveisViewModel = new TelaImoveisViewModel(imoveisRepository, fotosRepository, tiposRepository, caracteristicasRepository, clientesRepository);
         vendasViewModel = new TelaVendasViewModel(vendasRepository, imoveisRepository, clientesRepository);
 

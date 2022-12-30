@@ -3,6 +3,8 @@ package ifpr.pgua.eic.trabalhofinal.models.repositories;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import ifpr.pgua.eic.trabalhofinal.models.daos.ImovelDAO;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
@@ -104,6 +106,45 @@ public class ImoveisRepository {
         if(busca.isPresent()){
             Imovel imovel = busca.get();
             return imovel;
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public List<Imovel> buscaImovelTipo(int idTipo){
+        List<Imovel> busca = imoveis.stream().filter((im)->im.getDataVenda() == null).filter((im)->im.getIdTipo() == idTipo).collect(Collectors.toList());
+        
+        if(!busca.isEmpty()){
+            return busca;
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public List<Imovel> buscaImovelCaracteristica(int idCaracteristica){
+        List<Imovel> busca = imoveis.stream().filter((im)->im.getDataVenda() == null).filter((im)->im.getIdCaracteristica() == idCaracteristica).collect(Collectors.toList());
+        
+        if(!busca.isEmpty()){
+            return busca;
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public List<Imovel> buscaImovelTipoCaracteristica(int idTipo, int idCaracteristica){
+        List<Imovel> busca = imoveis.stream().filter((im)->im.getDataVenda() == null).filter((im)->im.getIdTipo() == idTipo).filter((im)->im.getIdCaracteristica() == idCaracteristica).collect(Collectors.toList());
+        
+        if(!busca.isEmpty()){
+            return busca;
 
         } else {
             return null;
