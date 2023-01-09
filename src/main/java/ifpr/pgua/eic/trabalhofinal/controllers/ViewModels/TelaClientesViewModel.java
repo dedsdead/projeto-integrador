@@ -9,6 +9,7 @@ import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Tipo;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.CaracteristicasRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ClientesRepository;
+import ifpr.pgua.eic.trabalhofinal.models.repositories.EmailsRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.EnderecosRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ImoveisRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.TiposRepository;
@@ -58,13 +59,15 @@ public class TelaClientesViewModel {
     private CaracteristicasRepository caracteristicasRepository;
     private ImoveisRepository imoveisRepository;
     private EnderecosRepository enderecosRepository;
+    private EmailsRepository emailsRepository;
 
-    public TelaClientesViewModel(ClientesRepository clientesRepository, TiposRepository tiposRepository, CaracteristicasRepository caracteristicasRepository, ImoveisRepository imoveisRepository, EnderecosRepository enderecosRepository){
+    public TelaClientesViewModel(ClientesRepository clientesRepository, TiposRepository tiposRepository, CaracteristicasRepository caracteristicasRepository, ImoveisRepository imoveisRepository, EnderecosRepository enderecosRepository, EmailsRepository emailsRepository){
         this.clientesRepository = clientesRepository;
         this.tiposRepository = tiposRepository;
         this.caracteristicasRepository = caracteristicasRepository;
         this.imoveisRepository = imoveisRepository;
         this.enderecosRepository = enderecosRepository;
+        this.emailsRepository = emailsRepository;
 
         updateList();
         carregaTipos();
@@ -185,48 +188,6 @@ public class TelaClientesViewModel {
         
     }
 
-    public Tipo buscaTipoImovel(Imovel imovel){
-        Tipo t = tiposRepository.buscaTipoId(imovel);
-        return t;
-
-    }
-
-    public Caracteristica buscaCaracteristicaImovel(Imovel imovel){
-        Caracteristica c = caracteristicasRepository.buscaCaracteristicaId(imovel);
-        return c;
-        
-    }
-
-    public List<Imovel> buscaImoveis(int temTipo, int temCaracteristica) {
-        if(temTipo == 1 && temCaracteristica == 1){
-            Tipo t = tiposRepository.buscaTipo(spTipo);
-            Caracteristica c = caracteristicasRepository.buscaCaracteristica(spCaracteristica);
-
-            return imoveisRepository.buscaImovelTipoCaracteristica(t.getId(), c.getId());
-
-        } else if(temCaracteristica == 0) {
-            Tipo t = tiposRepository.buscaTipo(spTipo);
-
-            return imoveisRepository.buscaImovelTipo(t.getId());
-
-        } else if(temTipo == 0){
-            Caracteristica c = caracteristicasRepository.buscaCaracteristica(spCaracteristica);
-
-            return imoveisRepository.buscaImovelCaracteristica(c.getId());
-
-        } else {
-            return null;
-
-        }
-
-    }
-
-    public Endereco buscaEnderecoById(int id){
-        Endereco e = enderecosRepository.buscaEnderecoId(id);
-        return e;
-        
-    }
-
     public Result cadastrar(int temTipo, int temCaracteristica) {
         int idEndereco = spEndereco.getValue();
         if(idEndereco == 0) return Result.fail("Preencha um endereço!");
@@ -294,11 +255,91 @@ public class TelaClientesViewModel {
         
         }
 
-        if(result instanceof SuccessResult)
+        if(result instanceof SuccessResult){
             updateList();
+
+        }
 
         return result;
         
+    }
+
+    public List<Imovel> buscaImoveis(int temTipo, int temCaracteristica) {
+        if(temTipo == 1 && temCaracteristica == 1){
+            Tipo t = tiposRepository.buscaTipo(spTipo);
+            Caracteristica c = caracteristicasRepository.buscaCaracteristica(spCaracteristica);
+
+            return imoveisRepository.buscaImovelTipoCaracteristica(t.getId(), c.getId());
+
+        } else if(temCaracteristica == 0) {
+            Tipo t = tiposRepository.buscaTipo(spTipo);
+
+            return imoveisRepository.buscaImovelTipo(t.getId());
+
+        } else if(temTipo == 0){
+            Caracteristica c = caracteristicasRepository.buscaCaracteristica(spCaracteristica);
+
+            return imoveisRepository.buscaImovelCaracteristica(c.getId());
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public Result mandarEmails(int temTipo, int temCaracteristica){
+        List<Imovel> imoveis = buscaImoveis(temTipo, temCaracteristica);
+
+        if(imoveis.size() > 0){
+            String assunto = "Novo(s) Imóvel(is) para o cliente";
+            String conteudo = "Cliente: \n "+nomeProperty().getValue();
+            conteudo = "Lista de imóveis: \n";
+
+            for (Imovel im : imoveis) {
+                Tipo t = tiposRepository.buscaTipoId(im);
+
+                if(t != null){
+                    conteudo += " "+t.getNome();
+
+                }
+
+                Caracteristica c = caracteristicasRepository.buscaCaracteristicaId(im);
+
+                if(c != null){
+                    conteudo += "\n Conta com: "+c.getQuantidade()+" "+c.getDescricao();
+                    
+                }
+
+                Endereco e = enderecosRepository.buscaEnderecoId(im.getIdEndereco());
+
+                if(e != null){
+                    conteudo += "situado no bairro: "+e.getBairro();
+
+                }
+                
+                conteudo += "\n Descrição: "+im.getDescricao();
+
+                String metragem = String.valueOf(im.getMetragem());
+                metragem = metragem.replace(".0", ",00");
+                metragem = metragem.replace(".", ",");
+                conteudo += "\n Metragem: "+metragem+" m²";
+
+                String valor = String.valueOf(im.getValor());
+                valor = valor.replace(".0", ",00");
+                valor = valor.replace(".", ",");
+                conteudo += "\n Valor: "+valor+" reais";
+
+                conteudo += "\n-------------------------------\n";
+                
+            }
+
+            return emailsRepository.send(assunto, conteudo);
+
+        }
+
+        return Result.fail("Nenhum imóvel compatível");
+
     }
 
     public void atualizar() {

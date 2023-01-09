@@ -3,6 +3,7 @@ package ifpr.pgua.eic.trabalhofinal.models.repositories;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import ifpr.pgua.eic.trabalhofinal.models.daos.ClienteDAO;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
@@ -89,6 +90,32 @@ public class ClientesRepository {
         if(busca.isPresent()){
             Cliente c = busca.get();
             return c;
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public List<Cliente> buscaClienteTipo(int idTipo){
+        List<Cliente> busca = clientes.stream().filter((cli)->cli.getDataExclusao() == null).filter((cli)->cli.getIdTipo() == idTipo).collect(Collectors.toList());
+        
+        if(!busca.isEmpty()){
+            return busca;
+
+        } else {
+            return null;
+
+        }
+
+    }
+
+    public List<Cliente> buscaClienteCaracteristica(int idCaracteristica){
+        List<Cliente> busca = clientes.stream().filter((cli)->cli.getDataExclusao() == null).filter((cli)->cli.getIdCaracteristica() == idCaracteristica).collect(Collectors.toList());
+        
+        if(!busca.isEmpty()){
+            return busca;
 
         } else {
             return null;

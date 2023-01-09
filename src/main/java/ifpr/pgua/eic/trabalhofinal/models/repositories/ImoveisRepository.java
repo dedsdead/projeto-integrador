@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import ifpr.pgua.eic.trabalhofinal.models.daos.ImovelDAO;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
@@ -128,7 +127,7 @@ public class ImoveisRepository {
     }
 
     public List<Imovel> buscaImovelCaracteristica(int idCaracteristica){
-        List<Imovel> busca = imoveis.stream().filter((im)->im.getDataVenda() == null).filter((im)->im.getIdCaracteristica() == idCaracteristica).collect(Collectors.toList());
+        List<Imovel> busca = imoveis.stream().filter((im)->im.getDataExclusao() == null).filter((im)->im.getDataVenda() == null).filter((im)->im.getIdCaracteristica() == idCaracteristica).collect(Collectors.toList());
         
         if(!busca.isEmpty()){
             return busca;
@@ -141,7 +140,7 @@ public class ImoveisRepository {
     }
 
     public List<Imovel> buscaImovelTipoCaracteristica(int idTipo, int idCaracteristica){
-        List<Imovel> busca = imoveis.stream().filter((im)->im.getDataVenda() == null).filter((im)->im.getIdTipo() == idTipo).filter((im)->im.getIdCaracteristica() == idCaracteristica).collect(Collectors.toList());
+        List<Imovel> busca = imoveis.stream().filter((im)->im.getDataExclusao() == null).filter((im)->im.getDataVenda() == null).filter((im)->im.getIdTipo() == idTipo).filter((im)->im.getIdCaracteristica() == idCaracteristica).collect(Collectors.toList());
         
         if(!busca.isEmpty()){
             return busca;

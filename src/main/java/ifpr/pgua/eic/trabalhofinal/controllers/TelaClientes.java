@@ -1,17 +1,11 @@
 package ifpr.pgua.eic.trabalhofinal.controllers;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.trabalhofinal.App;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.ClienteRow;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaClientesViewModel;
-import ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica;
-import ifpr.pgua.eic.trabalhofinal.models.entities.Endereco;
-import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
-import ifpr.pgua.eic.trabalhofinal.models.entities.Tipo;
-import ifpr.pgua.eic.trabalhofinal.models.repositories.EmailsRepository;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 import ifpr.pgua.eic.trabalhofinal.models.results.SuccessResult;
 import javafx.beans.value.ChangeListener;
@@ -75,7 +69,6 @@ public class TelaClientes extends BaseController implements Initializable{
     private Button btLimpar;
 
     private TelaClientesViewModel viewModel;
-    private EmailsRepository emailsRepository;
 
     int temTipo = 0;
     int temCaracteristica = 0;
@@ -174,55 +167,8 @@ public class TelaClientes extends BaseController implements Initializable{
         showMessage(result);
 
         if(result instanceof SuccessResult){
-            List<Imovel> imoveis = viewModel.buscaImoveis(temTipo, temCaracteristica);
-
-            if(imoveis.size() > 0){
-                String assunto = "Novo(s) Imovel(is) para o cliente: "+viewModel.nomeProperty().getValue();
-                String conteudo = "Lista de imóveis: \n";
-
-                emailsRepository = new EmailsRepository();
-
-                for (Imovel im : imoveis) {
-                    Tipo t = viewModel.buscaTipoImovel(im);
-
-                    if(t != null){
-                        conteudo += " "+t.getNome();
-
-                    }
-
-                    Endereco e = viewModel.buscaEnderecoById(im.getIdEndereco());
-
-                    if(e != null){
-                        conteudo += "situado no bairro: "+e.getBairro();
-
-                    }
-
-                    Caracteristica c = viewModel.buscaCaracteristicaImovel(im);
-
-                    if(c != null){
-                        conteudo += "\n Conta com: "+c.getQuantidade()+" "+c.getDescricao();
-                        
-                    }
-                    
-                    conteudo += "\n Descrição: "+im.getDescricao();
-
-                    String metragem = String.valueOf(im.getMetragem());
-                    metragem = metragem.replace(".", ",0");
-                    conteudo += "\n Metragem: "+metragem+" m²";
-
-                    String valor = String.valueOf(im.getValor());
-                    valor = valor.replace(".", ",0");
-                    conteudo += "\n Valor: "+valor+" reais";
-
-                    conteudo += "\n-------------------------------\n";
-                    
-                }
-
-
-                result = emailsRepository.send(assunto, conteudo);
-                showMessage(result);
-
-            }
+            result = viewModel.mandarEmails(temTipo, temCaracteristica);
+            showMessage(result);
 
         }
 

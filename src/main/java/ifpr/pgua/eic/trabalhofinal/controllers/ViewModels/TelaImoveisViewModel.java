@@ -1,13 +1,17 @@
 package ifpr.pgua.eic.trabalhofinal.controllers.ViewModels;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
+import ifpr.pgua.eic.trabalhofinal.models.entities.Endereco;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Tipo;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.CaracteristicasRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ClientesRepository;
+import ifpr.pgua.eic.trabalhofinal.models.repositories.EmailsRepository;
+import ifpr.pgua.eic.trabalhofinal.models.repositories.EnderecosRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.FotosRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ImoveisRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.TiposRepository;
@@ -64,17 +68,23 @@ public class TelaImoveisViewModel {
     private TiposRepository tiposRepository;
     private CaracteristicasRepository caracteristicasRepository;
     private ClientesRepository clientesRepository;
+    private EnderecosRepository enderecosRepository;
+    private EmailsRepository emailsRepository;
 
     public TelaImoveisViewModel(ImoveisRepository imoveisRepository,
                                 FotosRepository fotosRepository,
                                 TiposRepository tiposRepository,
                                 CaracteristicasRepository caracteristicasRepository,
-                                ClientesRepository clientesRepository) {
+                                ClientesRepository clientesRepository,
+                                EnderecosRepository enderecosRepository,
+                                EmailsRepository emailsRepository) {
         this.imoveisRepository = imoveisRepository;
         this.fotosRepository = fotosRepository;
         this.tiposRepository = tiposRepository;
         this.caracteristicasRepository = caracteristicasRepository;
         this.clientesRepository = clientesRepository;
+        this.enderecosRepository = enderecosRepository;
+        this.emailsRepository = emailsRepository;
 
         updateList();
         carregaTipos();
@@ -380,6 +390,60 @@ public class TelaImoveisViewModel {
 
         return result;
         
+    }
+
+    public List<Cliente> buscaClientes(int temCaracteristica) {
+        if(temCaracteristica == 1){
+            Caracteristica c = caracteristicasRepository.buscaCaracteristica(spCaracteristica);
+
+            return clientesRepository.buscaClienteCaracteristica(c.getId());
+
+        } else{
+            Tipo t = tiposRepository.buscaTipo(spTipo);
+
+            return clientesRepository.buscaClienteTipo(t.getId());
+
+        }
+
+    }
+
+    public Result mandarEmails(int temCaracteristica){
+        List<Cliente> clientes = buscaClientes(temCaracteristica);
+
+        if(clientes.size() > 0){
+            String assunto = "Novo(s) cliente(s) para o imóvel";
+            String conteudo = "Imovel: \n "+descricaoProperty().getValue();
+            conteudo = "Lista de clientes: \n";
+
+            for (Cliente cli : clientes) {
+                Tipo t = tiposRepository.buscaTipoId(cli);
+
+                if(t != null){
+                    conteudo += " Procurando: "+t.getNome();
+
+                }
+
+                Caracteristica c = caracteristicasRepository.buscaCaracteristicaId(cli);
+
+                if(c != null){
+                    conteudo += "\n Com: "+c.getQuantidade()+" "+c.getDescricao();
+                    
+                }
+                
+                conteudo += "\n Nome: "+cli.getNome();
+                conteudo += "\n Telefone: "+cli.getTelefone();
+                conteudo += "\n Email: "+cli.getEmail();
+
+                conteudo += "\n-------------------------------\n";
+                
+            }
+
+            return emailsRepository.send(assunto, conteudo);
+
+        }
+
+        return Result.fail("Nenhum cliente compatível");
+
     }
 
     public void atualizar() {

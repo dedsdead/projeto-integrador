@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import ifpr.pgua.eic.trabalhofinal.App;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.ImovelRow;
 import ifpr.pgua.eic.trabalhofinal.controllers.ViewModels.TelaImoveisViewModel;
-import ifpr.pgua.eic.trabalhofinal.models.repositories.ImoveisRepository;
 import ifpr.pgua.eic.trabalhofinal.models.results.Result;
 import ifpr.pgua.eic.trabalhofinal.models.results.SuccessResult;
 import javafx.beans.value.ChangeListener;
@@ -201,7 +200,10 @@ public class TelaImoveis extends BaseController implements Initializable{
         Result result = viewModel.cadastrar(temCaracteristica);
         showMessage(result);
 
-        if(result instanceof SuccessResult)
+        if(result instanceof SuccessResult){
+            result = viewModel.mandarEmails(temCaracteristica);
+
+        }
             limpar();
 
     }

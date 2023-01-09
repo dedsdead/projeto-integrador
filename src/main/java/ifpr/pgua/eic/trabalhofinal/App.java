@@ -33,6 +33,7 @@ import ifpr.pgua.eic.trabalhofinal.models.daos.TipoDAO;
 import ifpr.pgua.eic.trabalhofinal.models.daos.VendaDAO;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.CaracteristicasRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ClientesRepository;
+import ifpr.pgua.eic.trabalhofinal.models.repositories.EmailsRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.EnderecosRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.FotosRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ImoveisRepository;
@@ -71,6 +72,8 @@ public final class App extends BaseAppNavigator{
     private CaracteristicaDAO caracteristicaDao;
     private CaracteristicasRepository caracteristicasRepository;
 
+    private EmailsRepository emailsRepository;
+
     @Override
     public void init() throws Exception{
         super.init();
@@ -102,8 +105,10 @@ public final class App extends BaseAppNavigator{
         caracteristicaDao = new JDBCCaracteristicaDAO(FabricaConexoes.getInstance());
         caracteristicasRepository = new CaracteristicasRepository(caracteristicaDao);
 
-        clientesViewModel = new TelaClientesViewModel(clientesRepository, tiposRepository, caracteristicasRepository, imoveisRepository, enderecosRepository);
-        imoveisViewModel = new TelaImoveisViewModel(imoveisRepository, fotosRepository, tiposRepository, caracteristicasRepository, clientesRepository);
+        emailsRepository = new EmailsRepository();
+
+        clientesViewModel = new TelaClientesViewModel(clientesRepository, tiposRepository, caracteristicasRepository, imoveisRepository, enderecosRepository, emailsRepository);
+        imoveisViewModel = new TelaImoveisViewModel(imoveisRepository, fotosRepository, tiposRepository, caracteristicasRepository, clientesRepository, enderecosRepository, emailsRepository);
         vendasViewModel = new TelaVendasViewModel(vendasRepository, imoveisRepository, clientesRepository);
 
     }
