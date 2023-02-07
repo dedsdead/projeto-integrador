@@ -5,13 +5,11 @@ import java.util.List;
 
 import ifpr.pgua.eic.trabalhofinal.models.entities.Caracteristica;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
-import ifpr.pgua.eic.trabalhofinal.models.entities.Endereco;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Tipo;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.CaracteristicasRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ClientesRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.EmailsRepository;
-import ifpr.pgua.eic.trabalhofinal.models.repositories.EnderecosRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.FotosRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.ImoveisRepository;
 import ifpr.pgua.eic.trabalhofinal.models.repositories.TiposRepository;
@@ -68,7 +66,6 @@ public class TelaImoveisViewModel {
     private TiposRepository tiposRepository;
     private CaracteristicasRepository caracteristicasRepository;
     private ClientesRepository clientesRepository;
-    private EnderecosRepository enderecosRepository;
     private EmailsRepository emailsRepository;
 
     public TelaImoveisViewModel(ImoveisRepository imoveisRepository,
@@ -76,14 +73,12 @@ public class TelaImoveisViewModel {
                                 TiposRepository tiposRepository,
                                 CaracteristicasRepository caracteristicasRepository,
                                 ClientesRepository clientesRepository,
-                                EnderecosRepository enderecosRepository,
                                 EmailsRepository emailsRepository) {
         this.imoveisRepository = imoveisRepository;
         this.fotosRepository = fotosRepository;
         this.tiposRepository = tiposRepository;
         this.caracteristicasRepository = caracteristicasRepository;
         this.clientesRepository = clientesRepository;
-        this.enderecosRepository = enderecosRepository;
         this.emailsRepository = emailsRepository;
 
         updateList();

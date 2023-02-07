@@ -181,6 +181,10 @@ public class TelaEnderecos extends BaseController implements Initializable{
 
             App.popScreen();
 
+        } else {
+            viewModel.limpar();
+            App.popScreen();
+            
         }
         
     }

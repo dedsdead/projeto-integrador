@@ -108,7 +108,7 @@ public final class App extends BaseAppNavigator{
         emailsRepository = new EmailsRepository();
 
         clientesViewModel = new TelaClientesViewModel(clientesRepository, tiposRepository, caracteristicasRepository, imoveisRepository, enderecosRepository, emailsRepository);
-        imoveisViewModel = new TelaImoveisViewModel(imoveisRepository, fotosRepository, tiposRepository, caracteristicasRepository, clientesRepository, enderecosRepository, emailsRepository);
+        imoveisViewModel = new TelaImoveisViewModel(imoveisRepository, fotosRepository, tiposRepository, caracteristicasRepository, clientesRepository, emailsRepository);
         vendasViewModel = new TelaVendasViewModel(vendasRepository, imoveisRepository, clientesRepository);
 
     }

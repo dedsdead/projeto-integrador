@@ -1,7 +1,6 @@
 package ifpr.pgua.eic.trabalhofinal.controllers.ViewModels;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 import ifpr.pgua.eic.trabalhofinal.models.entities.Cliente;
 import ifpr.pgua.eic.trabalhofinal.models.entities.Imovel;
