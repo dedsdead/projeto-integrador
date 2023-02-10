@@ -42,11 +42,8 @@ public class TelaPrincipalViewModel {
     }
 
     public Result logar(){
-        // String email = spEmail.getValue();
-        // String senha = spSenha.getValue();
-
-        String email = Env.get("LOG");
-        String senha = Env.get("PAS");
+        String email = spEmail.getValue();
+        String senha = spSenha.getValue();
 
         Result result;
 
