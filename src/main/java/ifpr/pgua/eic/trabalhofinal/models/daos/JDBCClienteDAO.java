@@ -22,7 +22,7 @@ public class JDBCClienteDAO implements ClienteDAO{
     private static final String DELETE = "UPDATE Cliente set excluido_em=? WHERE codigo=?";
     private static final String SELECT_ALL = "SELECT * FROM Cliente";
     private static final String SELECT_ID = "SELECT * FROM Cliente WHERE codigo=?";
-    private static final String CALL_CPF = "{? = call Validar_cpf(?)}";
+    private static final String CALL_CPF = "{? = call Valida_cpf(?)}";
     private static final String CALL_REGEX = "{? = call Regex_email(?)}";
 
     private FabricaConexoes fabricaConexoes;
@@ -247,7 +247,7 @@ public class JDBCClienteDAO implements ClienteDAO{
             return result;
 
         } catch (SQLException e) {
-            System.out.println("Erro ao chamar a função mysql");
+            System.out.println("Erro ao chamar a função de validação de email");
             return false;
 
         }
@@ -270,7 +270,7 @@ public class JDBCClienteDAO implements ClienteDAO{
             return result;
 
         } catch (SQLException e) {
-            System.out.println("Erro ao chamar a função mysql");
+            System.out.println("Erro ao chamar a função de validação de CPF");
             return false;
 
         }

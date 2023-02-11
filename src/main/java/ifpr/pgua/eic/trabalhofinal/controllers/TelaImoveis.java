@@ -202,9 +202,10 @@ public class TelaImoveis extends BaseController implements Initializable{
 
         if(result instanceof SuccessResult){
             result = viewModel.mandarEmails(temCaracteristica);
-
-        }
+            showMessage(result);
             limpar();
+            
+        }
 
     }
 
