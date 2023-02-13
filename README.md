@@ -1,4 +1,6 @@
-# trabalho-final
- Trabalho final das disciplinas de oo2, bd2 e pi
+# projeto-integrador
+ Proposta de projeto para integrar o conceito e demonstrar o aprendizado nas disciplinas de Orientação a Objetos, Banco de Dados e Engenharia de Software
  
- **Colocando os conceitos de java, mysql e engenharia de software em pratica**
+ **Desenvolvido no Instituto Federal do Paraná - Campus Paranaguá**
+ 
+ **4º Semestre de Análise e Desenvolvimento de Sistemas**
