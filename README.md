@@ -5,7 +5,7 @@
  
  **4º Semestre de Análise e Desenvolvimento de Sistemas**
 
-# Sistema de Gerenciamento de Imóveis
+# sobre o sistema
 Projeto simples desenvolvido em Java utilizando também javafx, mysql, api para buscar cep, envio de e-mail com o mailtrap.
 
 **CRUDs:**
