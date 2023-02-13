@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -36,7 +37,7 @@
         </rowConstraints>
          <children>
             <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="74.0" text="Descricao:" />
-            <TextField fx:id="tfDescricao" promptText="Digite a descricao do imovel" GridPane.columnIndex="1" />
+            <TextArea fx:id="tfDescricao" promptText="Digite a descricao do imovel" GridPane.columnIndex="1" />
             <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="77.0" text="Metragem:" GridPane.rowIndex="1" />
             <TextField fx:id="tfMetragem" promptText="Digite a metragem" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             
