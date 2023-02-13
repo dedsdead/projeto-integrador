@@ -167,8 +167,11 @@ public class TelaClientes extends BaseController implements Initializable{
         showMessage(result);
 
         if(result instanceof SuccessResult){
-            result = viewModel.mandarEmails(temTipo, temCaracteristica);
-            showMessage(result);
+            if(viewModel.podeEditarProperty().get() == false){
+                result = viewModel.mandarEmails(temTipo, temCaracteristica);
+                showMessage(result);
+
+            }
             limpar();
             
         }

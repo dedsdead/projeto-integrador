@@ -291,7 +291,8 @@ public class TelaClientesViewModel {
     public Result mandarEmails(int temTipo, int temCaracteristica){
         List<Imovel> imoveis = buscaImoveis(temTipo, temCaracteristica);
 
-        if(imoveis.size() > 0){
+        if(imoveis != null){
+            if (imoveis.size() == 0) return Result.fail("Nenhum imóvel compatível");
             String assunto = "Novo(s) Imóvel(is) para o cliente";
             String conteudo = "Cliente: \n "+nomeProperty().getValue();
             conteudo = "Lista de imóveis: \n";
